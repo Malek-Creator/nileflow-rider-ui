@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_blank" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=Plus+Jakarta+Sans:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { colors: { "primary-fixed-dim": "#86d5c3", "on-tertiary-fixed": "#001c39", "surface-container-high": "#eae7e7", "outline-variant": "#bec9c5", "on-surface": "#1c1b1b", "primary-fixed": "#a2f2de", "surface-dim": "#dcd9d9", "on-error": "#ffffff", "primary": "#005145", "tertiary-container": "#1760a8", "on-secondary-fixed": "#281800", "on-secondary-fixed-variant": "#604100", "inverse-surface": "#313030", "on-primary-fixed-variant": "#005144", "surface-container-low": "#f6f3f2", "surface-bright": "#fcf9f8", "surface-container-lowest": "#ffffff", "inverse-on-surface": "#f3f0ef", "tertiary": "#004885", "on-primary-container": "#99e8d5", "on-background": "#1c1b1b", "on-primary-fixed": "#00201a", "secondary": "#7f5600", "on-tertiary": "#ffffff", "outline": "#6f7976", "secondary-container": "#ffc567", "surface-container-highest": "#e5e2e1", "on-primary": "#ffffff", "on-secondary": "#ffffff", "surface-variant": "#e5e2e1", "on-surface-variant": "#3f4946", "surface-tint": "#0e6a5b", "on-error-container": "#93000a", "surface-container": "#f0eded", "on-tertiary-container": "#c5dbff", "error": "#ba1a1a", "surface": "#fcf9f8", "on-secondary-container": "#775000", "secondary-fixed": "#ffdeae", "secondary-fixed-dim": "#f6bd5f", "tertiary-fixed": "#d4e3ff", "tertiary-fixed-dim": "#a4c8ff", "background": "#fcf9f8", "primary-container": "#0f6b5c", "inverse-primary": "#86d5c3", "on-tertiary-fixed-variant": "#004784", "error-container": "#ffdad6" }, borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, spacing: { "margin": "1.5rem", "gutter-mobile": "0.75rem", "space-lg": "1.5rem", "space-md": "1rem", "gutter": "1rem", "space-xl": "2rem", "margin-mobile": "1rem", "space-sm": "0.75rem", "space-xs": "0.5rem" }, fontFamily: { "label-md": ["Inter"], "body-lg": ["Inter"], "body-sm": ["Inter"], "label-sm": ["Inter"], "headline-sm": ["Plus Jakarta Sans"], "headline-lg-mobile": ["Plus Jakarta Sans"], "body-md-bold": ["Inter"], "headline-xl-mobile": ["Plus Jakarta Sans"], "body-md": ["Inter"], "headline-lg": ["Plus Jakarta Sans"], "headline-md": ["Plus Jakarta Sans"], "body-lg-bold": ["Inter"], "headline-xl": ["Plus Jakarta Sans"], "label-lg": ["Inter"] }, fontSize: { "label-md": ["12px", { "lineHeight": "16px", "fontWeight": "600" }], "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }], "body-sm": ["12px", { "lineHeight": "16px", "fontWeight": "400" }], "label-sm": ["10px", { "lineHeight": "14px", "fontWeight": "600" }], "headline-sm": ["18px", { "lineHeight": "24px", "fontWeight": "600" }], "headline-lg-mobile": ["24px", { "lineHeight": "32px", "fontWeight": "600" }], "body-md-bold": ["14px", { "lineHeight": "20px", "fontWeight": "600" }], "headline-xl-mobile": ["28px", { "lineHeight": "36px", "fontWeight": "600" }], "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }], "headline-lg": ["30px", { "lineHeight": "38px", "fontWeight": "600" }], "headline-md": ["20px", { "lineHeight": "28px", "fontWeight": "600" }], "body-lg-bold": ["16px", { "lineHeight": "24px", "fontWeight": "600" }], "headline-xl": ["36px", { "lineHeight": "44px", "fontWeight": "600" }], "label-lg": ["14px", { "lineHeight": "20px", "fontWeight": "600" }] } } } };</script><style>@layer base { html, body { width: 100vw; margin: 0; padding: 0; } body { overscroll-behavior-y: none; } .pb-safe { padding-bottom: env(safe-area-inset-bottom, 0px); } .pt-safe { padding-top: env(safe-area-inset-top, 0px); } } ::-webkit-scrollbar { display: none; }</style></head><body class="bg-background text-on-surface font-body-md antialiased min-h-screen flex flex-col selection:bg-primary-fixed selection:text-on-primary-fixed pt-safe pb-safe"><main class="flex-1 flex flex-col relative w-full bg-background"><div class="flex flex-col w-full relative select-none">
+<!-- Top Progress & Step Meta -->
+<div class="px-margin-mobile pt-space-xs pb-space-sm bg-surface-container-lowest">
+<div class="flex items-center justify-between gap-gutter-mobile mb-space-xs">
+<div class="flex items-center gap-space-xs">
+<span class="inline-flex items-center justify-center w-5 h-5 rounded-full bg-primary text-on-primary font-label-sm text-label-sm">2</span>
+<span class="font-label-md text-label-md text-on-surface">Step 2 of 4</span>
+</div>
+<span class="font-label-md text-label-md text-primary font-body-md-bold">Document Scanner</span>
+</div>
+<!-- Step Segment Progress Bar -->
+<div class="grid grid-cols-4 gap-1.5 h-1.5 w-full">
+<div class="bg-primary rounded-full"></div>
+<div class="bg-primary rounded-full relative overflow-hidden">
+<div class="absolute inset-0 bg-primary-fixed-dim/40 animate-pulse"></div>
+</div>
+<div class="bg-surface-container-highest rounded-full"></div>
+<div class="bg-surface-container-highest rounded-full"></div>
+</div>
+</div>
+<!-- Header Bar -->
+<div class="px-margin-mobile py-space-sm flex items-center justify-between bg-surface-container-lowest shadow-sm">
+<button aria-label="Go back" class="w-12 h-12 rounded-lg flex items-center justify-center bg-surface-container hover:bg-surface-container-high active:scale-95 transition-all text-on-surface" type="button">
+<span class="material-symbols-outlined text-[24px]">arrow_back</span>
+</button>
+<div class="flex-1 px-space-sm text-center min-w-0">
+<h1 class="font-headline-sm text-headline-sm text-on-surface truncate">Scan Driving License</h1>
+<p class="font-label-sm text-label-sm text-outline font-label-md">Class A2 • Motorcycle Endorsement</p>
+</div>
+<button aria-label="Toggle flashlight" class="w-12 h-12 rounded-lg flex items-center justify-center bg-surface-container hover:bg-surface-container-high active:scale-95 transition-all text-on-surface" id="torch-top-btn" type="button">
+<span class="material-symbols-outlined text-[22px]" id="torch-icon-top">flashlight_off</span>
+</button>
+</div>
+<!-- Guidance Pill Banner -->
+<div class="px-margin-mobile pt-space-sm pb-space-xs">
+<div class="flex items-center justify-center gap-space-xs py-2 px-space-md bg-secondary-fixed rounded-full shadow-sm text-center">
+<span class="material-symbols-outlined text-secondary text-[18px]">verified</span>
+<span class="font-label-md text-label-md text-on-secondary-fixed font-body-md-bold">Kenyan Driving License • Front Side</span>
+</div>
+</div>
+<!-- Live Optical Reticle Viewfinder Container -->
+<div class="px-margin-mobile py-space-xs flex flex-col items-center">
+<div class="relative w-full aspect-[4/3] max-w-[420px] rounded-xl overflow-hidden bg-inverse-surface shadow-xl flex items-center justify-center">
+<!-- Simulated Camera Live Stream Background -->
+<img class="absolute inset-0 w-full h-full object-cover opacity-85" data-alt="Close-up crisp macro shot of an official national driver license plastic card resting on dark matte textured desk surface, cinematic lighting, sharp typography, vehicle rider endorsement badge, realistic perspective" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCVeE0jws_0FsnhL2Ml-vwBJ_ZrCWK33DaezKl7jP1VV1q1kSGkHsw_H5uhODxrADt2Q1HgAUXq-fUGD62ALPACGueQv0koSXnYXv6k2o4LZChAN6-M6uZt-HrMgmiuoqBQaEz8gkzOxAJd9Ycro05AExyIB4Jup8ecJt7Z0f5LM_N2Vpap2Zx4lRTBHhBIg91Kk7dEUZNo8lG5gVHkb7k92c1GkcfM39dx3nbpVo-Z3hvi0h8v8zP-bw"/>
+<!-- Subtle Ambient Camera Grid Overlay -->
+<div class="absolute inset-0 opacity-15 pointer-events-none grid grid-cols-3 grid-rows-3">
+<div class="border-r border-b border-surface-container-lowest"></div>
+<div class="border-r border-b border-surface-container-lowest"></div>
+<div class="border-b border-surface-container-lowest"></div>
+<div class="border-r border-b border-surface-container-lowest"></div>
+<div class="border-r border-b border-surface-container-lowest"></div>
+<div class="border-b border-surface-container-lowest"></div>
+<div class="border-r border-surface-container-lowest"></div>
+<div class="border-r border-surface-container-lowest"></div>
+<div></div>
+</div>
+<!-- High-Contrast Optical Reticle Frame -->
+<div class="relative w-[86%] h-[76%] rounded-lg pointer-events-none">
+<!-- Corner Brackets (Custom Geometry with Primary Brand Teal) -->
+<span class="absolute -top-1 -left-1 w-6 h-6 border-t-[4px] border-l-[4px] border-primary-fixed rounded-tl-sm shadow-sm"></span>
+<span class="absolute -top-1 -right-1 w-6 h-6 border-t-[4px] border-r-[4px] border-primary-fixed rounded-tr-sm shadow-sm"></span>
+<span class="absolute -bottom-1 -left-1 w-6 h-6 border-b-[4px] border-l-[4px] border-primary-fixed rounded-bl-sm shadow-sm"></span>
+<span class="absolute -bottom-1 -right-1 w-6 h-6 border-b-[4px] border-r-[4px] border-primary-fixed rounded-br-sm shadow-sm"></span>
+<!-- Center Crosshair Micro-Guides -->
+<div class="absolute top-1/2 left-2 -translate-y-1/2 w-2 h-0.5 bg-primary-fixed-dim/70"></div>
+<div class="absolute top-1/2 right-2 -translate-y-1/2 w-2 h-0.5 bg-primary-fixed-dim/70"></div>
+<div class="absolute top-2 left-1/2 -translate-x-1/2 w-0.5 h-2 bg-primary-fixed-dim/70"></div>
+<div class="absolute bottom-2 left-1/2 -translate-x-1/2 w-0.5 h-2 bg-primary-fixed-dim/70"></div>
+<!-- Laser Scanning Sweep Line Animation -->
+<div class="absolute left-1 right-1 h-0.5 bg-primary-fixed shadow-[0_0_12px_#a2f2de] animate-[bounce_2.4s_infinite_ease-in-out]"></div>
+</div>
+<!-- In-HUD Framing Guidance Overlay Badge -->
+<div class="absolute bottom-3 inset-x-4 flex justify-center pointer-events-none">
+<div class="px-space-sm py-1 rounded-full bg-inverse-surface/85 backdrop-blur-sm flex items-center gap-1.5 shadow-md">
+<span class="material-symbols-outlined text-primary-fixed text-[16px]">crop_free</span>
+<span class="font-label-sm text-label-sm text-inverse-on-surface font-label-md">Align license edges inside brackets</span>
+</div>
+</div>
+<!-- Real-time Status Floating Pill -->
+<div class="absolute top-3 left-3">
+<div class="flex items-center gap-1.5 px-2 py-0.5 rounded bg-primary-container/90 text-on-primary shadow-sm">
+<span class="w-2 h-2 rounded-full bg-primary-fixed animate-ping"></span>
+<span class="font-label-sm text-label-sm uppercase tracking-wider">LIVE OCR ACTIVE</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Live OCR Recognition Detection Status Card -->
+<div class="px-margin-mobile py-space-xs">
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm">
+<div class="flex items-center justify-between pb-space-xs mb-space-xs">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-primary text-[20px]">document_scanner</span>
+<span class="font-label-md text-label-md text-on-surface">Auto-Detection Feed</span>
+</div>
+<span class="font-label-sm text-label-sm text-primary font-body-md-bold px-2 py-0.5 rounded-full bg-primary-fixed/30">Nile-Vision v2.4</span>
+</div>
+<!-- Telemetry Status Badges -->
+<div class="grid grid-cols-3 gap-2 text-center">
+<!-- Edge Metric -->
+<div class="bg-surface-container rounded-lg p-space-xs flex flex-col items-center">
+<div class="flex items-center gap-1 text-primary">
+<span class="material-symbols-outlined text-[16px]">check_circle</span>
+<span class="font-label-sm text-label-sm font-label-md">Locked</span>
+</div>
+<span class="font-label-sm text-label-sm text-outline mt-0.5">Edges</span>
+</div>
+<!-- Glare Metric -->
+<div class="bg-surface-container rounded-lg p-space-xs flex flex-col items-center">
+<div class="flex items-center gap-1 text-primary">
+<span class="material-symbols-outlined text-[16px]">wb_sunny</span>
+<span class="font-label-sm text-label-sm font-label-md">Good</span>
+</div>
+<span class="font-label-sm text-label-sm text-outline mt-0.5">Glare Check</span>
+</div>
+<!-- Sharpness Metric -->
+<div class="bg-surface-container rounded-lg p-space-xs flex flex-col items-center">
+<div class="flex items-center gap-1 text-primary">
+<span class="material-symbols-outlined text-[16px]">high_quality</span>
+<span class="font-label-sm text-label-sm font-label-md">98%</span>
+</div>
+<span class="font-label-sm text-label-sm text-outline mt-0.5">Sharpness</span>
+</div>
+</div>
+<!-- Sub-guidance message -->
+<div class="mt-space-xs pt-2 flex items-center justify-center gap-1.5 text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px] text-secondary">info</span>
+<span class="font-body-sm text-body-sm">Place card flat under bright, even light</span>
+</div>
+</div>
+</div>
+<!-- Bottom Rider Controls Bar (Optimized for One-Hand Thumb Reach) -->
+<div class="px-margin-mobile pt-space-xs pb-space-lg flex flex-col items-center gap-space-md bg-surface-container-lowest mt-space-xs shadow-md">
+<!-- Main Capture Bar -->
+<div class="w-full flex items-center justify-around max-w-sm">
+<!-- Secondary Flashlight Button -->
+<button aria-label="Toggle flashlight" class="w-14 h-14 rounded-full bg-surface-container hover:bg-surface-container-high active:scale-90 transition-transform flex flex-col items-center justify-center text-on-surface shadow-sm" id="torch-bottom-btn" type="button">
+<span class="material-symbols-outlined text-[26px]" id="torch-icon-bottom">flashlight_off</span>
+<span class="font-label-sm text-[10px] text-outline">Flash</span>
+</button>
+<!-- Primary Shutter Button -->
+<div class="relative flex items-center justify-center">
+<!-- Pulsing Optical Confirmation Ring -->
+<div class="absolute -inset-2 rounded-full bg-primary/20 animate-pulse"></div>
+<button aria-label="Capture Document" class="relative w-20 h-20 rounded-full bg-primary flex items-center justify-center shadow-lg active:scale-95 transition-transform" id="shutter-btn" type="button">
+<div class="w-16 h-16 rounded-full bg-surface-container-lowest flex items-center justify-center shadow-inner">
+<div class="w-12 h-12 rounded-full bg-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-on-primary text-[28px]">photo_camera</span>
+</div>
+</div>
+</button>
+</div>
+<!-- Auto Detect Feedback Indicator -->
+<div class="w-14 h-14 rounded-full bg-surface-container flex flex-col items-center justify-center text-on-surface shadow-sm opacity-80">
+<span class="material-symbols-outlined text-[24px] text-primary">hdr_auto</span>
+<span class="font-label-sm text-[10px] text-outline">Auto</span>
+</div>
+</div>
+<!-- Manual Upload Fallback Action -->
+<button class="w-full max-w-xs h-12 px-space-md rounded-lg bg-surface-container hover:bg-surface-container-high active:bg-surface-container-highest transition-colors flex items-center justify-center gap-space-xs text-primary font-body-md-bold" id="upload-gallery-btn" type="button">
+<span class="material-symbols-outlined text-[20px]">photo_library</span>
+<span class="font-label-lg text-label-lg">Upload from gallery</span>
+</button>
+</div>
+</div>
+<script>
+  // Flashlight State Toggle Interaction
+  const topTorch = document.getElementById('torch-top-btn');
+  const bottomTorch = document.getElementById('torch-bottom-btn');
+  const iconTop = document.getElementById('torch-icon-top');
+  const iconBottom = document.getElementById('torch-icon-bottom');
+  let torchActive = false;
+
+  function toggleTorch() {
+    torchActive = !torchActive;
+    const iconName = torchActive ? 'flashlight_on' : 'flashlight_off';
+    iconTop.textContent = iconName;
+    iconBottom.textContent = iconName;
+
+    if (torchActive) {
+      topTorch.classList.add('text-secondary', 'bg-secondary-fixed');
+      bottomTorch.classList.add('text-secondary', 'bg-secondary-fixed');
+    } else {
+      topTorch.classList.remove('text-secondary', 'bg-secondary-fixed');
+      bottomTorch.classList.remove('text-secondary', 'bg-secondary-fixed');
+    }
+  }
+
+  topTorch.addEventListener('click', toggleTorch);
+  bottomTorch.addEventListener('click', toggleTorch);
+
+  // Capture Shutter Micro-Interaction
+  const shutter = document.getElementById('shutter-btn');
+  shutter.addEventListener('click', () => {
+    // Subtle tactile scale effect
+    shutter.style.transform = 'scale(0.92)';
+    setTimeout(() => {
+      shutter.style.transform = 'scale(1)';
+    }, 150);
+  });
+</script></main></body></html>

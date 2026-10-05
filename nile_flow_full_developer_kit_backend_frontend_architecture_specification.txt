@@ -1,0 +1,417 @@
+# Nile Flow Developer Kit & Technical Architecture Specification
+**Document ID:** NF-ENG-DEVKIT-v4.18  
+**System Classification:** Engineering & Architecture Source of Truth  
+**Target Applications:** Nile Flow Rider Mobile App (Domain C), Logistics Dispatch Core, Regional Merchant Edge  
+**Frameworks & Stack:** React Native (TypeScript), Tailwind CSS / NativeWind, Node.js / Go Microservices, SQLite Edge Offline, Safaricom Daraja M-Pesa API, WebSockets / gRPC  
+
+---
+
+## 1. Executive System Overview & Architecture Topology
+
+The **Nile Flow Logistics & Courier Ecosystem** operates across low-latency edge devices, vehicle IoT telematics, regional distribution hubs, and high-availability cloud orchestration clusters.
+
+```
+                    +-------------------------------------------------+
+                    |           Nile Flow Global Cloud Engine         |
+                    | (Event Streaming, Routing, Escrow & Compliance) |
+                    +-------------------------------------------------+
+                         ^                  ^                  ^
+                         | (TLS 1.3 / gRPC) | (Daraja B2C API) | (NTSA GovLink)
+                         v                  v                  v
++-------------------------------+  +------------------+  +--------------------+
+|  Dispatch & Routing Cluster   |  | Safaricom M-Pesa |  | National Transport |
+|  - Real-time Matched Engine   |  | Escrow & Instant |  | Safety Authority   |
+|  - Multi-Stop Corridor Matrix |  | Disbursement API |  | & IPRS Registries  |
++-------------------------------+  +------------------+  +--------------------+
+                         ^
+                         | (WebSocket / Protobuf Telemetry)
+                         v
++-----------------------------------------------------------------------------+
+|              React Native Rider Mobile Client (Field Runtime)               |
+|                                                                             |
+|  +-------------------------------------+  +------------------------------+  |
+|  |       Presentation Layer            |  |      Local State & Telemetry |  |
+|  | - NativeWind / Tailwind System v1.0 |  | - Zustand Global Stores      |  |
+|  | - 23 Canonical Screen Views         |  | - React Query / Offline-Sync |  |
+|  | - 48px-56px Gloved Touch Ergonomics |  | - Hardware Bridge (BLE/GPS)  |  |
+|  +-------------------------------------+  +------------------------------+  |
+|                                    |                                        |
+|                                    v                                        |
+|  +-----------------------------------------------------------------------+  |
+|  |               Offline-First Edge Persistence Layer                    |  |
+|  | - WatermelonDB / SQLite Cipher (AES-256 GCM)                          |  |
+|  | - Conflict-Free Replicated Data Types (CRDT) Sync Engine              |  |
+|  | - Local Vector Tile Cache (48MB Mapnik / Mapbox GL)                   |  |
+|  +-----------------------------------------------------------------------+  |
++-----------------------------------------------------------------------------+
+```
+
+---
+
+## 2. Backend Microservice Architecture
+
+The backend infrastructure is decoupled into domain-driven microservices engineered for extreme resilience, high concurrency, and zero-loss edge synchronization.
+
+### 2.1 Service Catalog & Responsibilities
+
+| Service Name | Primary Language | Storage & Queues | Core Responsibility |
+|---|---|---|---|
+| **Dispatch & Order Matcher** | Go 1.22 | Redis Cluster, PostgreSQL | Ingests orders, computes corridor batching along Waiyaki Way/Kilimani, and broadcasts 25s acceptance offers. |
+| **Telemetry & Geospatial Router** | Rust / C++ | ClickHouse, Kafka | Ingests rider GPS pings every 3s, computes speed telemetry, and monitors geofenced waiting corridors. |
+| **Finance & M-Pesa Settlement** | Node.js (NestJS) | PostgreSQL (ACID), Redis | Connects with Safaricom Daraja B2C APIs, handles zero-tariff instant wallet cashouts, tips, and escrow releases. |
+| **Proof of Delivery & KYC Vault** | Python (FastAPI) | AWS S3 / MinIO, PostgreSQL | Verifies 4-digit SMS OTPs, digitally signs SHA-256 glass signatures, and conducts OCR validation for NTSA licenses. |
+| **Offline Sync & Edge Gateway** | Go 1.22 | SQLite Server, Redis Pub/Sub | Manages two-way sync queues, resolves offline conflicts using CRDTs, and manages emergency SMS fallbacks. |
+
+### 2.2 Core API Endpoints & Schemas
+
+#### A. Ingest Telemetry Ping (`POST /api/v1/telemetry/ping`)
+```json
+{
+  "rider_id": "NFR-8842",
+  "shift_id": "SH-2026-1029",
+  "coordinates": {
+    "latitude": -1.268412,
+    "longitude": 36.804419,
+    "altitude_m": 1682.4,
+    "accuracy_m": 2.1,
+    "speed_kmh": 41.8,
+    "heading_deg": 18.5
+  },
+  "satellites_locked": 12,
+  "battery_pct": 88,
+  "hardware_status": {
+    "ble_helmet_connected": true,
+    "thermal_printer_connected": true
+  },
+  "timestamp": "2026-07-27T11:44:00.102Z"
+}
+```
+
+#### B. Instant M-Pesa Payout Disbursement (`POST /api/v1/payouts/mpesa-cashout`)
+```json
+{
+  "rider_id": "NFR-8842",
+  "phone_number": "+254712345678",
+  "amount_kes": 14850.00,
+  "idempotency_key": "c7a8b92d-94b2-4d1a-8263-d3a2e1f049a2",
+  "settlement_type": "IMMEDIATE_ZERO_FEE"
+}
+```
+**Response (200 OK):**
+```json
+{
+  "transaction_id": "QK928491J",
+  "status": "SETTLED",
+  "disbursed_at": "2026-07-27T12:05:14.281Z",
+  "daraja_originator_conversation_id": "AG_20260727_000049281a8b",
+  "clearing_latency_ms": 780
+}
+```
+
+---
+
+## 3. Frontend Architecture & Screen Implementation (React Native + TypeScript)
+
+The mobile client is engineered for high performance in bright sunlight and single-handed gloved operation.
+
+### 3.1 Directory Structure
+```
+nileflow-rider-mobile/
+|-- src/
+|   |-- api/                  # Axios / Fetch client with offline interceptors
+|   |-- assets/               # Brand logos, sound alerts (Sheng audio prompts)
+|   |-- components/           # Atomic UI library conforming to Nile Flow v1.0
+|   |   |-- ActionButton.tsx  # 48px/56px minimum hit-box CTA
+|   |   |-- StatBadge.tsx     # Semantic color status badges
+|   |   |-- CameraReticle.tsx # QR and OCR camera viewfinder
+|   |   |-- SignaturePad.tsx  # Canvas touch signature on glass
+|   |   `-- BottomTabBar.tsx  # Persistent mobile tab navigation
+|   |-- hooks/                # useTelemetry, useEdgeSync, useMpesaCashout
+|   |-- navigation/           # React Navigation v6 Stack & Tab router
+|   |-- offline/              # SQLite DB schemas and synchronization workers
+|   |-- screens/              # 23 Canonical Screen Implementations (01 to 23)
+|   |   |-- 01_SplashAuthScreen.tsx
+|   |   |-- 02_ProfileSetupScreen.tsx
+|   |   |-- 03_DocumentScannerScreen.tsx
+|   |   |-- 04_DocumentHubScreen.tsx
+|   |   |-- 05_VerificationStatusScreen.tsx
+|   |   |-- 06_CommandCenterScreen.tsx
+|   |   |-- 07_IncomingRequestScreen.tsx
+|   |   |-- 08_DeliveriesHubScreen.tsx
+|   |   |-- 09_PackagePickupScreen.tsx
+|   |   |-- 10_ActiveNavigationHUDScreen.tsx
+|   |   |-- 11_DeliveryDetailsScreen.tsx
+|   |   |-- 12_CustomerUnavailableScreen.tsx
+|   |   |-- 13_IncidentReportingScreen.tsx
+|   |   |-- 14_LiveDispatchChatScreen.tsx
+|   |   |-- 15_ProofOfDeliveryScreen.tsx
+|   |   |-- 16_DeliveryCompletedScreen.tsx
+|   |   |-- 17_EarningsWalletScreen.tsx
+|   |   |-- 18_PerformanceAnalyticsScreen.tsx
+|   |   |-- 19_SafetyEmergencyScreen.tsx
+|   |   |-- 20_ProfileVehicleScreen.tsx
+|   |   |-- 21_NotificationsCenterScreen.tsx
+|   |   |-- 22_RiderSettingsScreen.tsx
+|   |   `-- 23_OfflineSyncScreen.tsx
+|   |-- stores/               # Zustand state stores (RiderStore, OrderStore)
+|   `-- theme/                # Nile Flow tokens (Teal #0F6B5C, Gold #B8862E)
+|-- package.json
+|-- tailwind.config.js
+`-- tsconfig.json
+```
+
+---
+
+## 4. Complete Catalog of 23 Canonical Screens & Technical Specifications
+
+| Screen # | Screen Title | Flow Phase | Shell Archetype | Key Native Modules & Hooks |
+|---|---|---|---|---|
+| **01** | `Rider Splash & Authentication` | Onboarding | `mobile_blank` | `react-native-keychain`, TouchID/Biometrics, SMS OTP listener |
+| **02** | `Rider Onboarding: Profile Setup` | Onboarding | `mobile_blank` | `react-hook-form`, NTSA input validation formatters |
+| **03** | `Document Scanner HUD` | Onboarding | `mobile_blank` | `react-native-vision-camera`, Frame Processor OCR, Torch API |
+| **04** | `Document Hub Checklist` | Onboarding | `mobile_blank` | File uploader, AWS S3 presigned multipart upload |
+| **05** | `Verification Status Tracker` | Onboarding | `mobile_blank` | WebSocket subscription for background check clearance |
+| **06** | `Command Center Dashboard` | Dispatch | `mobile_tab` | GPS high-accuracy listener, Active Shift background worker |
+| **07** | `Incoming Delivery Request` | Dispatch | `mobile_stack` | 25s circular reanimated timer, audio buzzer, vibration haptics |
+| **08** | `Deliveries Management Hub` | Dispatch | `mobile_tab` | Multi-tab order pipeline, corridor route batching calculator |
+| **09** | `Package Pickup & QR Scan` | Dispatch | `mobile_stack` | Barcode recognition, digital dock sign-off verification |
+| **10** | `Active Delivery Navigation HUD`| Fulfillment| `mobile_blank` | Mapbox GL Vector Tiles, TTS audio prompt ("Sheng" dialer), HUD |
+| **11** | `Delivery Details & Timeline` | Fulfillment| `mobile_stack` | 6-stage vertical lifecycle tracker, direct Tel/VoIP dialer |
+| **12** | `Customer Unavailable Protocol`| Fulfillment| `mobile_stack` | 10-minute geofenced circular timer, telephony call logger |
+| **13** | `Delivery Issue & Exception` | Fulfillment| `mobile_stack` | GPS photo watermarking, automated merchant return calculation |
+| **14** | `Live Dispatch Chat` | Fulfillment| `mobile_stack` | WebSocket duplex chat, audio voice note recorder, VoIP link |
+| **15** | `Proof of Delivery (POD)` | Fulfillment| `mobile_stack` | 4-digit OTP validator, on-glass SVG signature pad, GPS photo |
+| **16** | `Delivery Completed Summary` | Fulfillment| `mobile_blank` | Confetti canvas, M-Pesa Daraja receipt renderer, quest tracker|
+| **17** | `Earnings & M-Pesa Wallet` | Welfare | `mobile_tab` | M-Pesa B2C instant cashout trigger, ledger export, auto-sweep |
+| **18** | `Performance & Analytics` | Welfare | `mobile_tab` | SVG metric charts, tier progression bar, review feedback |
+| **19** | `Rider Safety & SOS Center` | Welfare | `mobile_stack` | 3s long-press SOS button, emergency SMS broadcaster, GPS hook |
+| **20** | `Profile & Vehicle Fleet` | Welfare | `mobile_tab` | Bluetooth BLE manager (Helmet & Printer), NTSA expiration hub |
+| **21** | `Courier Notifications Center`| Welfare | `mobile_tab` | Category-filtered push feed, surge alerts, weather warnings |
+| **22** | `Rider Settings & Language` | Welfare | `mobile_tab` | I18n provider (English, Kiswahili, French, Oromo), glare mode |
+| **23** | `Offline Resilience & Edge Sync`| Welfare | `mobile_stack` | SQLite event queue, 12-sat lock indicator, burst sync daemon |
+
+---
+
+## 5. Production Reference Implementations (Code)
+
+### 5.1 Design Tokens (`tailwind.config.js`)
+```javascript
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: ["./src/**/*.{js,jsx,ts,tsx}"],
+  theme: {
+    extend: {
+      colors: {
+        nile: {
+          teal: {
+            DEFAULT: '#0F6B5C',
+            900: '#0A4A40',
+            600: '#0F6B5C',
+            100: '#E1F5EE',
+            50: '#F3FAF8'
+          },
+          gold: {
+            DEFAULT: '#B8862E',
+            600: '#B8862E',
+            100: '#FAF3E6'
+          },
+          surface: '#FCF9F8',
+          surfaceContainer: '#FFFFFF',
+          neutral900: '#1A1A1A',
+          neutral600: '#595959',
+          neutral300: '#C7C7C7',
+          success: '#2E7D4F',
+          warning: '#B8862E',
+          danger: '#B23B3B'
+        }
+      },
+      fontFamily: {
+        sans: ['Plus Jakarta Sans', 'system-ui', 'sans-serif']
+      },
+      minHeight: {
+        'touch': '48px',
+        'touch-lg': '56px'
+      }
+    }
+  },
+  plugins: []
+};
+```
+
+### 5.2 Proof of Delivery (POD) Component (`ProofOfDeliveryScreen.tsx`)
+```tsx
+import React, { useState } from 'react';
+import { View, Text, TouchableOpacity, Alert, ActivityIndicator } from 'react-native';
+import SignatureCanvas from 'react-native-signature-canvas';
+import { Camera, useCameraDevice } from 'react-native-vision-camera';
+import { usePODStore } from '../stores/podStore';
+
+interface Props {
+  orderId: string;
+  recipientPhone: string;
+  onSuccess: () => void;
+}
+
+export const ProofOfDeliveryScreen: React.FC<Props> = ({ orderId, recipientPhone, onSuccess }) => {
+  const [otp, setOtp] = useState(['5', '8', '2', '']);
+  const [signatureData, setSignatureData] = useState<string | null>(null);
+  const [photoUri, setPhotoUri] = useState<string | null>(null);
+  const [submitting, setSubmitting] = useState(false);
+
+  const confirmHandover = async () => {
+    if (otp.join('').length < 4) {
+      Alert.alert('Required', 'Please enter complete 4-digit SMS OTP.');
+      return;
+    }
+    if (!signatureData) {
+      Alert.alert('Required', 'Recipient must provide on-glass signature.');
+      return;
+    }
+
+    setSubmitting(true);
+    try {
+      // Offline-resilient transaction write to local SQLite first
+      await usePODStore.getState().recordHandover({
+        orderId,
+        otp: otp.join(''),
+        signature: signatureData,
+        photoUri,
+        coordinates: await usePODStore.getState().getCurrentLock(),
+        timestamp: new Date().toISOString()
+      });
+      onSuccess();
+    } catch (err) {
+      Alert.alert('Error', 'Unable to record handover.');
+    } finally {
+      setSubmitting(false);
+    }
+  };
+
+  return (
+    <View className="flex-1 bg-nile-surface p-4">
+      {/* Step Header */}
+      <View className="flex-row items-center justify-between pb-3 border-b border-nile-neutral300">
+        <View className="bg-nile-teal-100 px-3 py-1 rounded-full">
+          <Text className="text-nile-teal-900 font-semibold text-xs">Step 3 of 3: Verification</Text>
+        </View>
+        <Text className="text-nile-neutral600 text-xs font-mono">ID: #{orderId}</Text>
+      </View>
+
+      {/* Escrow Payout Pill */}
+      <View className="mt-3 bg-nile-gold-100 border border-nile-gold-600/30 rounded-xl p-3 flex-row items-center justify-between">
+        <Text className="text-nile-neutral900 font-semibold text-sm">Escrow Payout Status</Text>
+        <Text className="text-nile-teal-900 font-bold text-sm">KES 480.00 ready to unlock</Text>
+      </View>
+
+      {/* OTP Input Boxes */}
+      <View className="mt-4">
+        <Text className="text-nile-neutral900 font-bold text-sm mb-2">1. Recipient SMS OTP</Text>
+        <View className="flex-row justify-between">
+          {otp.map((digit, idx) => (
+            <View key={idx} className="w-16 h-14 bg-white border border-nile-neutral300 rounded-xl items-center justify-center">
+              <Text className="text-xl font-bold text-nile-neutral900">{digit || '-'}</Text>
+            </View>
+          ))}
+        </View>
+      </View>
+
+      {/* Signature Box */}
+      <View className="mt-4 flex-1">
+        <Text className="text-nile-neutral900 font-bold text-sm mb-2">2. Recipient Signature on Glass</Text>
+        <View className="flex-1 bg-white rounded-xl border border-nile-neutral300 overflow-hidden">
+          <SignatureCanvas
+            onOK={(sig) => setSignatureData(sig)}
+            descriptionText="Sign inside box"
+            clearText="Clear"
+            confirmText="Save"
+          />
+        </View>
+      </View>
+
+      {/* Sticky Gloved Button */}
+      <TouchableOpacity
+        onPress={confirmHandover}
+        disabled={submitting}
+        className="h-14 bg-nile-teal-600 rounded-2xl items-center justify-center mt-4 shadow-md active:opacity-90"
+      >
+        {submitting ? (
+          <ActivityIndicator color="#FFFFFF" />
+        ) : (
+          <Text className="text-white font-bold text-base">Confirm Handover & Settle Payout</Text>
+        )}
+      </TouchableOpacity>
+    </View>
+  );
+};
+```
+
+---
+
+## 6. Offline Edge Engine & Resilient Synchronization Daemon
+
+In dense commercial corridors or underground parking bays (such as Westgate Mall Dock C or Delta Corner Towers B1), cell networks frequently drop. Nile Flow's SQLite engine enforces **Local Zero-Loss Queuing**:
+
+```typescript
+// src/offline/syncEngine.ts
+import SQLite from 'react-native-sqlite-storage';
+
+export interface SyncEvent {
+  id: string;
+  eventType: 'POD_COMPLETED' | 'TELEMETRY_BREADCRUMB' | 'MERCHANT_HANDOVER';
+  payload: string; // JSON stringified
+  timestamp: string;
+  retryCount: number;
+}
+
+export class OfflineSyncDaemon {
+  private db: SQLite.Database;
+
+  constructor(db: SQLite.Database) {
+    this.db = db;
+  }
+
+  async enqueueEvent(type: SyncEvent['eventType'], payload: object): Promise<void> {
+    const id = `EV-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
+    const sql = `INSERT INTO edge_sync_queue (id, event_type, payload, timestamp, retry_count) VALUES (?, ?, ?, ?, 0)`;
+    await this.db.executeSql(sql, [id, type, JSON.stringify(payload), new Date().toISOString()]);
+  }
+
+  async processSyncQueue(): Promise<{ synced: number; remaining: number }> {
+    const [results] = await this.db.executeSql('SELECT * FROM edge_sync_queue ORDER BY timestamp ASC LIMIT 50');
+    let synced = 0;
+
+    for (let i = 0; i < results.rows.length; i++) {
+      const row: SyncEvent = results.rows.item(i);
+      try {
+        const response = await fetch('https://api.nileflow.internal/api/v1/sync/burst', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(row)
+        });
+
+        if (response.ok) {
+          await this.db.executeSql('DELETE FROM edge_sync_queue WHERE id = ?', [row.id]);
+          synced++;
+        }
+      } catch (err) {
+        await this.db.executeSql('UPDATE edge_sync_queue SET retry_count = retry_count + 1 WHERE id = ?', [row.id]);
+      }
+    }
+    return { synced, remaining: results.rows.length - synced };
+  }
+}
+```
+
+---
+
+## 7. Security, Regulatory & Deployment Guidelines
+
+1. **Hardware Encryption**:
+   - All SQLite edge databases are encrypted with **SQLCipher using AES-256 GCM**.
+   - Biometric tokens stored in the secure iOS Keychain / Android Keystore.
+2. **Regulatory Integrations**:
+   - **NTSA GovLink**: Direct check of Driving License (Class A2) and Commercial Carrier Badges.
+   - **Safaricom Daraja API**: Strict mutual TLS (mTLS) with IP-whitelisting on all payout endpoints.
+3. **Continuous Deployment (CI/CD)**:
+   - Automated Jest unit tests covering all 23 screen components.
+   - Fastlane automated build generation for iOS TestFlight and Google Play Internal App Sharing.

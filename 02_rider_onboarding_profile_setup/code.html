@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_blank" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=Plus+Jakarta+Sans:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { colors: { "primary-fixed-dim": "#86d5c3", "on-tertiary-fixed": "#001c39", "surface-container-high": "#eae7e7", "outline-variant": "#bec9c5", "on-surface": "#1c1b1b", "primary-fixed": "#a2f2de", "surface-dim": "#dcd9d9", "on-error": "#ffffff", "primary": "#005145", "tertiary-container": "#1760a8", "on-secondary-fixed": "#281800", "on-secondary-fixed-variant": "#604100", "inverse-surface": "#313030", "on-primary-fixed-variant": "#005144", "surface-container-low": "#f6f3f2", "surface-bright": "#fcf9f8", "surface-container-lowest": "#ffffff", "inverse-on-surface": "#f3f0ef", "tertiary": "#004885", "on-primary-container": "#99e8d5", "on-background": "#1c1b1b", "on-primary-fixed": "#00201a", "secondary": "#7f5600", "on-tertiary": "#ffffff", "outline": "#6f7976", "secondary-container": "#ffc567", "surface-container-highest": "#e5e2e1", "on-primary": "#ffffff", "on-secondary": "#ffffff", "surface-variant": "#e5e2e1", "on-surface-variant": "#3f4946", "surface-tint": "#0e6a5b", "on-error-container": "#93000a", "surface-container": "#f0eded", "on-tertiary-container": "#c5dbff", "error": "#ba1a1a", "surface": "#fcf9f8", "on-secondary-container": "#775000", "secondary-fixed": "#ffdeae", "secondary-fixed-dim": "#f6bd5f", "tertiary-fixed": "#d4e3ff", "tertiary-fixed-dim": "#a4c8ff", "background": "#fcf9f8", "primary-container": "#0f6b5c", "inverse-primary": "#86d5c3", "on-tertiary-fixed-variant": "#004784", "error-container": "#ffdad6" }, borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, spacing: { "margin": "1.5rem", "gutter-mobile": "0.75rem", "space-lg": "1.5rem", "space-md": "1rem", "gutter": "1rem", "space-xl": "2rem", "margin-mobile": "1rem", "space-sm": "0.75rem", "space-xs": "0.5rem" }, fontFamily: { "label-md": ["Inter"], "body-lg": ["Inter"], "body-sm": ["Inter"], "label-sm": ["Inter"], "headline-sm": ["Plus Jakarta Sans"], "headline-lg-mobile": ["Plus Jakarta Sans"], "body-md-bold": ["Inter"], "headline-xl-mobile": ["Plus Jakarta Sans"], "body-md": ["Inter"], "headline-lg": ["Plus Jakarta Sans"], "headline-md": ["Plus Jakarta Sans"], "body-lg-bold": ["Inter"], "headline-xl": ["Plus Jakarta Sans"], "label-lg": ["Inter"] }, fontSize: { "label-md": ["12px", { "lineHeight": "16px", "fontWeight": "600" }], "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }], "body-sm": ["12px", { "lineHeight": "16px", "fontWeight": "400" }], "label-sm": ["10px", { "lineHeight": "14px", "fontWeight": "600" }], "headline-sm": ["18px", { "lineHeight": "24px", "fontWeight": "600" }], "headline-lg-mobile": ["24px", { "lineHeight": "32px", "fontWeight": "600" }], "body-md-bold": ["14px", { "lineHeight": "20px", "fontWeight": "600" }], "headline-xl-mobile": ["28px", { "lineHeight": "36px", "fontWeight": "600" }], "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }], "headline-lg": ["30px", { "lineHeight": "38px", "fontWeight": "600" }], "headline-md": ["20px", { "lineHeight": "28px", "fontWeight": "600" }], "body-lg-bold": ["16px", { "lineHeight": "24px", "fontWeight": "600" }], "headline-xl": ["36px", { "lineHeight": "44px", "fontWeight": "600" }], "label-lg": ["14px", { "lineHeight": "20px", "fontWeight": "600" }] } } } };</script><style>@layer base { html, body { width: 100vw; margin: 0; padding: 0; } body { overscroll-behavior-y: none; } .pb-safe { padding-bottom: env(safe-area-inset-bottom, 0px); } .pt-safe { padding-top: env(safe-area-inset-top, 0px); } } ::-webkit-scrollbar { display: none; }</style></head><body class="bg-background text-on-surface font-body-md antialiased min-h-screen flex flex-col selection:bg-primary-fixed selection:text-on-primary-fixed pt-safe pb-safe"><main class="flex-1 flex flex-col relative w-full bg-background"><div class="flex flex-col w-full pb-28">
+<!-- Top Progress Indicator Banner -->
+<div class="w-full bg-surface-container-low px-4 pt-3 pb-4">
+<div class="flex items-center justify-between mb-2">
+<div class="flex items-center space-x-2">
+<span class="px-2 py-0.5 rounded-full bg-primary-fixed text-on-primary-fixed font-label-sm text-label-sm uppercase tracking-wider">Step 1 of 4</span>
+<span class="font-body-md-bold text-body-md-bold text-primary">Personal &amp; Fleet Intake</span>
+</div>
+<span class="font-label-md text-label-md text-primary">25%</span>
+</div>
+<div class="w-full h-1.5 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-primary-container rounded-full transition-all duration-500 ease-out" style="width: 25%;"></div>
+</div>
+</div>
+<div class="px-4 py-5 flex flex-col space-y-6">
+<!-- Header Title block -->
+<div class="flex flex-col space-y-1.5">
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface">Courier registration</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">Enter your legal identification and vehicle details for NTSA commercial verification.</p>
+</div>
+<!-- Profile Photo Upload -->
+<div class="flex items-center space-x-4 p-4 rounded-xl bg-surface-container-low shadow-sm">
+<div class="relative flex-shrink-0">
+<div class="w-20 h-20 rounded-full bg-surface-container-highest flex flex-col items-center justify-center text-primary-container overflow-hidden" id="photoPlaceholder">
+<span class="material-symbols-outlined text-headline-xl">photo_camera</span>
+</div>
+<button aria-label="Add photo" class="absolute -bottom-1 -right-1 w-7 h-7 bg-primary text-on-primary rounded-full flex items-center justify-center shadow-md" type="button">
+<span class="material-symbols-outlined text-body-md">add</span>
+</button>
+</div>
+<div class="flex-1 min-w-0">
+<p class="font-body-md-bold text-body-md-bold text-on-surface truncate">Upload clean headshot</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Plain background, daylight face capture without helmet or sunglasses.</p>
+<button class="mt-2 inline-flex items-center space-x-1 font-label-md text-label-md text-primary" type="button">
+<span class="material-symbols-outlined text-body-sm">upload</span>
+<span>Select image</span>
+</button>
+</div>
+</div>
+<!-- Personal Legal Identification Card -->
+<div class="flex flex-col space-y-4">
+<div class="flex items-center justify-between">
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Legal details</h2>
+<span class="flex items-center text-secondary font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-label-md mr-1" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+          Encrypted &amp; NTSA synced
+        </span>
+</div>
+<!-- Legal Name -->
+<div class="flex flex-col space-y-1.5">
+<label class="font-label-lg text-label-lg text-on-surface" for="legalName">Full legal name</label>
+<div class="relative flex items-center">
+<input class="w-full h-11 px-4 rounded-lg bg-surface-container-lowest text-on-surface font-body-md text-body-md shadow-sm outline-none focus:bg-surface-container-lowest focus:ring-0 placeholder:text-outline" id="legalName" name="legalName" placeholder="As shown on your National ID" type="text" value="Kiprotich Koech"/>
+<span class="absolute right-3 material-symbols-outlined text-primary text-body-lg">check_circle</span>
+</div>
+</div>
+<!-- National ID / Huduma Namba -->
+<div class="flex flex-col space-y-1.5">
+<label class="font-label-lg text-label-lg text-on-surface" for="nationalId">Kenyan National ID / Huduma Namba</label>
+<div class="relative flex items-center">
+<input class="w-full h-11 px-4 rounded-lg bg-surface-container-lowest text-on-surface font-body-md text-body-md shadow-sm outline-none placeholder:text-outline" id="nationalId" name="nationalId" placeholder="8-digit National ID or Huduma Number" type="text" value="ID 32849102"/>
+<span class="absolute right-3 material-symbols-outlined text-on-surface-variant text-body-lg">badge</span>
+</div>
+</div>
+<!-- Safaricom M-Pesa -->
+<div class="flex flex-col space-y-1.5">
+<label class="font-label-lg text-label-lg text-on-surface" for="mpesaPhone">Safaricom M-Pesa phone number</label>
+<div class="relative flex items-center">
+<div class="absolute left-3 flex items-center pointer-events-none">
+<span class="px-1.5 py-0.5 rounded bg-primary-fixed text-on-primary-fixed font-label-sm text-label-sm">KE +254</span>
+</div>
+<input class="w-full h-11 pl-20 pr-4 rounded-lg bg-surface-container-lowest text-on-surface font-body-md text-body-md shadow-sm outline-none placeholder:text-outline" id="mpesaPhone" name="mpesaPhone" placeholder="7XX XXX XXX" type="tel" value="712 345 678"/>
+<span class="absolute right-3 material-symbols-outlined text-primary text-body-lg">account_balance_wallet</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Daily courier dispatches and fuel disbursements settle into this account.</p>
+</div>
+<!-- Emergency Next of Kin -->
+<div class="flex flex-col space-y-1.5">
+<label class="font-label-lg text-label-lg text-on-surface" for="nextOfKin">Emergency next-of-kin contact &amp; relationship</label>
+<div class="relative flex items-center">
+<input class="w-full h-11 px-4 rounded-lg bg-surface-container-lowest text-on-surface font-body-md text-body-md shadow-sm outline-none placeholder:text-outline" id="nextOfKin" name="nextOfKin" placeholder="Name - Relationship (Contact Number)" type="text" value="Jane Koech - Sister (+254 733 987 654)"/>
+<span class="absolute right-3 material-symbols-outlined text-on-surface-variant text-body-lg">contact_emergency</span>
+</div>
+</div>
+</div>
+<!-- Fleet / Vehicle Details Section -->
+<div class="flex flex-col space-y-4 pt-2">
+<div class="flex items-center justify-between">
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Vehicle classification</h2>
+<span class="px-2 py-0.5 rounded-full bg-secondary-fixed text-on-secondary-fixed font-label-sm text-label-sm">NTSA Commercial</span>
+</div>
+<!-- Segmented Vehicle Cards -->
+<div class="grid grid-cols-3 gap-2.5" id="vehicleSelector">
+<!-- Motorcycle (Active) -->
+<button class="vehicle-card flex flex-col items-center justify-between p-3 rounded-xl bg-primary-fixed/40 shadow-sm transition-all duration-200 text-left relative overflow-hidden" data-type="motorcycle" type="button">
+<div class="w-full flex items-center justify-between">
+<span class="material-symbols-outlined text-primary text-headline-sm" style="font-variation-settings: 'FILL' 1;">two_wheeler</span>
+<span class="material-symbols-outlined text-primary text-body-md check-icon" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<div class="w-full mt-3">
+<p class="font-body-md-bold text-body-md-bold text-on-surface leading-tight">Motorcycle</p>
+<p class="font-label-sm text-label-sm text-primary mt-0.5">Boda Boda</p>
+</div>
+</button>
+<!-- Cargo Van (Inactive) -->
+<button class="vehicle-card flex flex-col items-center justify-between p-3 rounded-xl bg-surface-container-lowest shadow-sm transition-all duration-200 text-left relative overflow-hidden" data-type="van" type="button">
+<div class="w-full flex items-center justify-between">
+<span class="material-symbols-outlined text-on-surface-variant text-headline-sm">local_shipping</span>
+<span class="material-symbols-outlined text-outline-variant text-body-md check-icon">radio_button_unchecked</span>
+</div>
+<div class="w-full mt-3">
+<p class="font-body-md-bold text-body-md-bold text-on-surface leading-tight">Cargo Van</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-0.5">1-3 Tonne</p>
+</div>
+</button>
+<!-- E-Bicycle / Cargo Bike (Inactive) -->
+<button class="vehicle-card flex flex-col items-center justify-between p-3 rounded-xl bg-surface-container-lowest shadow-sm transition-all duration-200 text-left relative overflow-hidden" data-type="ebike" type="button">
+<div class="w-full flex items-center justify-between">
+<span class="material-symbols-outlined text-on-surface-variant text-headline-sm">pedal_bike</span>
+<span class="material-symbols-outlined text-outline-variant text-body-md check-icon">radio_button_unchecked</span>
+</div>
+<div class="w-full mt-3">
+<p class="font-body-md-bold text-body-md-bold text-on-surface leading-tight">E-Bicycle</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-0.5">Cargo Bike</p>
+</div>
+</button>
+</div>
+<!-- Vehicle Registration Input -->
+<div class="flex flex-col space-y-1.5">
+<label class="font-label-lg text-label-lg text-on-surface" for="plateNumber">Vehicle registration &amp; model</label>
+<div class="relative flex items-center">
+<input class="w-full h-11 px-4 rounded-lg bg-surface-container-lowest text-on-surface font-body-md text-body-md shadow-sm outline-none placeholder:text-outline" id="plateNumber" name="plateNumber" placeholder="e.g. KMDE 482K - TVS Apache 180" type="text" value="KMDE 482K - TVS Apache 180"/>
+<span class="absolute right-3 material-symbols-outlined text-on-surface-variant text-body-lg">electric_meter</span>
+</div>
+</div>
+<!-- Preferred Operating Hub -->
+<div class="flex flex-col space-y-1.5">
+<label class="font-label-lg text-label-lg text-on-surface" for="dispatchHub">Preferred operating hub</label>
+<div class="relative flex items-center">
+<select class="w-full h-11 pl-4 pr-10 rounded-lg bg-surface-container-lowest text-on-surface font-body-md text-body-md shadow-sm outline-none appearance-none" id="dispatchHub" name="dispatchHub">
+<option selected="">Nairobi Westlands &amp; Kilimani</option>
+<option>Nairobi Industrial Area &amp; South C</option>
+<option>Nairobi CBD &amp; Upper Hill</option>
+<option>Mombasa Island &amp; Nyali Hub</option>
+<option>Kisumu Central &amp; Milimani Hub</option>
+</select>
+<span class="absolute right-3 material-symbols-outlined text-on-surface-variant pointer-events-none text-body-lg">expand_more</span>
+</div>
+</div>
+</div>
+<!-- Regional Compliance Note Card -->
+<div class="p-3.5 rounded-xl bg-secondary-fixed/30 flex items-start space-x-3">
+<span class="material-symbols-outlined text-secondary text-headline-sm flex-shrink-0" style="font-variation-settings: 'FILL' 1;">info</span>
+<div class="min-w-0">
+<p class="font-body-md-bold text-body-md-bold text-on-secondary-fixed">NTSA automated cross-check</p>
+<p class="font-body-sm text-body-sm text-on-secondary-fixed-variant mt-0.5">Having your Logbook and Valid Driving License handy on Step 2 speeds verification time to under 15 minutes.</p>
+</div>
+</div>
+</div>
+<!-- Sticky Bottom Confirmation Dock -->
+<div class="fixed bottom-0 left-0 right-0 p-4 bg-surface-container-lowest/95 backdrop-blur-md shadow-xl flex flex-col items-center">
+<div class="w-full max-w-md">
+<button class="w-full h-12 rounded-lg bg-primary hover:bg-on-primary-fixed-variant active:scale-[0.99] text-on-primary font-body-lg-bold text-body-lg-bold flex items-center justify-center space-x-2 shadow-md transition duration-150" id="continueBtn" type="button">
+<span>Save &amp; continue to document scanner</span>
+<span class="material-symbols-outlined text-body-lg">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+<script>
+  // Interactive Vehicle Selector logic
+  const cards = document.querySelectorAll('.vehicle-card');
+  cards.forEach(card => {
+    card.addEventListener('click', () => {
+      cards.forEach(c => {
+        c.classList.remove('bg-primary-fixed/40');
+        c.classList.add('bg-surface-container-lowest');
+        const icon = c.querySelector('.check-icon');
+        icon.textContent = 'radio_button_unchecked';
+        icon.classList.remove('text-primary');
+        icon.classList.add('text-outline-variant');
+        icon.style.fontVariationSettings = "'FILL' 0";
+      });
+      card.classList.add('bg-primary-fixed/40');
+      card.classList.remove('bg-surface-container-lowest');
+      const activeIcon = card.querySelector('.check-icon');
+      activeIcon.textContent = 'check_circle';
+      activeIcon.classList.remove('text-outline-variant');
+      activeIcon.classList.add('text-primary');
+      activeIcon.style.fontVariationSettings = "'FILL' 1";
+    });
+  });
+
+  // Micro-interaction for submit button
+  const continueBtn = document.getElementById('continueBtn');
+  if (continueBtn) {
+    continueBtn.addEventListener('click', () => {
+      continueBtn.innerHTML = `
+        <span class="inline-block animate-spin mr-2">
+          <span class="material-symbols-outlined text-body-lg">sync</span>
+        </span>
+        <span>Verifying details...</span>
+      `;
+      setTimeout(() => {
+        continueBtn.innerHTML = `
+          <span class="material-symbols-outlined text-body-lg mr-1">check</span>
+          <span>Profile intake saved</span>
+        `;
+      }, 900);
+    });
+  }
+</script></main></body></html>
