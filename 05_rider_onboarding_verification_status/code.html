@@ -159,7 +159,7 @@
 <span>Check status update</span>
 </button>
 <!-- Return to Login Button -->
-<button class="w-full h-12 rounded-lg bg-transparent text-on-surface-variant font-label-md text-label-md flex items-center justify-center gap-1.5 hover:text-on-surface transition-colors" id="exit-btn" type="button">
+<button class="w-full h-12 rounded-lg bg-transparent text-on-surface-variant font-label-md text-label-md flex items-center justify-center gap-1.5 hover:text-on-surface transition-colors" id="exit-btn" type="button" onclick="location.href='../01_rider_splash_authentication/index.html'">
 <span class="material-symbols-outlined text-body-lg">arrow_back</span>
 <span>Return to login</span>
 </button>
@@ -189,17 +189,25 @@
     });
   }
 
-  // Micro-interaction: Status check pulse animation
+ // Status check: spin, then show "approved", then go to dashboard
   const refreshBtn = document.getElementById('refresh-status-btn');
   const refreshIcon = document.getElementById('refresh-icon');
+  let approved = false;
 
   if (refreshBtn && refreshIcon) {
     refreshBtn.addEventListener('click', () => {
+      if (approved) {
+        location.href = '../06_rider_command_center_dashboard/code.html';
+        return;
+      }
       refreshIcon.classList.add('animate-spin');
       refreshBtn.disabled = true;
       setTimeout(() => {
         refreshIcon.classList.remove('animate-spin');
+        refreshIcon.textContent = 'check_circle';
+        refreshBtn.lastElementChild.textContent = 'Approved! Go to dashboard';
         refreshBtn.disabled = false;
+        approved = true;
       }, 1200);
     });
   }

@@ -95,7 +95,7 @@
 </g>
 </svg>
 <!-- Map Floating Action Buttons (Recenter / Compass / SOS) -->
-<div class="absolute right-space-md top- space-md flex flex-col gap-2 z-10">
+<div class="absolute right-space-md top-space-md flex flex-col gap-2 z-10">
 <button aria-label="Recenter Map" class="w-11 h-11 bg-surface-container-lowest text-on-surface rounded-full shadow-lg flex items-center justify-center active:scale-95 transition-transform">
 <span class="material-symbols-outlined text-primary text-xl">near_me</span>
 </button>
@@ -190,9 +190,13 @@
           </p>
 </div>
 </div>
+<a href="../12_customer_unavailable_protocol/code.html" class="w-full h-12 bg-surface-container-low text-on-surface-variant rounded-xl font-body-md-bold text-body-md-bold flex items-center justify-center gap-2 active:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-[20px]">phone_missed</span>
+<span>Customer not answering?</span>
+</a>
 <!-- Sticky 56px Primary Action Button for gloved rider operation -->
 <div class="pt-space-xs">
-<button class="w-full h-14 bg-primary text-on-primary rounded-xl flex items-center justify-between px-space-lg shadow-lg active:bg-primary-container active:scale-[0.99] transition-all" id="arrivalBtn">
+<button class="w-full h-14 bg-primary text-on-primary rounded-xl flex items-center justify-between px-space-lg shadow-lg active:bg-primary-container active:scale-[0.99] transition-all" id="arrivalBtn" >
 <span class="w-7"></span>
 <span class="text-body-lg-bold font-body-lg-bold tracking-wide">Arrived at Drop-off Location</span>
 <span class="material-symbols-outlined text-2xl">arrow_forward</span>
@@ -259,8 +263,8 @@
       arrivalBtn.classList.add('bg-primary-container');
       showToast('Arrived at Delta Corner Towers. Opening Scan Proof.');
       setTimeout(() => {
-        arrivalBtn.classList.remove('bg-primary-container');
-      }, 1500);
+        location.href = '../15_delivery_verification_proof_of_delivery/code.html';
+      }, 1200);
     });
   }
 

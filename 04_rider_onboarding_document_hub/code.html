@@ -30,6 +30,9 @@
 </div>
 <!-- Document List Stack -->
 <div class="flex flex-col gap-space-sm mb-space-lg">
+  <a href="../03_rider_onboarding_document_scanner_hud/code.html" class="flex items-center gap-1 pt-4 text-primary font-label-lg text-label-lg">
+  <span class="material-symbols-outlined text-[20px]">arrow_back</span>Back
+</a>
 <!-- 1. Kenyan Driving License -->
 <div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col gap-space-sm">
 <div class="flex items-start justify-between gap-2">
@@ -138,23 +141,41 @@
 </div>
 <!-- Persistent Dock Button -->
 <div class="w-full">
-<button class="w-full h-[48px] rounded-lg bg-primary hover:bg-primary-container active:scale-[0.99] text-on-primary font-label-lg text-label-lg flex items-center justify-center gap-2 shadow-md transition-all" type="button">
+<button class="w-full h-[48px] rounded-lg bg-primary hover:bg-primary-container active:scale-[0.99] text-on-primary font-label-lg text-label-lg flex items-center justify-center gap-2 shadow-md transition-all" type="button" onclick="location.href='../05_rider_onboarding_verification_status/code.html'">
 <span>Proceed to verification status</span>
 <span class="material-symbols-outlined text-[20px]">arrow_forward</span>
 </button>
 </div>
 </div>
 <script>
-  (function() {
-    const uploadBtn = document.getElementById('upload-conduct-btn');
-    if (uploadBtn) {
-      uploadBtn.addEventListener('click', function() {
-        const originalContent = this.innerHTML;
-        this.innerHTML = '<span class="material-symbols-outlined animate-spin text-[20px] text-primary">sync</span><span>Preparing scanner...</span>';
-        setTimeout(() => {
-          this.innerHTML = originalContent;
-        }, 1200);
-      });
-    }
+   (function () {
+    const btn = document.getElementById('upload-conduct-btn');
+    if (!btn) return;
+
+    const picker = document.createElement('input');
+    picker.type = 'file';
+    picker.accept = 'image/*,application/pdf';
+    picker.hidden = true;
+    document.body.appendChild(picker);
+
+    btn.addEventListener('click', () => picker.click());
+
+    picker.addEventListener('change', () => {
+      const file = picker.files[0];
+      if (!file) return;
+
+      // Show the file name on the button
+      btn.innerHTML = '<span class="material-symbols-outlined text-[20px] text-primary">check_circle</span><span></span>';
+      btn.lastElementChild.textContent = file.name;
+
+      // Update the counter, badge and bar
+      const find = (t) => [...document.querySelectorAll('span')].find(s => s.textContent.trim() === t);
+      const counter = find('3 of 4 documents uploaded');
+      const pending = find('1 Pending');
+      const bar = document.querySelector('.bg-primary.h-2');
+      if (counter) counter.textContent = '4 of 4 documents uploaded';
+      if (pending) pending.textContent = 'All uploaded';
+      if (bar) bar.style.width = '100%';
+    });
   })();
 </script></main></body></html>

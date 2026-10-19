@@ -23,9 +23,9 @@
 </div>
 <!-- Header Bar -->
 <div class="px-margin-mobile py-space-sm flex items-center justify-between bg-surface-container-lowest shadow-sm">
-<button aria-label="Go back" class="w-12 h-12 rounded-lg flex items-center justify-center bg-surface-container hover:bg-surface-container-high active:scale-95 transition-all text-on-surface" type="button">
+<a aria-label="Go back" href="../02_rider_onboarding_profile_setup/code.html" class="w-12 h-12 rounded-lg flex items-center justify-center bg-surface-container hover:bg-surface-container-high active:scale-95 transition-all text-on-surface">
 <span class="material-symbols-outlined text-[24px]">arrow_back</span>
-</button>
+</a>
 <div class="flex-1 px-space-sm text-center min-w-0">
 <h1 class="font-headline-sm text-headline-sm text-on-surface truncate">Scan Driving License</h1>
 <p class="font-label-sm text-label-sm text-outline font-label-md">Class A2 • Motorcycle Endorsement</p>
@@ -195,11 +195,25 @@
 
   // Capture Shutter Micro-Interaction
   const shutter = document.getElementById('shutter-btn');
-  shutter.addEventListener('click', () => {
-    // Subtle tactile scale effect
-    shutter.style.transform = 'scale(0.92)';
-    setTimeout(() => {
-      shutter.style.transform = 'scale(1)';
-    }, 150);
-  });
+shutter.addEventListener('click', () => {
+  shutter.style.transform = 'scale(0.92)';
+  setTimeout(() => {
+    shutter.style.transform = 'scale(1)';
+    location.href = '../04_rider_onboarding_document_hub/code.html';
+  }, 400);
+});
+const galleryInput = document.createElement('input');
+galleryInput.type = 'file';
+galleryInput.accept = 'image/*';
+galleryInput.hidden = true;
+document.body.appendChild(galleryInput);
+
+document.getElementById('upload-gallery-btn')
+  .addEventListener('click', () => galleryInput.click());
+
+galleryInput.addEventListener('change', () => {
+  if (galleryInput.files[0]) {
+    location.href = '../04_rider_onboarding_document_hub/code.html';
+  }
+});
 </script></main></body></html>

@@ -73,7 +73,7 @@
 </div>
 </div>
 <!-- Action: Open Offline Map -->
-<button class="w-full h-12 bg-primary text-on-primary rounded-lg font-body-md-bold text-body-md-bold flex items-center justify-center gap-space-xs active:bg-primary-container transition-colors shadow-sm" type="button">
+<button class="w-full h-12 bg-primary text-on-primary rounded-lg font-body-md-bold text-body-md-bold flex items-center justify-center gap-space-xs active:bg-primary-container transition-colors shadow-sm" onclick="location.href='../10_active_delivery_navigation_hud/code.html'" type="button">
 <span class="material-symbols-outlined text-[20px]">explore</span>
         Open Pre-Cached Offline Route Map
       </button>
@@ -91,7 +91,7 @@
 <span class="material-symbols-outlined text-primary text-[18px]">verified_user</span>
 <span class="font-label-sm text-label-sm text-primary">GPS Hardware Stamp Ready (Waiyaki Way deadzone bypass active)</span>
 </div>
-<button class="w-full h-12 bg-primary-container text-on-primary rounded-lg font-body-md-bold text-body-md-bold flex items-center justify-center gap-space-xs active:opacity-90 transition-opacity" type="button">
+<button class="w-full h-12 bg-primary-container text-on-primary rounded-lg font-body-md-bold text-body-md-bold flex items-center justify-center gap-space-xs active:opacity-90 transition-opacity" onclick="location.href='../15_delivery_verification_proof_of_delivery/code.html'" type="button">
 <span class="material-symbols-outlined text-[20px]">camera_alt</span>
         Capture Offline Proof of Handover
       </button>
@@ -199,11 +199,10 @@
       syncBtn.classList.add('opacity-80');
       
       setTimeout(() => {
-        syncText.textContent = 'Cached Data Burst Ready (Awaiting Tower Handshake)';
+        syncText.textContent = 'Synced 3 events • Back online';
         setTimeout(() => {
-          syncText.textContent = 'Force Network Reconnect & Burst Sync';
-          syncBtn.classList.remove('opacity-80');
-        }, 3000);
+          location.href = '../06_rider_command_center_dashboard/code.html';
+        }, 1200);
       }, 1500);
     });
   }

@@ -205,26 +205,26 @@
       const msg = input.value.trim();
       if (!msg) return;
 
-      const bubbleWrap = document.createElement('div');
-      bubbleWrap.className = 'flex items-start gap-space-xs max-w-[88%] self-end flex-row-reverse animate-in fade-in duration-200';
-      
-      const now = new Date();
-      const timeStr = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+      const timeStr = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
 
+      const bubbleWrap = document.createElement('div');
+      bubbleWrap.className = 'flex items-start gap-space-xs max-w-[88%] self-end flex-row-reverse';
       bubbleWrap.innerHTML = `
         <div class="w-8 h-8 rounded-full bg-primary text-on-primary flex items-center justify-center shrink-0 mt-1 shadow-sm">
           <span class="material-symbols-outlined text-[18px]">two_wheeler</span>
         </div>
         <div class="flex flex-col gap-1 items-end min-w-0">
           <div class="bg-primary text-on-primary rounded-xl rounded-tr-none p-3 shadow-sm">
-            <p class="font-body-md text-body-md leading-relaxed">\${msg}</p>
+            <p class="msg-text font-body-md text-body-md leading-relaxed"></p>
           </div>
           <div class="flex items-center gap-1.5 px-1">
-            <span class="font-label-sm text-label-sm text-outline">\${timeStr}</span>
+            <span class="msg-time font-label-sm text-label-sm text-outline"></span>
             <span class="material-symbols-outlined text-[14px] text-primary" style="font-variation-settings: 'FILL' 1;">done</span>
           </div>
         </div>
       `;
+      bubbleWrap.querySelector('.msg-text').textContent = msg;
+      bubbleWrap.querySelector('.msg-time').textContent = timeStr;
 
       chatStream.appendChild(bubbleWrap);
       input.value = '';
