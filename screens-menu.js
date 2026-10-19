@@ -3,6 +3,10 @@
   window.__screensMenuLoaded = true;
 
   var GROUPS = [
+        { title: 'Sign in', items: [
+      ['24', 'Phone number', '24_rider_sign_in_phone'],
+      ['25', 'Enter code', '25_rider_sign_in_code']
+    ]},
     { title: 'Onboarding', items: [
       ['01', 'Splash & sign in', '01_rider_splash_authentication', 'index.html'],
       ['02', 'Profile setup', '02_rider_onboarding_profile_setup'],

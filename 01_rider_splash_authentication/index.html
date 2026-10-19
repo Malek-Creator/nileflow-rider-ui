@@ -81,7 +81,7 @@
 <!-- Primary Interactive Flow Actions (Wired up to subsequent screen paths) -->
 <div class="flex flex-col gap-space-sm mb-space-lg">
 <!-- Phone / OTP Primary Action -->
-<a href="../06_rider_command_center_dashboard/code.html" class="w-full h-14 rounded-lg bg-primary-container text-on-primary flex items-center justify-center gap-2 font-label-lg text-label-lg tracking-wide shadow-md active:bg-primary transition-colors no-underline">
+<a href="../24_rider_sign_in_phone/code.html" class="w-full h-14 rounded-lg bg-primary-container text-on-primary flex items-center justify-center gap-2 font-label-lg text-label-lg tracking-wide shadow-md active:bg-primary transition-colors no-underline">
   <span class="material-symbols-outlined text-[20px]">smartphone</span>
   <span>Sign in with Phone &amp; OTP</span>
 </a>
@@ -152,7 +152,11 @@
 
         setTimeout(() => {
           // Seamless transition directly into Screen 06: Command Center Dashboard
-          window.location.href = '../06_rider_command_center_dashboard/code.html';
+          var signedIn = false;
+try { signedIn = localStorage.getItem('nf_signed_in') === '1'; } catch (e) {}
+window.location.href = signedIn
+  ? '../06_rider_command_center_dashboard/code.html'
+  : '../24_rider_sign_in_phone/code.html';
         }, 800);
       }, 1200);
     });
