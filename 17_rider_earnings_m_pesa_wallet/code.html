@@ -1,282 +1,392 @@
 <!DOCTYPE html>
 
 <html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_tab" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { colors: { "inverse-primary": "#86d5c3", "surface-container-lowest": "#ffffff", "on-tertiary-container": "#c5dbff", "surface-bright": "#fcf9f8", "secondary-fixed": "#ffdeae", "on-error": "#ffffff", "tertiary-container": "#1760a8", "on-error-container": "#93000a", "surface": "#fcf9f8", "on-primary-fixed-variant": "#005144", "secondary": "#7f5600", "surface-tint": "#0e6a5b", "on-secondary-fixed": "#281800", "error": "#ba1a1a", "on-tertiary": "#ffffff", "surface-container": "#f0eded", "background": "#fcf9f8", "on-secondary-fixed-variant": "#604100", "on-background": "#1c1b1b", "outline": "#6f7976", "surface-container-high": "#eae7e7", "tertiary": "#004885", "primary-fixed": "#a2f2de", "on-primary-fixed": "#00201a", "on-secondary-container": "#775000", "outline-variant": "#bec9c5", "surface-dim": "#dcd9d9", "primary-container": "#0f6b5c", "primary": "#005145", "on-primary": "#ffffff", "tertiary-fixed-dim": "#a4c8ff", "secondary-container": "#ffc567", "on-primary-container": "#99e8d5", "on-surface": "#1c1b1b", "error-container": "#ffdad6", "surface-container-highest": "#e5e2e1", "on-secondary": "#ffffff", "secondary-fixed-dim": "#f6bd5f", "inverse-on-surface": "#f3f0ef", "on-tertiary-fixed-variant": "#004784", "primary-fixed-dim": "#86d5c3", "surface-variant": "#e5e2e1", "on-surface-variant": "#3f4946", "on-tertiary-fixed": "#001c39", "surface-container-low": "#f6f3f2", "inverse-surface": "#313030", "tertiary-fixed": "#d4e3ff" }, borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, spacing: { "margin-mobile": "1rem", "space-md": "1rem", "space-xs": "0.5rem", "space-lg": "1.5rem", "margin": "1.5rem", "gutter-mobile": "0.75rem", "space-xl": "2rem", "space-sm": "0.75rem", "gutter": "1rem" }, fontFamily: { "headline-xl": ["Plus Jakarta Sans"], "body-md-bold": ["Inter"], "headline-xl-mobile": ["Plus Jakarta Sans"], "label-md": ["Inter"], "headline-sm": ["Plus Jakarta Sans"], "headline-lg": ["Plus Jakarta Sans"], "body-sm": ["Inter"], "label-sm": ["Inter"], "headline-md": ["Plus Jakarta Sans"], "body-lg-bold": ["Inter"], "body-md": ["Inter"], "headline-lg-mobile": ["Plus Jakarta Sans"], "label-lg": ["Inter"], "body-lg": ["Inter"] }, fontSize: { "headline-xl": ["36px", { lineHeight: "44px", fontWeight: "600" }], "body-md-bold": ["14px", { lineHeight: "20px", fontWeight: "600" }], "headline-xl-mobile": ["28px", { lineHeight: "36px", fontWeight: "600" }], "label-md": ["12px", { lineHeight: "16px", fontWeight: "600" }], "headline-sm": ["18px", { lineHeight: "24px", fontWeight: "600" }], "headline-lg": ["30px", { lineHeight: "38px", fontWeight: "600" }], "body-sm": ["12px", { lineHeight: "16px", fontWeight: "400" }], "label-sm": ["10px", { lineHeight: "14px", fontWeight: "600" }], "headline-md": ["20px", { lineHeight: "28px", fontWeight: "600" }], "body-lg-bold": ["16px", { lineHeight: "24px", fontWeight: "600" }], "body-md": ["14px", { lineHeight: "20px", fontWeight: "400" }], "headline-lg-mobile": ["24px", { lineHeight: "32px", fontWeight: "600" }], "label-lg": ["14px", { lineHeight: "20px", fontWeight: "600" }], "body-lg": ["16px", { lineHeight: "24px", fontWeight: "400" }] } } } };</script><style>@layer base{html,body{width:100%;margin:0;padding:0;background-color:#fcf9f8;}body{overscroll-behavior-y:none;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style></head><body class="bg-surface font-body-md text-on-surface flex flex-col min-h-screen antialiased"><header class="fixed top-0 w-full z-50 pt-safe bg-surface/80 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 px-margin-mobile flex items-center justify-between"><div class="flex items-center gap-space-sm"><img alt="Nile Flow Courier Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1Vzh4MS5-hWZK_-5k4ZJaUorE864WggoQ7oUTqKYSoe7lSSWO07QB5B5hzQTNq0cZ02oBtgO70C0gBcJ-CiURleB4XELvC50xs9N1ASEN9rdNGJgCNdooORhumrJ25R97CCxf4eDHmujxi6Vmc5j2GHltAPCdVUuo9I-NFJDnqNHcvI0gBCcTNyMb9NWAx_5fzcXbHZgbCKEkxaGXXVD6C_bDuOTJWFrYbtIIcHR6eApTBDj4lyak-epqp_"/><div class="flex flex-col"><span class="font-label-sm text-label-sm text-secondary uppercase tracking-wider">Nile Flow</span><h1 class="font-headline-sm text-headline-sm text-on-surface">Earnings</h1></div></div><div class="flex items-center gap-space-xs"><a aria-label="Notifications" href="../21_courier_notifications_center/code.html" class="w-11 h-11 flex items-center justify-center rounded-full text-on-surface-variant hover:bg-surface-container-low transition-colors"><span class="material-symbols-outlined text-[24px]">notifications</span></a><div class="flex items-center justify-center p-0.5 rounded-full bg-surface-container-high"><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida/AEtjO1WpD9m25qC2gO9fdayhZQ-RkroTvbuzPjQfmjZjVwyELBRQi8YjwPgYwB0CZchFgrjTZ7ev46DX-N4vQPc_dFoBqoKrGLibWitB4NvKSDTI3ZRyBWcZY7YMAvJ_OPeF9Tv-ECS6w38WO_QdR8Xje2xQzFvqK08NMnAWrPbfaYSnck_g01W6VBzTqRWk-8WKLLNQ5BlawY1RbALJkVMirD-zIHoYVpeUanIG0OTUHib8RkBIKWTPmHDvXlZCgMCZjXFLs0U194N6reI"/></div></div></div></header><main class="flex-1 w-full bg-surface pt-16 pb-20 pb-safe"><div class="flex flex-col w-full px-margin-mobile pb-space-xl space-y-space-md">
-<!-- Header Subtitle & Status Banner -->
-<div class="flex items-center justify-between bg-surface-container-low p-space-sm rounded-xl">
-<div class="flex items-center gap-space-xs">
-<div class="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { colors: { "inverse-primary": "#86d5c3", "surface-container-lowest": "#ffffff", "on-tertiary-container": "#c5dbff", "surface-bright": "#fcf9f8", "secondary-fixed": "#ffdeae", "on-error": "#ffffff", "tertiary-container": "#1760a8", "on-error-container": "#93000a", "surface": "#fcf9f8", "on-primary-fixed-variant": "#005144", "secondary": "#7f5600", "surface-tint": "#0e6a5b", "on-secondary-fixed": "#281800", "error": "#ba1a1a", "on-tertiary": "#ffffff", "surface-container": "#f0eded", "background": "#fcf9f8", "on-secondary-fixed-variant": "#604100", "on-background": "#1c1b1b", "outline": "#6f7976", "surface-container-high": "#eae7e7", "tertiary": "#004885", "primary-fixed": "#a2f2de", "on-primary-fixed": "#00201a", "on-secondary-container": "#775000", "outline-variant": "#bec9c5", "surface-dim": "#dcd9d9", "primary-container": "#0f6b5c", "primary": "#005145", "on-primary": "#ffffff", "tertiary-fixed-dim": "#a4c8ff", "secondary-container": "#ffc567", "on-primary-container": "#99e8d5", "on-surface": "#1c1b1b", "error-container": "#ffdad6", "surface-container-highest": "#e5e2e1", "on-secondary": "#ffffff", "secondary-fixed-dim": "#f6bd5f", "inverse-on-surface": "#f3f0ef", "on-tertiary-fixed-variant": "#004784", "primary-fixed-dim": "#86d5c3", "surface-variant": "#e5e2e1", "on-surface-variant": "#3f4946", "on-tertiary-fixed": "#001c39", "surface-container-low": "#f6f3f2", "inverse-surface": "#313030", "tertiary-fixed": "#d4e3ff" }, borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, spacing: { "margin-mobile": "1rem", "space-md": "1rem", "space-xs": "0.5rem", "space-lg": "1.5rem", "margin": "1.5rem", "gutter-mobile": "0.75rem", "space-xl": "2rem", "space-sm": "0.75rem", "gutter": "1rem" }, fontFamily: { "headline-xl": ["Plus Jakarta Sans"], "body-md-bold": ["Inter"], "headline-xl-mobile": ["Plus Jakarta Sans"], "label-md": ["Inter"], "headline-sm": ["Plus Jakarta Sans"], "headline-lg": ["Plus Jakarta Sans"], "body-sm": ["Inter"], "label-sm": ["Inter"], "headline-md": ["Plus Jakarta Sans"], "body-lg-bold": ["Inter"], "body-md": ["Inter"], "headline-lg-mobile": ["Plus Jakarta Sans"], "label-lg": ["Inter"], "body-lg": ["Inter"] }, fontSize: { "headline-xl": ["36px", { lineHeight: "44px", fontWeight: "600" }], "body-md-bold": ["14px", { lineHeight: "20px", fontWeight: "600" }], "headline-xl-mobile": ["28px", { lineHeight: "36px", fontWeight: "600" }], "label-md": ["12px", { lineHeight: "16px", fontWeight: "600" }], "headline-sm": ["18px", { lineHeight: "24px", fontWeight: "600" }], "headline-lg": ["30px", { lineHeight: "38px", fontWeight: "600" }], "body-sm": ["12px", { lineHeight: "16px", fontWeight: "400" }], "label-sm": ["10px", { lineHeight: "14px", fontWeight: "600" }], "headline-md": ["20px", { lineHeight: "28px", fontWeight: "600" }], "body-lg-bold": ["16px", { lineHeight: "24px", fontWeight: "600" }], "body-md": ["14px", { lineHeight: "20px", fontWeight: "400" }], "headline-lg-mobile": ["24px", { lineHeight: "32px", fontWeight: "600" }], "label-lg": ["14px", { lineHeight: "20px", fontWeight: "600" }], "body-lg": ["16px", { lineHeight: "24px", fontWeight: "400" }] } } } };</script><style>@layer base{html,body{width:100%;margin:0;padding:0;background-color:#fcf9f8;}body{overscroll-behavior-y:none;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style></head><body class="bg-surface font-body-md text-on-surface flex flex-col min-h-screen antialiased"><header class="fixed top-0 w-full z-50 pt-safe bg-surface/80 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 px-margin-mobile flex items-center justify-between"><div class="flex items-center gap-space-sm"><img alt="Nile Flow Courier Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1Vzh4MS5-hWZK_-5k4ZJaUorE864WggoQ7oUTqKYSoe7lSSWO07QB5B5hzQTNq0cZ02oBtgO70C0gBcJ-CiURleB4XELvC50xs9N1ASEN9rdNGJgCNdooORhumrJ25R97CCxf4eDHmujxi6Vmc5j2GHltAPCdVUuo9I-NFJDnqNHcvI0gBCcTNyMb9NWAx_5fzcXbHZgbCKEkxaGXXVD6C_bDuOTJWFrYbtIIcHR6eApTBDj4lyak-epqp_"/><div class="flex flex-col"><span class="font-label-sm text-label-sm text-secondary uppercase tracking-wider">Nile Flow</span><h1 class="font-headline-sm text-headline-sm text-on-surface">Earnings</h1></div></div><div class="flex items-center gap-space-xs"><a aria-label="Notifications" href="../21_courier_notifications_center/code.html" class="w-11 h-11 flex items-center justify-center rounded-full text-on-surface-variant hover:bg-surface-container-low transition-colors"><span class="material-symbols-outlined text-[24px]">notifications</span></a><div class="flex items-center justify-center p-0.5 rounded-full bg-surface-container-high"><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida/AEtjO1WpD9m25qC2gO9fdayhZQ-RkroTvbuzPjQfmjZjVwyELBRQi8YjwPgYwB0CZchFgrjTZ7ev46DX-N4vQPc_dFoBqoKrGLibWitB4NvKSDTI3ZRyBWcZY7YMAvJ_OPeF9Tv-ECS6w38WO_QdR8Xje2xQzFvqK08NMnAWrPbfaYSnck_g01W6VBzTqRWk-8WKLLNQ5BlawY1RbALJkVMirD-zIHoYVpeUanIG0OTUHib8RkBIKWTPmHDvXlZCgMCZjXFLs0U194N6reI"/></div></div></div></header><main class="flex-1 w-full bg-surface pt-16 pb-20 pb-safe"><!-- Header & Rider Status -->
+<div class="flex items-center justify-between bg-surface-container-low p-space-sm rounded-xl gap-space-sm">
+<div class="flex items-center gap-space-xs min-w-0">
+<div class="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary flex-shrink-0">
 <span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">account_balance_wallet</span>
 </div>
 <div class="flex flex-col min-w-0">
-<span class="font-body-md-bold text-body-md-bold text-on-surface truncate">Safaricom M-Pesa Connected</span>
-<span class="font-label-sm text-label-sm text-outline tracking-wide">+254 712 345 678</span>
+<span class="font-body-md-bold text-body-md-bold text-on-surface truncate" id="earningsRiderName">Rider earnings</span>
+<span class="font-label-sm text-label-sm text-outline tracking-wide truncate" id="earningsRiderMeta">Completed deliveries only</span>
 </div>
 </div>
-<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-primary-fixed text-on-primary-fixed-variant font-label-sm text-label-sm font-semibold">
-<span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
-      Online
-    </span>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-primary-fixed text-on-primary-fixed-variant font-label-sm text-label-sm font-semibold flex-shrink-0" id="earningsStatusPill">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+    <span id="earningsStatusText">Signed in</span>
+</span>
 </div>
-<!-- Primary Available Cashout Balance Card -->
+
+<!-- Date Range Selector -->
+<div class="bg-surface-container-lowest p-space-sm rounded-xl shadow-sm flex flex-col gap-space-sm">
+<div class="flex items-center justify-between gap-space-xs">
+<h2 class="font-label-lg text-label-lg text-on-surface">Earnings period</h2>
+<span class="font-label-sm text-label-sm text-on-surface-variant" id="earningsRangeLabel">—</span>
+</div>
+<div class="grid grid-cols-4 gap-1.5" id="earningsPresets">
+<button class="h-9 rounded-lg bg-primary text-on-primary font-label-md text-label-md" data-preset="today" type="button">Today</button>
+<button class="h-9 rounded-lg bg-surface-container text-on-surface-variant font-label-md text-label-md" data-preset="week" type="button">Week</button>
+<button class="h-9 rounded-lg bg-surface-container text-on-surface-variant font-label-md text-label-md" data-preset="month" type="button">Month</button>
+<button class="h-9 rounded-lg bg-surface-container text-on-surface-variant font-label-md text-label-md" data-preset="30days" type="button">30 days</button>
+</div>
+<div class="flex items-end gap-2">
+<label class="flex-1 min-w-0 flex flex-col gap-1">
+<span class="font-label-sm text-label-sm text-outline">From</span>
+<input class="w-full h-10 px-2 rounded-lg bg-surface-container-low text-on-surface font-body-sm text-body-sm outline-none" id="earningsStart" type="date"/>
+</label>
+<label class="flex-1 min-w-0 flex flex-col gap-1">
+<span class="font-label-sm text-label-sm text-outline">To</span>
+<input class="w-full h-10 px-2 rounded-lg bg-surface-container-low text-on-surface font-body-sm text-body-sm outline-none" id="earningsEnd" type="date"/>
+</label>
+<button class="h-10 px-3 rounded-lg bg-primary text-on-primary font-label-md text-label-md flex-shrink-0" id="earningsApply" type="button">Apply</button>
+</div>
+<p class="font-label-sm text-label-sm text-error min-h-[14px]" id="earningsRangeError" role="alert"></p>
+</div>
+
+<!-- Total Card -->
 <div class="relative overflow-hidden bg-surface-container-lowest rounded-xl p-space-md shadow-sm">
 <div class="absolute -right-6 -bottom-6 w-32 h-32 bg-primary/5 rounded-full pointer-events-none"></div>
-<div class="flex items-center justify-between mb-space-xs">
-<span class="font-label-md text-label-md text-outline uppercase tracking-wider">Available Cashout Balance</span>
+<div class="flex items-center justify-between gap-space-xs mb-space-xs">
+<span class="font-label-md text-label-md text-outline uppercase tracking-wider">Earnings in period</span>
 <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-primary-fixed text-on-primary-fixed-variant font-label-sm text-label-sm">
-<span class="material-symbols-outlined text-[14px]">bolt</span>
-        Ready for instant transfer
+<span class="material-symbols-outlined text-[14px]">verified</span>
+        Paid deliveries
       </span>
 </div>
 <div class="flex items-baseline gap-space-xs my-space-xs">
-<span class="font-headline-xl-mobile text-headline-xl-mobile text-on-surface font-extrabold tracking-tight">KES 14,850.00</span>
+<span class="font-headline-xl-mobile text-headline-xl-mobile text-on-surface font-extrabold tracking-tight" id="earningsTotal">—</span>
 </div>
-<!-- Instant Cashout CTA Area -->
-<div class="mt-space-md pt-space-xs">
-<button class="w-full h-14 bg-primary active:bg-primary-container text-on-primary rounded-xl flex items-center justify-center gap-space-xs font-body-lg-bold text-body-lg-bold shadow-md transition-all active:scale-[0.99]" id="cashoutBtn">
-<div class="w-6 h-6 rounded bg-surface-container-lowest flex items-center justify-center">
-<span class="font-label-sm text-label-sm font-black text-[#00A34D] leading-none">M</span>
+<div class="grid grid-cols-2 gap-2 pt-space-xs">
+<div class="rounded-lg bg-surface-container-low p-space-sm">
+<span class="font-label-sm text-label-sm text-outline block">Completed deliveries</span>
+<span class="font-body-lg-bold text-body-lg-bold text-on-surface" id="earningsCount">—</span>
 </div>
-<span>Instant M-Pesa Cashout</span>
-<span class="font-label-sm text-label-sm px-1.5 py-0.5 rounded bg-on-primary/20 text-on-primary">Zero Fee</span>
-</button>
-<div class="flex items-center justify-center gap-1.5 mt-2.5 text-outline">
-<span class="material-symbols-outlined text-[14px] text-primary">verified_user</span>
-<span class="font-label-sm text-label-sm">Settles in under 45 seconds via Daraja API</span>
+<div class="rounded-lg bg-surface-container-low p-space-sm">
+<span class="font-label-sm text-label-sm text-outline block">Average per delivery</span>
+<span class="font-body-lg-bold text-body-lg-bold text-on-surface" id="earningsAverage">—</span>
 </div>
 </div>
+<div class="mt-space-md flex items-start gap-2 p-space-sm rounded-lg bg-secondary-fixed/40 text-on-secondary-fixed">
+<span class="material-symbols-outlined text-secondary text-[18px] flex-shrink-0">info</span>
+<p class="font-body-sm text-body-sm text-on-surface">M-Pesa cashouts, auto-sweeps and wallet balances are not available in the rider app yet. Completed delivery earnings are recorded here for your records.</p>
 </div>
-<!-- Quick Stats Horizontal Row -->
+</div>
+
+<!-- Summary Stats -->
 <div class="grid grid-cols-3 gap-gutter-mobile">
 <div class="bg-surface-container-lowest p-space-sm rounded-xl shadow-sm flex flex-col justify-between">
-<span class="font-label-sm text-label-sm text-outline">This Week</span>
+<span class="font-label-sm text-label-sm text-outline">Today</span>
 <div class="my-1">
-<span class="font-body-md-bold text-body-md-bold text-on-surface block leading-tight">KES 28,420</span>
-<span class="inline-flex items-center font-label-sm text-label-sm text-primary font-semibold mt-0.5">
-<span class="material-symbols-outlined text-[12px]">trending_up</span> +18%
-        </span>
+<span class="font-body-md-bold text-body-md-bold text-on-surface block leading-tight" id="summaryToday">—</span>
+<span class="font-label-sm text-label-sm text-primary font-semibold mt-0.5 block" id="summaryTodayMeta">—</span>
 </div>
-<span class="font-label-sm text-label-sm text-outline-variant">vs last wk</span>
+<span class="font-label-sm text-label-sm text-outline-variant">Completed</span>
 </div>
 <div class="bg-surface-container-lowest p-space-sm rounded-xl shadow-sm flex flex-col justify-between">
-<span class="font-label-sm text-label-sm text-outline">Daily Avg</span>
+<span class="font-label-sm text-label-sm text-outline">This week</span>
 <div class="my-1">
-<span class="font-body-md-bold text-body-md-bold text-on-surface block leading-tight">KES 4,060</span>
-<span class="font-label-sm text-label-sm text-secondary font-semibold mt-0.5 block">Consistent</span>
+<span class="font-body-md-bold text-body-md-bold text-on-surface block leading-tight" id="summaryWeek">—</span>
+<span class="font-label-sm text-label-sm text-secondary font-semibold mt-0.5 block" id="summaryWeekMeta">—</span>
 </div>
-<span class="font-label-sm text-label-sm text-outline-variant">7-day pacing</span>
+<span class="font-label-sm text-label-sm text-outline-variant">Completed</span>
 </div>
 <div class="bg-surface-container-lowest p-space-sm rounded-xl shadow-sm flex flex-col justify-between">
-<span class="font-label-sm text-label-sm text-outline">Total Trips</span>
+<span class="font-label-sm text-label-sm text-outline">This month</span>
 <div class="my-1">
-<span class="font-body-md-bold text-body-md-bold text-on-surface block leading-tight">54 drops</span>
-<span class="inline-flex items-center font-label-sm text-label-sm text-primary font-semibold mt-0.5">
-<span class="material-symbols-outlined text-[12px]">check_circle</span> 99.1%
-        </span>
+<span class="font-body-md-bold text-body-md-bold text-on-surface block leading-tight" id="summaryMonth">—</span>
+<span class="font-label-sm text-label-sm text-primary font-semibold mt-0.5 block" id="summaryMonthMeta">—</span>
 </div>
 <span class="font-label-sm text-label-sm text-outline-variant">Completed</span>
 </div>
 </div>
-<!-- Visual Earnings Breakdown Card -->
+
+<!-- Period Breakdown -->
 <div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm space-y-space-sm">
-<div class="flex items-center justify-between">
-<h2 class="font-headline-sm text-headline-sm text-on-surface">Weekly Fare Breakdown</h2>
-<span class="font-label-sm text-label-sm text-outline">Total KES 28,420.00</span>
+<div class="flex items-center justify-between gap-space-xs">
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Period summary</h2>
+<span class="font-label-sm text-label-sm text-outline" id="breakdownTotal">—</span>
 </div>
-<!-- Stacked Bar Chart Visualization -->
-<div class="w-full h-3 bg-surface-container rounded-full overflow-hidden flex gap-0.5">
-<div class="h-full bg-primary transition-all" style="width: 64%" title="Base Transit Fare (64%)"></div>
-<div class="h-full bg-secondary-container transition-all" style="width: 24%" title="Peak Surge &amp; Missions (24%)"></div>
-<div class="h-full bg-tertiary transition-all" style="width: 12%" title="Customer Cashless Tips (12%)"></div>
+<div class="w-full h-3 bg-surface-container rounded-full overflow-hidden flex">
+<div class="h-full bg-primary transition-all" id="breakdownBar" style="width: 0%"></div>
 </div>
-<!-- Breakdown Details List -->
 <div class="space-y-space-xs pt-1">
 <div class="flex items-center justify-between p-2 rounded-lg bg-surface-container-low">
 <div class="flex items-center gap-space-xs">
 <span class="w-3 h-3 rounded-full bg-primary"></span>
-<span class="font-body-md text-body-md text-on-surface">Base Transit Fare</span>
+<span class="font-body-md text-body-md text-on-surface">Delivery earnings</span>
 </div>
-<div class="flex items-center gap-space-xs">
-<span class="font-body-md-bold text-body-md-bold text-on-surface">KES 18,200</span>
-<span class="font-label-sm text-label-sm text-outline w-9 text-right">64%</span>
-</div>
+<span class="font-body-md-bold text-body-md-bold text-on-surface" id="breakdownEarnings">—</span>
 </div>
 <div class="flex items-center justify-between p-2 rounded-lg bg-surface-container-low">
 <div class="flex items-center gap-space-xs">
 <span class="w-3 h-3 rounded-full bg-secondary-container"></span>
-<span class="font-body-md text-body-md text-on-surface">Peak Surge &amp; Missions</span>
-<span class="px-1.5 py-0.2 rounded bg-secondary-fixed text-on-secondary-fixed font-label-sm text-label-sm font-semibold">Surge</span>
+<span class="font-body-md text-body-md text-on-surface">Average per delivery</span>
 </div>
-<div class="flex items-center gap-space-xs">
-<span class="font-body-md-bold text-body-md-bold text-on-surface">KES 6,850</span>
-<span class="font-label-sm text-label-sm text-outline w-9 text-right">24%</span>
-</div>
+<span class="font-body-md-bold text-body-md-bold text-on-surface" id="breakdownAverage">—</span>
 </div>
 <div class="flex items-center justify-between p-2 rounded-lg bg-surface-container-low">
 <div class="flex items-center gap-space-xs">
 <span class="w-3 h-3 rounded-full bg-tertiary"></span>
-<span class="font-body-md text-body-md text-on-surface">Customer Cashless Tips</span>
+<span class="font-body-md text-body-md text-on-surface">Completed deliveries</span>
 </div>
-<div class="flex items-center gap-space-xs">
-<span class="font-body-md-bold text-body-md-bold text-on-surface">KES 3,370</span>
-<span class="font-label-sm text-label-sm text-outline w-9 text-right">12%</span>
+<span class="font-body-md-bold text-body-md-bold text-on-surface" id="breakdownCount">—</span>
 </div>
 </div>
 </div>
-</div>
-<!-- Auto-Settlement Settings Tile -->
-<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex items-center justify-between">
-<div class="flex items-start gap-space-sm pr-2">
-<div class="w-10 h-10 rounded-lg bg-primary-fixed flex items-center justify-center text-on-primary-fixed shrink-0">
-<span class="material-symbols-outlined text-[24px]">schedule_send</span>
-</div>
-<div class="flex flex-col">
-<span class="font-body-lg-bold text-body-lg-bold text-on-surface">Daily 18:00 EAT Sweep</span>
-<span class="font-body-sm text-body-sm text-outline">Automated zero-fee balance payout direct to your Safaricom wallet</span>
-</div>
-</div>
-<!-- Toggle Switch Button -->
-<button aria-checked="true" class="w-12 h-7 bg-primary rounded-full p-1 relative transition-colors cursor-pointer shrink-0" id="sweepToggle" role="switch">
-<div class="w-5 h-5 bg-surface-container-lowest rounded-full shadow-sm transform translate-x-5 transition-transform" id="sweepKnob"></div>
-</button>
-</div>
-<!-- Recent Transactions Feed Section -->
+
+<!-- Recent Activity -->
 <div class="space-y-space-xs">
 <div class="flex items-center justify-between px-1">
-<h2 class="font-headline-sm text-headline-sm text-on-surface">Recent Activity</h2>
-<button class="font-label-md text-label-md text-primary font-semibold hover:underline">View Ledger</button>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Recent activity</h2>
+<button class="font-label-md text-label-md text-primary font-semibold hover:underline disabled:opacity-50" id="earningsExport" type="button">Export CSV</button>
 </div>
-<div class="bg-surface-container-lowest rounded-xl shadow-sm divide-y-0 overflow-hidden">
-<!-- Item 1 -->
-<div class="p-space-md flex items-center justify-between hover:bg-surface-container-low transition-colors">
-<div class="flex items-center gap-space-sm">
-<div class="w-10 h-10 rounded-full bg-primary-fixed flex items-center justify-center text-on-primary-fixed-variant shrink-0">
-<span class="material-symbols-outlined text-[20px]">local_shipping</span>
-</div>
-<div class="flex flex-col min-w-0">
-<span class="font-body-md-bold text-body-md-bold text-on-surface truncate">Order #NF-20482 (Delta Corner)</span>
-<span class="font-label-sm text-label-sm text-outline truncate">Today 12:05 PM • Ref: QK928491J</span>
+<div class="bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden">
+<div class="hidden p-space-md" id="earningsListState"></div>
+<div class="divide-y-0" id="earningsList"></div>
 </div>
 </div>
-<div class="text-right shrink-0">
-<span class="font-body-lg-bold text-body-lg-bold text-primary block">+KES 580.00</span>
-<span class="inline-flex items-center font-label-sm text-label-sm text-primary font-semibold">Settled</span>
-</div>
-</div>
-<!-- Divider -->
-<div class="h-[1px] bg-surface-container-high mx-space-md"></div>
-<!-- Item 2 -->
-<div class="p-space-md flex items-center justify-between hover:bg-surface-container-low transition-colors">
-<div class="flex items-center gap-space-sm">
-<div class="w-10 h-10 rounded-full bg-primary-fixed flex items-center justify-center text-on-primary-fixed-variant shrink-0">
-<span class="material-symbols-outlined text-[20px]">local_shipping</span>
-</div>
-<div class="flex flex-col min-w-0">
-<span class="font-body-md-bold text-body-md-bold text-on-surface truncate">Order #NF-20478 (Sarit Centre)</span>
-<span class="font-label-sm text-label-sm text-outline truncate">Today 10:14 AM • Express Parcel</span>
-</div>
-</div>
-<div class="text-right shrink-0">
-<span class="font-body-lg-bold text-body-lg-bold text-primary block">+KES 420.00</span>
-<span class="inline-flex items-center font-label-sm text-label-sm text-primary font-semibold">Settled</span>
-</div>
-</div>
-<!-- Divider -->
-<div class="h-[1px] bg-surface-container-high mx-space-md"></div>
-<!-- Item 3 -->
-<div class="p-space-md flex items-center justify-between hover:bg-surface-container-low transition-colors">
-<div class="flex items-center gap-space-sm">
-<div class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center text-on-surface-variant shrink-0">
-<span class="material-symbols-outlined text-[20px]">payments</span>
-</div>
-<div class="flex flex-col min-w-0">
-<span class="font-body-md-bold text-body-md-bold text-on-surface truncate">Automated Daily M-Pesa Payout</span>
-<span class="font-label-sm text-label-sm text-outline truncate">Yesterday 18:00 • Daraja B2C</span>
-</div>
-</div>
-<div class="text-right shrink-0">
-<span class="font-body-lg-bold text-body-lg-bold text-on-surface block">-KES 6,200.00</span>
-<span class="inline-flex items-center font-label-sm text-label-sm text-outline">Disbursed</span>
-</div>
-</div>
-<!-- Divider -->
-<div class="h-[1px] bg-surface-container-high mx-space-md"></div>
-<!-- Item 4 -->
-<div class="p-space-md flex items-center justify-between hover:bg-surface-container-low transition-colors">
-<div class="flex items-center gap-space-sm">
-<div class="w-10 h-10 rounded-full bg-secondary-fixed flex items-center justify-center text-on-secondary-fixed shrink-0">
-<span class="material-symbols-outlined text-[20px]">stars</span>
-</div>
-<div class="flex flex-col min-w-0">
-<span class="font-body-md-bold text-body-md-bold text-on-surface truncate">Westlands Rush Surge Bonus</span>
-<span class="font-label-sm text-label-sm text-outline truncate">Yesterday 15:30 • Tier 2 Incentive</span>
-</div>
-</div>
-<div class="text-right shrink-0">
-<span class="font-body-lg-bold text-body-lg-bold text-secondary block">+KES 450.00</span>
-<span class="inline-flex items-center font-label-sm text-label-sm text-secondary font-semibold">Bonus Paid</span>
-</div>
-</div>
-</div>
-</div>
+
 <!-- Statement Action Area -->
 <div class="pt-space-xs">
-<button class="w-full h-12 rounded-xl bg-surface-container-low text-primary active:bg-surface-container-high flex items-center justify-center gap-space-xs font-label-lg text-label-lg transition-colors" id="downloadBtn">
+<button class="w-full h-12 rounded-xl bg-surface-container-low text-on-surface-variant flex items-center justify-center gap-space-xs font-label-lg text-label-lg opacity-60 cursor-not-allowed" id="statementBtn" type="button" disabled>
 <span class="material-symbols-outlined text-[20px]">description</span>
-<span>Download Tax &amp; Waybill Statement</span>
+<span>Tax &amp; waybill statements not available yet</span>
 </button>
 </div>
-<!-- Inline Micro-Interaction Script -->
+<script src="../assets/api.js"></script>
+<script src="../assets/auth.js"></script>
+<script src="../assets/ui.js"></script>
 <script>
-    (function() {
-      // Toggle daily sweep switch
-      var toggleBtn = document.getElementById('sweepToggle');
-      var knob = document.getElementById('sweepKnob');
-      var active = true;
+(function () {
+  var DETAILS = '../11_delivery_details_timeline/code.html';
+  var rider = null;
+  var range = NFUI.rangeForPreset('month');
+  var rows = [];
+  var loading = false;
 
-      if (toggleBtn && knob) {
-        toggleBtn.addEventListener('click', function() {
-          active = !active;
-          toggleBtn.setAttribute('aria-checked', active ? 'true' : 'false');
-          if (active) {
-            toggleBtn.className = 'w-12 h-7 bg-primary rounded-full p-1 relative transition-colors cursor-pointer shrink-0';
-            knob.className = 'w-5 h-5 bg-surface-container-lowest rounded-full shadow-sm transform translate-x-5 transition-transform';
-          } else {
-            toggleBtn.className = 'w-12 h-7 bg-surface-container-highest rounded-full p-1 relative transition-colors cursor-pointer shrink-0';
-            knob.className = 'w-5 h-5 bg-surface-container-lowest rounded-full shadow-sm transform translate-x-0 transition-transform';
-          }
-        });
-      }
+  var startInput = document.getElementById('earningsStart');
+  var endInput = document.getElementById('earningsEnd');
+  var rangeError = document.getElementById('earningsRangeError');
+  var listState = document.getElementById('earningsListState');
+  var listBox = document.getElementById('earningsList');
+  var presetButtons = Array.prototype.slice.call(document.querySelectorAll('#earningsPresets [data-preset]'));
 
-      // Cashout button feedback
-      var cashoutBtn = document.getElementById('cashoutBtn');
-      if (cashoutBtn) {
-        cashoutBtn.addEventListener('click', function() {
-          var original = cashoutBtn.innerHTML;
-          cashoutBtn.innerHTML = '<span class="material-symbols-outlined animate-spin text-[20px]">progress_activity</span><span>Initiating M-Pesa STK...</span>';
-          setTimeout(function() {
-            cashoutBtn.innerHTML = '<span class="material-symbols-outlined text-[20px]">check_circle</span><span>KES 14,850 Sent to M-Pesa!</span>';
-            setTimeout(function() {
-              cashoutBtn.innerHTML = original;
-            }, 3000);
-          }, 1200);
-        });
-      }
+  function setRange(activePreset) {
+    presetButtons.forEach(function (button) {
+      var active = button.getAttribute('data-preset') === activePreset;
+      button.className =
+        'h-9 rounded-lg font-label-md text-label-md ' +
+        (active ? 'bg-primary text-on-primary' : 'bg-surface-container text-on-surface-variant');
+    });
+  }
 
-      // Download button feedback
-      var downloadBtn = document.getElementById('downloadBtn');
-      if (downloadBtn) {
-        downloadBtn.addEventListener('click', function() {
-          var original = downloadBtn.innerHTML;
-          downloadBtn.innerHTML = '<span class="material-symbols-outlined animate-spin text-[20px]">downloading</span><span>Generating KRA PDF Statement...</span>';
-          setTimeout(function() {
-            downloadBtn.innerHTML = '<span class="material-symbols-outlined text-[20px]">file_download_done</span><span>Statement Ready in Downloads</span>';
-            setTimeout(function() {
-              downloadBtn.innerHTML = original;
-            }, 2500);
-          }, 1200);
+  function prettyRange(start, end) {
+    return NFUI.date(start + 'T12:00:00') + ' – ' + NFUI.date(end + 'T12:00:00');
+  }
+
+  function setSummary(id, metaId, data) {
+    var value = document.getElementById(id);
+    var meta = document.getElementById(metaId);
+    if (!data) {
+      value.textContent = '—';
+      meta.textContent = 'Unavailable';
+      return;
+    }
+    value.textContent = NFUI.money(data.earnings || 0, 0);
+    var count = Number(data.deliveries || 0);
+    meta.textContent = (count === 1 ? '1 delivery' : count + ' deliveries') +
+      (data.change ? ' • ' + (data.change > 0 ? '+' : '') + data.change + '%' : '');
+  }
+
+  function loadSummary() {
+    NFApi.get('/api/rider/analytics/earnings')
+      .then(function (result) {
+        var s = (result && result.summary) || {};
+        setSummary('summaryToday', 'summaryTodayMeta', s.today);
+        setSummary('summaryWeek', 'summaryWeekMeta', s.thisWeek);
+        setSummary('summaryMonth', 'summaryMonthMeta', s.month || s.thisMonth);
+      })
+      .catch(function () {
+        setSummary('summaryToday', 'summaryTodayMeta', null);
+        setSummary('summaryWeek', 'summaryWeekMeta', null);
+        setSummary('summaryMonth', 'summaryMonthMeta', null);
+      });
+  }
+
+  function renderRows() {
+    if (!rows.length) {
+      listBox.innerHTML = '';
+      listState.classList.remove('hidden');
+      NFUI.state(listState, 'empty', 'No completed deliveries', 'No paid deliveries were recorded for this earnings period.');
+      return;
+    }
+    listState.classList.add('hidden');
+    listBox.innerHTML = rows.map(function (delivery) {
+      var earning = delivery.riderEarning !== undefined ? delivery.riderEarning : delivery.deliveryFee;
+      var stamp = delivery.completedAt || delivery.updatedAt || delivery.createdAt;
+      var ref = NFUI.orderRef(delivery);
+      var address = delivery.deliveryAddress || 'Delivery address not provided';
+      return (
+        '<a class="p-space-md flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" href="' +
+        DETAILS + '?deliveryId=' + encodeURIComponent(NFUI.deliveryId(delivery)) + '">' +
+        '<div class="flex items-center gap-space-sm min-w-0">' +
+        '<div class="w-10 h-10 rounded-full bg-primary-fixed flex items-center justify-center text-on-primary-fixed-variant shrink-0">' +
+        '<span class="material-symbols-outlined text-[20px]">local_shipping</span></div>' +
+        '<div class="flex flex-col min-w-0">' +
+        '<span class="font-body-md-bold text-body-md-bold text-on-surface truncate">Order #' + NFUI.esc(ref) + '</span>' +
+        '<span class="font-label-sm text-label-sm text-outline truncate">' + NFUI.esc(stamp ? NFUI.dateTime(stamp) : 'Completion time not recorded') + ' • ' + NFUI.esc(address) + '</span>' +
+        '</div></div>' +
+        '<div class="text-right shrink-0">' +
+        '<span class="font-body-lg-bold text-body-lg-bold text-primary block">+' + NFUI.esc(NFUI.money(earning === undefined ? 0 : earning, 0)) + '</span>' +
+        '<span class="inline-flex items-center font-label-sm text-label-sm text-primary font-semibold">Paid</span>' +
+        '</div></a>'
+      );
+    }).join('');
+  }
+
+  function updateBreakdown(total, count) {
+    var average = count > 0 ? total / count : 0;
+    var percent = count > 0 ? Math.min(100, Math.max(6, (count / Math.max(count, 10)) * 100)) : 0;
+    document.getElementById('earningsTotal').textContent = NFUI.money(total, 0);
+    document.getElementById('earningsCount').textContent = String(count);
+    document.getElementById('earningsAverage').textContent = NFUI.money(average, 0);
+    document.getElementById('breakdownTotal').textContent = 'Total ' + NFUI.money(total, 0);
+    document.getElementById('breakdownEarnings').textContent = NFUI.money(total, 0);
+    document.getElementById('breakdownAverage').textContent = NFUI.money(average, 0);
+    document.getElementById('breakdownCount').textContent = String(count);
+    document.getElementById('breakdownBar').style.width = percent + '%';
+  }
+
+  function loadEarnings() {
+    if (loading) return;
+    loading = true;
+    rangeError.textContent = '';
+    document.getElementById('earningsRangeLabel').textContent = prettyRange(range.startDate, range.endDate);
+    document.getElementById('earningsApply').disabled = true;
+    listBox.innerHTML = '';
+    listState.classList.remove('hidden');
+    NFUI.state(listState, 'loading', 'Loading earnings…');
+    updateBreakdown(0, 0);
+    document.getElementById('earningsExport').disabled = true;
+
+    NFApi.get('/api/rider/earnings?startDate=' + encodeURIComponent(range.startDate) + '&endDate=' + encodeURIComponent(range.endDate))
+      .then(function (result) {
+        rows = ((result && result.deliveries) || []).slice().sort(function (a, b) {
+          return new Date(b.completedAt || b.updatedAt || 0) - new Date(a.completedAt || a.updatedAt || 0);
         });
+        var total = Number(result && result.totalEarnings) || rows.reduce(function (sum, item) {
+          return sum + (Number(item.riderEarning) || 0);
+        }, 0);
+        var count = result && result.deliveryCount !== undefined ? Number(result.deliveryCount) : rows.length;
+        updateBreakdown(total, count);
+        renderRows();
+        document.getElementById('earningsExport').disabled = rows.length === 0;
+      })
+      .catch(function (err) {
+        updateBreakdown(0, 0);
+        listState.classList.remove('hidden');
+        NFUI.state(listState, 'error', 'Could not load earnings', err && err.message ? err.message : 'Check your connection and try again.', {
+          retryLabel: 'Retry',
+          onRetry: loadEarnings,
+        });
+      })
+      .finally(function () {
+        loading = false;
+        document.getElementById('earningsApply').disabled = false;
+      });
+  }
+
+  function exportCsv() {
+    if (!rows.length) return;
+    var header = ['Order', 'Completed at', 'Customer', 'Drop-off', 'Rider earning (KES)'];
+    var lines = [header.join(',')];
+    rows.forEach(function (delivery) {
+      var values = [
+        NFUI.orderRef(delivery),
+        delivery.completedAt || delivery.updatedAt || '',
+        delivery.customerName || '',
+        delivery.deliveryAddress || '',
+        delivery.riderEarning !== undefined ? delivery.riderEarning : delivery.deliveryFee || 0,
+      ];
+      lines.push(values.map(function (value) {
+        return '"' + String(value).replace(/"/g, '""') + '"';
+      }).join(','));
+    });
+    var blob = new Blob([lines.join('\r\n')], { type: 'text/csv;charset=utf-8' });
+    var url = URL.createObjectURL(blob);
+    var link = document.createElement('a');
+    link.href = url;
+    link.download = 'nileflow-earnings-' + range.startDate + '-to-' + range.endDate + '.csv';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    setTimeout(function () { URL.revokeObjectURL(url); }, 1500);
+    NFUI.toast('CSV export downloaded.', 'success');
+  }
+
+  presetButtons.forEach(function (button) {
+    button.addEventListener('click', function () {
+      var preset = button.getAttribute('data-preset');
+      var next = NFUI.rangeForPreset(preset);
+      range = next;
+      startInput.value = next.startDate;
+      endInput.value = next.endDate;
+      setRange(preset);
+      loadEarnings();
+    });
+  });
+
+  document.getElementById('earningsApply').addEventListener('click', function () {
+    var start = startInput.value;
+    var end = endInput.value;
+    rangeError.textContent = '';
+    if (!start || !end) {
+      rangeError.textContent = 'Choose both a start and end date.';
+      return;
+    }
+    if (start > end) {
+      rangeError.textContent = 'The start date must be before the end date.';
+      return;
+    }
+    range = { startDate: start, endDate: end };
+    setRange('');
+    loadEarnings();
+  });
+
+  document.getElementById('earningsExport').addEventListener('click', exportCsv);
+
+  startInput.value = range.startDate;
+  endInput.value = range.endDate;
+  setRange('month');
+
+  NFAuth.requireSession()
+    .then(function (current) {
+      if (!current) return;
+      rider = current;
+      var headerImage = document.querySelector('header img[alt="Profile"]');
+      if (headerImage) {
+        var headerInitials = document.createElement('div');
+        headerInitials.className = 'w-8 h-8 rounded-full bg-primary text-on-primary flex items-center justify-center text-label-sm font-body-md-bold';
+        headerInitials.textContent = NFUI.initials(rider.name);
+        headerImage.parentNode.replaceChild(headerInitials, headerImage);
       }
-    })();
-  </script>
-</div></main><nav class="fixed bottom-0 w-full z-50 pb-safe bg-surface/90 backdrop-blur-xl shadow-[0_-2px_12px_rgba(0,0,0,0.04)]" data-active-classes="text-primary font-body-md-bold"><div class="flex items-center justify-around h-16 px-space-xs"><a class="flex flex-col items-center justify-center flex-1 h-full min-w-[64px] min-h-[48px] gap-1 text-on-surface-variant transition-colors" data-path="home" href="../06_rider_command_center_dashboard/code.html"><span class="material-symbols-outlined text-[24px]">dashboard</span><span class="font-label-sm text-label-sm">Home</span></a><a class="flex flex-col items-center justify-center flex-1 h-full min-w-[64px] min-h-[48px] gap-1 text-on-surface-variant transition-colors" data-path="deliveries" href="../08_deliveries_management_hub/code.html"><span class="material-symbols-outlined text-[24px]">local_shipping</span><span class="font-label-sm text-label-sm">Deliveries</span></a><a aria-current="page" class="flex flex-col items-center justify-center flex-1 h-full min-w-[64px] min-h-[48px] gap-1 transition-colors text-primary font-body-md-bold" data-path="earnings" href="../17_rider_earnings_m_pesa_wallet/code.html"><span class="material-symbols-outlined text-[24px]">account_balance_wallet</span><span class="font-label-sm text-label-sm">Earnings</span></a><a class="flex flex-col items-center justify-center flex-1 h-full min-w-[64px] min-h-[48px] gap-1 text-on-surface-variant transition-colors" data-path="profile" href="../20_rider_profile_vehicle_management/code.html"><span class="material-symbols-outlined text-[24px]">person</span><span class="font-label-sm text-label-sm">Profile</span></a></div></nav><script src="../screens-menu.js"></script></body></html>
+      document.getElementById('earningsRiderName').textContent = rider.name || 'Rider earnings';
+      document.getElementById('earningsRiderMeta').textContent = rider.phone || 'Completed deliveries only';
+      var status = NFUI.riderStatus(rider.status);
+      document.getElementById('earningsStatusText').textContent = status.label;
+      document.getElementById('earningsStatusPill').className =
+        'inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-primary-fixed text-on-primary-fixed-variant font-label-sm text-label-sm font-semibold flex-shrink-0';
+      loadSummary();
+      loadEarnings();
+    })
+    .catch(function (err) {
+      listState.classList.remove('hidden');
+      NFUI.state(listState, 'error', 'Could not load your session', err && err.message ? err.message : 'Check your connection and try again.', {
+        retryLabel: 'Retry',
+        onRetry: function () { window.location.reload(); },
+      });
+    });
+})();
+</script>
+</main><nav class="fixed bottom-0 w-full z-50 pb-safe bg-surface/90 backdrop-blur-xl shadow-[0_-2px_12px_rgba(0,0,0,0.04)]" data-active-classes="text-primary font-body-md-bold"><div class="flex items-center justify-around h-16 px-space-xs"><a class="flex flex-col items-center justify-center flex-1 h-full min-w-[64px] min-h-[48px] gap-1 text-on-surface-variant transition-colors" data-path="home" href="../06_rider_command_center_dashboard/code.html"><span class="material-symbols-outlined text-[24px]">dashboard</span><span class="font-label-sm text-label-sm">Home</span></a><a class="flex flex-col items-center justify-center flex-1 h-full min-w-[64px] min-h-[48px] gap-1 text-on-surface-variant transition-colors" data-path="deliveries" href="../08_deliveries_management_hub/code.html"><span class="material-symbols-outlined text-[24px]">local_shipping</span><span class="font-label-sm text-label-sm">Deliveries</span></a><a aria-current="page" class="flex flex-col items-center justify-center flex-1 h-full min-w-[64px] min-h-[48px] gap-1 transition-colors text-primary font-body-md-bold" data-path="earnings" href="../17_rider_earnings_m_pesa_wallet/code.html"><span class="material-symbols-outlined text-[24px]">account_balance_wallet</span><span class="font-label-sm text-label-sm">Earnings</span></a><a class="flex flex-col items-center justify-center flex-1 h-full min-w-[64px] min-h-[48px] gap-1 text-on-surface-variant transition-colors" data-path="profile" href="../20_rider_profile_vehicle_management/code.html"><span class="material-symbols-outlined text-[24px]">person</span><span class="font-label-sm text-label-sm">Profile</span></a></div></nav><script src="../screens-menu.js"></script></body></html>

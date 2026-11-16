@@ -1,200 +1,129 @@
 <!DOCTYPE html>
 
 <html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_tab" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { colors: { "inverse-primary": "#86d5c3", "surface-container-lowest": "#ffffff", "on-tertiary-container": "#c5dbff", "surface-bright": "#fcf9f8", "secondary-fixed": "#ffdeae", "on-error": "#ffffff", "tertiary-container": "#1760a8", "on-error-container": "#93000a", "surface": "#fcf9f8", "on-primary-fixed-variant": "#005144", "secondary": "#7f5600", "surface-tint": "#0e6a5b", "on-secondary-fixed": "#281800", "error": "#ba1a1a", "on-tertiary": "#ffffff", "surface-container": "#f0eded", "background": "#fcf9f8", "on-secondary-fixed-variant": "#604100", "on-background": "#1c1b1b", "outline": "#6f7976", "surface-container-high": "#eae7e7", "tertiary": "#004885", "primary-fixed": "#a2f2de", "on-primary-fixed": "#00201a", "on-secondary-container": "#775000", "outline-variant": "#bec9c5", "surface-dim": "#dcd9d9", "primary-container": "#0f6b5c", "primary": "#005145", "on-primary": "#ffffff", "tertiary-fixed-dim": "#a4c8ff", "secondary-container": "#ffc567", "on-primary-container": "#99e8d5", "on-surface": "#1c1b1b", "error-container": "#ffdad6", "surface-container-highest": "#e5e2e1", "on-secondary": "#ffffff", "secondary-fixed-dim": "#f6bd5f", "inverse-on-surface": "#f3f0ef", "on-tertiary-fixed-variant": "#004784", "primary-fixed-dim": "#86d5c3", "surface-variant": "#e5e2e1", "on-surface-variant": "#3f4946", "on-tertiary-fixed": "#001c39", "surface-container-low": "#f6f3f2", "inverse-surface": "#313030", "tertiary-fixed": "#d4e3ff" }, borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, spacing: { "margin-mobile": "1rem", "space-md": "1rem", "space-xs": "0.5rem", "space-lg": "1.5rem", "margin": "1.5rem", "gutter-mobile": "0.75rem", "space-xl": "2rem", "space-sm": "0.75rem", "gutter": "1rem" }, fontFamily: { "headline-xl": ["Plus Jakarta Sans"], "body-md-bold": ["Inter"], "headline-xl-mobile": ["Plus Jakarta Sans"], "label-md": ["Inter"], "headline-sm": ["Plus Jakarta Sans"], "headline-lg": ["Plus Jakarta Sans"], "body-sm": ["Inter"], "label-sm": ["Inter"], "headline-md": ["Plus Jakarta Sans"], "body-lg-bold": ["Inter"], "body-md": ["Inter"], "headline-lg-mobile": ["Plus Jakarta Sans"], "label-lg": ["Inter"], "body-lg": ["Inter"] }, fontSize: { "headline-xl": ["36px", { lineHeight: "44px", fontWeight: "600" }], "body-md-bold": ["14px", { lineHeight: "20px", fontWeight: "600" }], "headline-xl-mobile": ["28px", { lineHeight: "36px", fontWeight: "600" }], "label-md": ["12px", { lineHeight: "16px", fontWeight: "600" }], "headline-sm": ["18px", { lineHeight: "24px", fontWeight: "600" }], "headline-lg": ["30px", { lineHeight: "38px", fontWeight: "600" }], "body-sm": ["12px", { lineHeight: "16px", fontWeight: "400" }], "label-sm": ["10px", { lineHeight: "14px", fontWeight: "600" }], "headline-md": ["20px", { lineHeight: "28px", fontWeight: "600" }], "body-lg-bold": ["16px", { lineHeight: "24px", fontWeight: "600" }], "body-md": ["14px", { lineHeight: "20px", fontWeight: "400" }], "headline-lg-mobile": ["24px", { lineHeight: "32px", fontWeight: "600" }], "label-lg": ["14px", { lineHeight: "20px", fontWeight: "600" }], "body-lg": ["16px", { lineHeight: "24px", fontWeight: "400" }] } } } };</script><style>@layer base{html,body{width:100%;margin:0;padding:0;background-color:#fcf9f8;}body{overscroll-behavior-y:none;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style></head><body class="bg-surface font-body-md text-on-surface flex flex-col min-h-screen antialiased"><header class="fixed top-0 w-full z-50 pt-safe bg-surface/80 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 px-margin-mobile flex items-center justify-between"><div class="flex items-center gap-space-sm"><img alt="Nile Flow Courier Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1Vzh4MS5-hWZK_-5k4ZJaUorE864WggoQ7oUTqKYSoe7lSSWO07QB5B5hzQTNq0cZ02oBtgO70C0gBcJ-CiURleB4XELvC50xs9N1ASEN9rdNGJgCNdooORhumrJ25R97CCxf4eDHmujxi6Vmc5j2GHltAPCdVUuo9I-NFJDnqNHcvI0gBCcTNyMb9NWAx_5fzcXbHZgbCKEkxaGXXVD6C_bDuOTJWFrYbtIIcHR6eApTBDj4lyak-epqp_"/><div class="flex flex-col"><span class="font-label-sm text-label-sm text-secondary uppercase tracking-wider">Nile Flow</span><h1 class="font-headline-sm text-headline-sm text-on-surface">Profile</h1></div></div><div class="flex items-center gap-space-xs"><a aria-label="Notifications" href="../21_courier_notifications_center/code.html" class="w-11 h-11 flex items-center justify-center rounded-full text-on-surface-variant hover:bg-surface-container-low transition-colors"><span class="material-symbols-outlined text-[24px]">notifications</span></a><div class="flex items-center justify-center p-0.5 rounded-full bg-surface-container-high"><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida/AEtjO1WpD9m25qC2gO9fdayhZQ-RkroTvbuzPjQfmjZjVwyELBRQi8YjwPgYwB0CZchFgrjTZ7ev46DX-N4vQPc_dFoBqoKrGLibWitB4NvKSDTI3ZRyBWcZY7YMAvJ_OPeF9Tv-ECS6w38WO_QdR8Xje2xQzFvqK08NMnAWrPbfaYSnck_g01W6VBzTqRWk-8WKLLNQ5BlawY1RbALJkVMirD-zIHoYVpeUanIG0OTUHib8RkBIKWTPmHDvXlZCgMCZjXFLs0U194N6reI"/></div></div></div></header><main class="flex-1 w-full bg-surface pt-16 pb-20 pb-safe"><div class="flex flex-col w-full px-margin-mobile pb-space-xl gap-space-md">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { colors: { "inverse-primary": "#86d5c3", "surface-container-lowest": "#ffffff", "on-tertiary-container": "#c5dbff", "surface-bright": "#fcf9f8", "secondary-fixed": "#ffdeae", "on-error": "#ffffff", "tertiary-container": "#1760a8", "on-error-container": "#93000a", "surface": "#fcf9f8", "on-primary-fixed-variant": "#005144", "secondary": "#7f5600", "surface-tint": "#0e6a5b", "on-secondary-fixed": "#281800", "error": "#ba1a1a", "on-tertiary": "#ffffff", "surface-container": "#f0eded", "background": "#fcf9f8", "on-secondary-fixed-variant": "#604100", "on-background": "#1c1b1b", "outline": "#6f7976", "surface-container-high": "#eae7e7", "tertiary": "#004885", "primary-fixed": "#a2f2de", "on-primary-fixed": "#00201a", "on-secondary-container": "#775000", "outline-variant": "#bec9c5", "surface-dim": "#dcd9d9", "primary-container": "#0f6b5c", "primary": "#005145", "on-primary": "#ffffff", "tertiary-fixed-dim": "#a4c8ff", "secondary-container": "#ffc567", "on-primary-container": "#99e8d5", "on-surface": "#1c1b1b", "error-container": "#ffdad6", "surface-container-highest": "#e5e2e1", "on-secondary": "#ffffff", "secondary-fixed-dim": "#f6bd5f", "inverse-on-surface": "#f3f0ef", "on-tertiary-fixed-variant": "#004784", "primary-fixed-dim": "#86d5c3", "surface-variant": "#e5e2e1", "on-surface-variant": "#3f4946", "on-tertiary-fixed": "#001c39", "surface-container-low": "#f6f3f2", "inverse-surface": "#313030", "tertiary-fixed": "#d4e3ff" }, borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, spacing: { "margin-mobile": "1rem", "space-md": "1rem", "space-xs": "0.5rem", "space-lg": "1.5rem", "margin": "1.5rem", "gutter-mobile": "0.75rem", "space-xl": "2rem", "space-sm": "0.75rem", "gutter": "1rem" }, fontFamily: { "headline-xl": ["Plus Jakarta Sans"], "body-md-bold": ["Inter"], "headline-xl-mobile": ["Plus Jakarta Sans"], "label-md": ["Inter"], "headline-sm": ["Plus Jakarta Sans"], "headline-lg": ["Plus Jakarta Sans"], "body-sm": ["Inter"], "label-sm": ["Inter"], "headline-md": ["Plus Jakarta Sans"], "body-lg-bold": ["Inter"], "body-md": ["Inter"], "headline-lg-mobile": ["Plus Jakarta Sans"], "label-lg": ["Inter"], "body-lg": ["Inter"] }, fontSize: { "headline-xl": ["36px", { lineHeight: "44px", fontWeight: "600" }], "body-md-bold": ["14px", { lineHeight: "20px", fontWeight: "600" }], "headline-xl-mobile": ["28px", { lineHeight: "36px", fontWeight: "600" }], "label-md": ["12px", { lineHeight: "16px", fontWeight: "600" }], "headline-sm": ["18px", { lineHeight: "24px", fontWeight: "600" }], "headline-lg": ["30px", { lineHeight: "38px", fontWeight: "600" }], "body-sm": ["12px", { lineHeight: "16px", fontWeight: "400" }], "label-sm": ["10px", { lineHeight: "14px", fontWeight: "600" }], "headline-md": ["20px", { lineHeight: "28px", fontWeight: "600" }], "body-lg-bold": ["16px", { lineHeight: "24px", fontWeight: "600" }], "body-md": ["14px", { lineHeight: "20px", fontWeight: "400" }], "headline-lg-mobile": ["24px", { lineHeight: "32px", fontWeight: "600" }], "label-lg": ["14px", { lineHeight: "20px", fontWeight: "600" }], "body-lg": ["16px", { lineHeight: "24px", fontWeight: "400" }] } } } };</script><style>@layer base{html,body{width:100%;margin:0;padding:0;background-color:#fcf9f8;}body{overscroll-behavior-y:none;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style></head><body class="bg-surface font-body-md text-on-surface flex flex-col min-h-screen antialiased"><header class="fixed top-0 w-full z-50 pt-safe bg-surface/80 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 px-margin-mobile flex items-center justify-between"><div class="flex items-center gap-space-sm"><img alt="Nile Flow Courier Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1Vzh4MS5-hWZK_-5k4ZJaUorE864WggoQ7oUTqKYSoe7lSSWO07QB5B5hzQTNq0cZ02oBtgO70C0gBcJ-CiURleB4XELvC50xs9N1ASEN9rdNGJgCNdooORhumrJ25R97CCxf4eDHmujxi6Vmc5j2GHltAPCdVUuo9I-NFJDnqNHcvI0gBCcTNyMb9NWAx_5fzcXbHZgbCKEkxaGXXVD6C_bDuOTJWFrYbtIIcHR6eApTBDj4lyak-epqp_"/><div class="flex flex-col"><span class="font-label-sm text-label-sm text-secondary uppercase tracking-wider">Nile Flow</span><h1 class="font-headline-sm text-headline-sm text-on-surface">Profile</h1></div></div><div class="flex items-center gap-space-xs"><a aria-label="Notifications" href="../21_courier_notifications_center/code.html" class="w-11 h-11 flex items-center justify-center rounded-full text-on-surface-variant hover:bg-surface-container-low transition-colors"><span class="material-symbols-outlined text-[24px]">notifications</span></a><div class="flex items-center justify-center p-0.5 rounded-full bg-surface-container-high"><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida/AEtjO1WpD9m25qC2gO9fdayhZQ-RkroTvbuzPjQfmjZjVwyELBRQi8YjwPgYwB0CZchFgrjTZ7ev46DX-N4vQPc_dFoBqoKrGLibWitB4NvKSDTI3ZRyBWcZY7YMAvJ_OPeF9Tv-ECS6w38WO_QdR8Xje2xQzFvqK08NMnAWrPbfaYSnck_g01W6VBzTqRWk-8WKLLNQ5BlawY1RbALJkVMirD-zIHoYVpeUanIG0OTUHib8RkBIKWTPmHDvXlZCgMCZjXFLs0U194N6reI"/></div></div></div></header><main class="flex-1 w-full bg-surface pt-16 pb-20 pb-safe"><div id="profileState" class="hidden w-full py-space-sm"></div>
+<div id="profileContent" class="hidden flex flex-col gap-space-md w-full">
 <!-- Rider Identity Card -->
 <div class="w-full bg-surface-container-lowest rounded-xl shadow-sm p-space-md flex flex-col gap-space-md">
 <div class="flex items-start gap-space-md">
 <div class="relative shrink-0">
-<img class="w-20 h-20 rounded-full object-cover shadow-sm bg-surface-container" data-alt="Close-up professional portrait of Kiprotich Koech, a cheerful 28-year-old African courier rider wearing a tailored dark teal Nile Flow branded polo shirt and reflective harness. Warm golden afternoon sunlight illuminating his confident expression against a subtle urban backdrop, crisp focus and high contrast corporate logistics aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAY-MhpspvY85gXFjKBy5_EwXwaE7SwqOuYWLDT-TeptkaraNTPzImDBylu7KFg-InW5u0xeU0Neyh_8EMajCGHz--XlnlfMhGkGlTXz7mWOAwkCUKsBxWZ8141ZVxDTlMzBmd9sF63cW95Jq13mQwjay004rdWtKwnTkRK4U7m_rJGaClCHBZUIYf9nRu5iBD6jYEIbipDAIxW8Hnh5FAJt2x6wNzzSZm1g4jfo38lmID_ljyzO028rw"/>
-<div class="absolute -bottom-1 -right-1 bg-secondary text-surface-container-lowest p-1 rounded-full flex items-center justify-center shadow-sm">
-<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">verified</span>
+<div class="w-20 h-20 rounded-full bg-primary text-on-primary flex items-center justify-center shadow-sm font-headline-md text-headline-md" id="profileInitials">—</div>
+<div class="absolute -bottom-1 -right-1 bg-primary p-1 rounded-full flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-[16px] text-on-primary" style="font-variation-settings: 'FILL' 1;">person</span>
 </div>
 </div>
 <div class="flex flex-col min-w-0 flex-1">
 <div class="flex items-center justify-between gap-1">
-<h2 class="font-headline-sm text-headline-sm text-on-surface truncate">Kiprotich Koech</h2>
-<span class="bg-secondary-container text-on-secondary-container px-2 py-0.5 rounded-full font-label-sm text-label-sm whitespace-nowrap">
-            Platinum Tier
-          </span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface truncate" id="profileName">Rider</h2>
+<span class="bg-secondary-container text-on-secondary-container px-2 py-0.5 rounded-full font-label-sm text-label-sm whitespace-nowrap" id="profileStatusBadge">—</span>
 </div>
-<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Fleet ID: <span class="font-body-md-bold text-on-surface">#NFR-8842</span></p>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5 truncate" id="profileEmail">—</p>
 <div class="flex items-center gap-1.5 mt-2">
 <span class="material-symbols-outlined text-secondary text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
-<span class="font-body-md-bold text-body-md-bold text-on-surface">4.92</span>
-<span class="font-body-sm text-body-sm text-on-surface-variant">(1,420+ deliveries)</span>
+<span class="font-body-md-bold text-body-md-bold text-on-surface" id="profileRating">—</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant" id="profileDeliveries">—</span>
 </div>
 </div>
 </div>
-<!-- Operating Hub & Live Shift Switch -->
+<!-- Operating Status -->
 <div class="bg-surface-container-low rounded-lg p-space-sm flex items-center justify-between gap-space-sm">
 <div class="flex items-center gap-2.5 min-w-0">
 <div class="w-10 h-10 rounded-full bg-primary-fixed flex items-center justify-center shrink-0 text-on-primary-fixed">
 <span class="material-symbols-outlined text-[20px]">storefront</span>
 </div>
 <div class="flex flex-col min-w-0">
-<span class="font-label-sm text-label-sm text-on-surface-variant uppercase">Current Hub</span>
-<span class="font-body-sm text-body-sm font-semibold text-on-surface truncate">Nairobi Westlands &amp; Kilimani</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase">Dispatch status</span>
+<span class="font-body-sm text-body-sm font-semibold text-on-surface truncate" id="profileStatusLabel">—</span>
 </div>
 </div>
-<!-- Tactical Shift Toggle -->
-<button aria-checked="false" class="relative inline-flex h-8 w-14 shrink-0 cursor-pointer rounded-full bg-surface-container-highest p-1 transition-colors duration-200 ease-in-out focus:outline-none" id="shift-toggle-btn" role="switch">
+<button aria-checked="false" class="relative inline-flex h-8 w-14 shrink-0 cursor-pointer rounded-full bg-surface-container-highest p-1 transition-colors duration-200 ease-in-out focus:outline-none disabled:opacity-50" id="shift-toggle-btn" role="switch" type="button">
 <span class="pointer-events-none inline-block h-6 w-6 transform rounded-full bg-surface-container-lowest shadow-sm ring-0 transition duration-200 ease-in-out translate-x-0" id="shift-toggle-thumb"></span>
 </button>
 </div>
 <div class="flex items-center justify-between text-on-surface-variant font-body-sm text-body-sm px-1">
 <span class="flex items-center gap-1.5">
 <span class="w-2.5 h-2.5 rounded-full bg-outline" id="shift-status-dot"></span>
-<span class="font-body-md-bold text-on-surface" id="shift-status-label">Off-Duty / Standby</span>
+<span class="font-body-md-bold text-on-surface" id="shift-status-text">Offline / standby</span>
 </span>
-<span class="text-label-sm text-outline">Tap to activate shift</span>
+<span class="text-label-sm text-outline" id="shift-status-hint">Tap to go online</span>
 </div>
 </div>
-<!-- Registered Vehicle Specifications Card -->
+<!-- Registered Vehicle -->
 <div class="w-full bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden flex flex-col">
-<div class="p-space-md bg-gradient-to-r from-primary to-primary-container text-on-primary flex items-center justify-between">
-<div class="flex items-center gap-2.5">
-<span class="material-symbols-outlined text-[24px]">two_wheeler</span>
-<div>
-<span class="font-label-sm text-label-sm text-primary-fixed uppercase tracking-wider block">Assigned Unit</span>
-<h3 class="font-headline-sm text-headline-sm text-on-primary">KMDE 482K</h3>
+<div class="p-space-md bg-gradient-to-r from-primary to-primary-container text-on-primary flex items-center justify-between gap-2">
+<div class="flex items-center gap-2.5 min-w-0">
+<span class="material-symbols-outlined text-[24px] flex-shrink-0" id="vehicleIcon">two_wheeler</span>
+<div class="min-w-0">
+<span class="font-label-sm text-label-sm text-primary-fixed uppercase tracking-wider block">Registered vehicle</span>
+<h3 class="font-headline-sm text-headline-sm text-on-primary truncate" id="vehicleNumber">Not provided</h3>
 </div>
 </div>
-<span class="bg-surface-container-lowest/20 backdrop-blur-md px-2.5 py-1 rounded-full font-label-sm text-label-sm text-on-primary">
-        Boda Boda Comm.
+<span class="bg-surface-container-lowest/20 backdrop-blur-md px-2.5 py-1 rounded-full font-label-sm text-label-sm text-on-primary flex-shrink-0" id="vehicleTypeBadge">
+        —
       </span>
 </div>
 <div class="p-space-md flex flex-col gap-space-md">
-<div class="flex gap-space-md items-center">
-<img class="w-24 h-24 rounded-lg object-cover bg-surface-container shrink-0" data-alt="Sleek black and cyan TVS Apache RTR 180 commercial motorcycle parked in a modern Nairobi logistics depot. Nile Flow branded insulated delivery box mounted firmly on the pillion rack, glistening polished metal under overcast morning light, high detail automotive commercial photography." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCEKz6FqhOEuRjmPe68ecCnq5HUhOfij8CFF02nIF0Syva7sLRkfBmz3rzyTr-hOGT1faeqtekZUIyUONW9or1O-2IhMtPDRN1wevRdg8qajY3aWWXxa6aJsCpclfRCIEo2xJBWWNwnaf1IyKSfMBcc1FL_puHswvf8UjOev2qAV17RNPqEpmc38KnkVSCbM_Ibgmw1waHn21Aicuk75ZUIEV8zndDnt_mlLzFB3qSrsRY6c2gxcRLk7g"/>
-<div class="flex flex-col min-w-0 flex-1 gap-1">
-<span class="font-label-sm text-label-sm text-on-surface-variant uppercase">Make &amp; Model</span>
-<span class="font-body-lg-bold text-body-lg-bold text-on-surface truncate">TVS Apache RTR 180</span>
-<span class="font-body-sm text-body-sm text-on-surface-variant">Black &amp; Cyan Livery</span>
-<div class="flex items-center gap-2 mt-1">
-<span class="inline-flex items-center gap-1 bg-surface-container-low px-2 py-0.5 rounded text-on-surface font-label-sm text-label-sm">
-<span class="material-symbols-outlined text-[14px] text-primary">eco</span>
-              42 km/L avg
-            </span>
-</div>
-</div>
-</div>
-<div class="rounded-lg bg-surface-container-low p-space-sm flex items-center justify-between">
+<div class="rounded-lg bg-surface-container-low p-space-sm flex items-center justify-between gap-2">
 <div class="flex items-center gap-2 min-w-0">
-<span class="material-symbols-outlined text-primary text-[20px]">verified_user</span>
+<span class="material-symbols-outlined text-primary text-[20px] flex-shrink-0">badge</span>
 <div class="flex flex-col min-w-0">
-<span class="font-body-sm text-body-sm font-semibold text-on-surface truncate">NTSA Roadworthiness</span>
-<span class="font-label-sm text-label-sm text-on-surface-variant">Inspection valid until Nov 2026</span>
-</div>
-</div>
-<span class="material-symbols-outlined text-primary text-[20px]">check_circle</span>
+<span class="font-body-sm text-body-sm font-semibold text-on-surface truncate">Driving licence number</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant truncate" id="vehicleLicense">Not provided</span>
 </div>
 </div>
 </div>
-<!-- Credential & License Wallet -->
+<div class="flex items-start gap-2 p-space-sm rounded-lg bg-secondary-fixed/30 text-on-secondary-fixed">
+<span class="material-symbols-outlined text-secondary text-[18px] flex-shrink-0" style="font-variation-settings: 'FILL' 1;">info</span>
+<p class="font-body-sm text-body-sm text-on-surface">NTSA verification, roadworthiness checks and vehicle document uploads are not available in the rider app yet. Dispatch handles those checks separately.</p>
+</div>
+<button class="w-full h-11 rounded-lg bg-surface-container text-primary font-body-md-bold text-body-md-bold flex items-center justify-center gap-2 active:bg-surface-container-high transition-colors" id="editProfileBtn" type="button">
+<span class="material-symbols-outlined text-[20px]">edit</span>
+        Edit profile &amp; vehicle
+      </button>
+</div>
+</div>
+<!-- Account & Credentials -->
 <div class="w-full bg-surface-container-lowest rounded-xl shadow-sm p-space-md flex flex-col gap-space-md">
-<div class="flex items-center justify-between">
+<div class="flex items-center justify-between gap-2">
 <div class="flex items-center gap-2">
 <span class="material-symbols-outlined text-primary text-[22px]">badge</span>
-<h3 class="font-headline-sm text-headline-sm text-on-surface">Credentials &amp; Permits</h3>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Account details</h3>
 </div>
-<span class="font-label-sm text-label-sm text-on-surface-variant">4 Records Active</span>
-</div>
-<div class="flex flex-col gap-space-xs">
-<!-- Kenyan DL -->
-<div class="p-space-sm bg-surface-container-low rounded-lg flex items-center justify-between gap-2">
-<div class="flex flex-col min-w-0">
-<span class="font-body-md-bold text-body-md-bold text-on-surface truncate">Kenyan Driving License (Class A2)</span>
-<span class="font-body-sm text-body-sm text-on-surface-variant">Valid until Nov 2027</span>
-</div>
-<span class="bg-primary-fixed text-on-primary-fixed font-label-sm text-label-sm px-2 py-0.5 rounded-full shrink-0">
-          Verified
-        </span>
-</div>
-<!-- PSV Insurance - Expiring alert -->
-<div class="p-space-sm bg-surface-container-low rounded-lg flex items-center justify-between gap-2">
-<div class="flex flex-col min-w-0">
-<span class="font-body-md-bold text-body-md-bold text-on-surface truncate">PSV Commercial Insurance</span>
-<span class="font-body-sm text-body-sm text-on-surface-variant">Renews in 42 days</span>
-</div>
-<span class="bg-secondary-fixed text-on-secondary-fixed font-label-sm text-label-sm px-2 py-0.5 rounded-full shrink-0 flex items-center gap-1">
-<span class="material-symbols-outlined text-[14px]">schedule</span>
-          42 Days Left
-        </span>
-</div>
-<!-- DCI Good Conduct -->
-<div class="p-space-sm bg-surface-container-low rounded-lg flex items-center justify-between gap-2">
-<div class="flex flex-col min-w-0">
-<span class="font-body-md-bold text-body-md-bold text-on-surface truncate">DCI Cert. of Good Conduct</span>
-<span class="font-body-sm text-body-sm text-on-surface-variant">Issued by National Police Service</span>
-</div>
-<span class="bg-primary-fixed text-on-primary-fixed font-label-sm text-label-sm px-2 py-0.5 rounded-full shrink-0">
-          Verified
-        </span>
-</div>
-<!-- Carrier Badge -->
-<div class="p-space-sm bg-surface-container-low rounded-lg flex items-center justify-between gap-2">
-<div class="flex flex-col min-w-0">
-<span class="font-body-md-bold text-body-md-bold text-on-surface truncate">Commercial Carrier Badge</span>
-<span class="font-body-sm text-body-sm text-on-surface-variant">KLA Certified #8920</span>
-</div>
-<span class="bg-surface-container-high text-on-surface-variant font-label-sm text-label-sm px-2 py-0.5 rounded-full shrink-0">
-          Active
-        </span>
-</div>
-</div>
-</div>
-<!-- Fleet Gear & Equipment Check -->
-<div class="w-full bg-surface-container-lowest rounded-xl shadow-sm p-space-md flex flex-col gap-space-md">
-<div class="flex items-center justify-between">
-<div class="flex items-center gap-2">
-<span class="material-symbols-outlined text-primary text-[22px]">inventory_2</span>
-<h3 class="font-headline-sm text-headline-sm text-on-surface">Fleet Gear &amp; Devices</h3>
-</div>
-<span class="material-symbols-outlined text-primary text-[20px]">sync</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">From backend</span>
 </div>
 <div class="flex flex-col gap-space-xs">
-<!-- Thermal Box -->
-<div class="flex items-center justify-between p-space-sm bg-surface-container-low rounded-lg">
-<div class="flex items-center gap-space-sm min-w-0">
-<div class="w-9 h-9 rounded-lg bg-surface-container-high flex items-center justify-center shrink-0 text-primary">
-<span class="material-symbols-outlined text-[20px]">package_2</span>
-</div>
+<div class="p-space-sm bg-surface-container-low rounded-lg flex items-center justify-between gap-2">
 <div class="flex flex-col min-w-0">
-<span class="font-body-md-bold text-body-md-bold text-on-surface truncate">Thermal Delivery Box (60L)</span>
-<span class="font-body-sm text-body-sm text-on-surface-variant">Inspected &amp; Sealed</span>
+<span class="font-body-md-bold text-body-md-bold text-on-surface truncate">Email address</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant truncate" id="accountEmail">—</span>
 </div>
+<span class="material-symbols-outlined text-outline text-[20px] flex-shrink-0">mail</span>
 </div>
-<span class="material-symbols-outlined text-primary text-[20px]">lock</span>
-</div>
-<!-- Bluetooth Headset -->
-<div class="flex items-center justify-between p-space-sm bg-surface-container-low rounded-lg">
-<div class="flex items-center gap-space-sm min-w-0">
-<div class="w-9 h-9 rounded-lg bg-surface-container-high flex items-center justify-center shrink-0 text-primary">
-<span class="material-symbols-outlined text-[20px]">headset_mic</span>
-</div>
+<div class="p-space-sm bg-surface-container-low rounded-lg flex items-center justify-between gap-2">
 <div class="flex flex-col min-w-0">
-<span class="font-body-md-bold text-body-md-bold text-on-surface truncate">Bluetooth Helmet Audio</span>
-<span class="font-body-sm text-body-sm text-on-surface-variant">Paired · Battery 85%</span>
+<span class="font-body-md-bold text-body-md-bold text-on-surface truncate">Phone number</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant truncate" id="accountPhone">—</span>
 </div>
+<span class="material-symbols-outlined text-outline text-[20px] flex-shrink-0">call</span>
 </div>
-<div class="flex items-center gap-1 text-primary">
-<span class="material-symbols-outlined text-[18px]">battery_5_bar</span>
-</div>
-</div>
-<!-- Mobile Thermal Printer -->
-<div class="flex items-center justify-between p-space-sm bg-surface-container-low rounded-lg">
-<div class="flex items-center gap-space-sm min-w-0">
-<div class="w-9 h-9 rounded-lg bg-surface-container-high flex items-center justify-center shrink-0 text-primary">
-<span class="material-symbols-outlined text-[20px]">receipt_long</span>
-</div>
+<div class="p-space-sm bg-surface-container-low rounded-lg flex items-center justify-between gap-2">
 <div class="flex flex-col min-w-0">
-<span class="font-body-md-bold text-body-md-bold text-on-surface truncate">Thermal Receipt Printer</span>
-<span class="font-body-sm text-body-sm text-on-surface-variant">BLE Link Active</span>
+<span class="font-body-md-bold text-body-md-bold text-on-surface truncate">Vehicle type</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant truncate" id="accountVehicleType">—</span>
+</div>
+<span class="material-symbols-outlined text-outline text-[20px] flex-shrink-0">two_wheeler</span>
+</div>
+<div class="p-space-sm bg-surface-container-low rounded-lg flex items-center justify-between gap-2">
+<div class="flex flex-col min-w-0">
+<span class="font-body-md-bold text-body-md-bold text-on-surface truncate">Rider account ID</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant truncate" id="accountId">—</span>
+</div>
+<span class="material-symbols-outlined text-outline text-[20px] flex-shrink-0">fingerprint</span>
 </div>
 </div>
-<span class="material-symbols-outlined text-primary text-[20px]">bluetooth_connected</span>
-</div>
+<div class="flex items-start gap-2 p-space-sm rounded-lg bg-secondary-fixed/30 text-on-secondary-fixed">
+<span class="material-symbols-outlined text-secondary text-[18px] flex-shrink-0" style="font-variation-settings: 'FILL' 1;">info</span>
+<p class="font-body-sm text-body-sm text-on-surface">PSV insurance, DCI good-conduct certificates and document verification workflows are not supported by the rider backend yet, so they are not shown as active records.</p>
 </div>
 </div>
 <!-- Operational Quick Links -->
@@ -205,93 +134,330 @@
 <span class="material-symbols-outlined text-[20px]">insights</span>
 </div>
 <div class="flex flex-col min-w-0">
-<span class="font-body-md-bold text-body-md-bold text-on-surface">Performance &amp; Analytics</span>
-<span class="font-body-sm text-body-sm text-on-surface-variant">Rating, on-time rate, tier progress</span>
+<span class="font-body-md-bold text-body-md-bold text-on-surface">Performance &amp; analytics</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Rating, success rate and activity</span>
 </div>
 </div>
 <span class="material-symbols-outlined text-outline text-[20px]">chevron_right</span>
 </a>
-<!-- Language & App Settings -->
+<a class="p-space-md flex items-center justify-between hover:bg-surface-container-low transition-colors" href="../17_rider_earnings_m_pesa_wallet/code.html">
+<div class="flex items-center gap-space-sm min-w-0">
+<div class="w-9 h-9 rounded-lg bg-surface-container-high flex items-center justify-center shrink-0 text-on-surface">
+<span class="material-symbols-outlined text-[20px]">account_balance_wallet</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-body-md-bold text-body-md-bold text-on-surface">Earnings</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Completed delivery earnings</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline text-[20px]">chevron_right</span>
+</a>
 <a class="p-space-md flex items-center justify-between hover:bg-surface-container-low transition-colors" href="../22_rider_settings_language_preferences/code.html">
 <div class="flex items-center gap-space-sm min-w-0">
 <div class="w-9 h-9 rounded-lg bg-surface-container-high flex items-center justify-center shrink-0 text-on-surface">
 <span class="material-symbols-outlined text-[20px]">translate</span>
 </div>
 <div class="flex flex-col min-w-0">
-<span class="font-body-md-bold text-body-md-bold text-on-surface">Language &amp; Preferences</span>
-<span class="font-body-sm text-body-sm text-on-surface-variant">English (Kenya) / Kiswahili</span>
+<span class="font-body-md-bold text-body-md-bold text-on-surface">Language &amp; preferences</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Not available in this build</span>
 </div>
 </div>
 <span class="material-symbols-outlined text-outline text-[20px]">chevron_right</span>
 </a>
-<!-- Support Center -->
 <a class="p-space-md flex items-center justify-between hover:bg-surface-container-low transition-colors" href="../19_rider_safety_emergency_center/code.html">
 <div class="flex items-center gap-space-sm min-w-0">
 <div class="w-9 h-9 rounded-lg bg-surface-container-high flex items-center justify-center shrink-0 text-on-surface">
 <span class="material-symbols-outlined text-[20px]">support_agent</span>
 </div>
 <div class="flex flex-col min-w-0">
-<span class="font-body-md-bold text-body-md-bold text-on-surface">Dispatch &amp; Safety Desk</span>
-<span class="font-body-sm text-body-sm text-on-surface-variant">24/7 Nairobi Westlands Hotline</span>
+<span class="font-body-md-bold text-body-md-bold text-on-surface">Dispatch &amp; safety desk</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">In-app support is not available yet</span>
 </div>
 </div>
 <span class="material-symbols-outlined text-outline text-[20px]">chevron_right</span>
 </a>
-<!-- Legal & Terms -->
-<a class="p-space-md flex items-center justify-between hover:bg-surface-container-low transition-colors" href="#">
+<div class="p-space-md flex items-center justify-between opacity-60">
 <div class="flex items-center gap-space-sm min-w-0">
 <div class="w-9 h-9 rounded-lg bg-surface-container-high flex items-center justify-center shrink-0 text-on-surface">
 <span class="material-symbols-outlined text-[20px]">policy</span>
 </div>
 <div class="flex flex-col min-w-0">
-<span class="font-body-md-bold text-body-md-bold text-on-surface">Terms of Service &amp; Protocol</span>
-<span class="font-body-sm text-body-sm text-on-surface-variant">Nile Flow Partner Agreement v4.2</span>
+<span class="font-body-md-bold text-body-md-bold text-on-surface">Terms of service</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Not available in the app yet</span>
 </div>
 </div>
-<span class="material-symbols-outlined text-outline text-[20px]">chevron_right</span>
-</a>
+<span class="material-symbols-outlined text-outline text-[20px]">block</span>
 </div>
-<!-- Sign Out Trigger -->
+</div>
+<!-- Sign Out -->
 <div class="flex flex-col items-center justify-center pt-space-xs pb-space-sm">
-<button class="inline-flex items-center gap-2 text-error font-body-md-bold text-body-md-bold py-2.5 px-4 rounded-lg hover:bg-error-container/30 transition-colors" onclick="location.href='../01_rider_splash_authentication/index.html'">
+<button class="inline-flex items-center gap-2 text-error font-body-md-bold text-body-md-bold py-2.5 px-4 rounded-lg hover:bg-error-container/30 transition-colors disabled:opacity-50" id="signOutBtn" type="button">
 <span class="material-symbols-outlined text-[20px]">logout</span>
-      Sign Out of Courier Shift
+      <span id="signOutLabel">Sign out</span>
     </button>
-<span class="font-label-sm text-label-sm text-outline mt-1">App v3.12.0 · Build 4891-KE</span>
+<p class="font-label-sm text-label-sm text-outline mt-1 text-center" id="profileFooter">Nile Flow rider app</p>
 </div>
 </div>
+
+<!-- Edit Profile Modal -->
+<div class="fixed inset-0 z-[60] bg-black/60 backdrop-blur-sm hidden items-center justify-center p-space-md" id="editProfileModal">
+<div class="bg-surface-container-lowest w-full max-w-sm rounded-xl p-space-md shadow-2xl flex flex-col gap-space-md max-h-[90vh] overflow-y-auto">
+<div class="flex items-center justify-between gap-2">
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Edit profile</h3>
+<button aria-label="Close edit profile" class="w-10 h-10 rounded-full flex items-center justify-center text-on-surface-variant hover:bg-surface-container" id="closeEditProfile" type="button">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<form class="flex flex-col gap-space-sm" id="editProfileForm" novalidate>
+<label class="flex flex-col gap-1">
+<span class="font-label-md text-label-md text-on-surface">Full name</span>
+<input class="w-full h-11 px-3 rounded-lg bg-surface-container-low text-on-surface font-body-md text-body-md outline-none" id="editName" name="name" type="text" autocomplete="name" required/>
+</label>
+<label class="flex flex-col gap-1">
+<span class="font-label-md text-label-md text-on-surface">Phone number</span>
+<input class="w-full h-11 px-3 rounded-lg bg-surface-container-low text-on-surface font-body-md text-body-md outline-none" id="editPhone" name="phone" type="tel" autocomplete="tel" required/>
+</label>
+<label class="flex flex-col gap-1">
+<span class="font-label-md text-label-md text-on-surface">Vehicle type</span>
+<select class="w-full h-11 px-3 rounded-lg bg-surface-container-low text-on-surface font-body-md text-body-md outline-none" id="editVehicleType" name="vehicleType">
+<option value="motorcycle">Motorcycle (Boda Boda)</option>
+<option value="van">Cargo van</option>
+<option value="ebike">E-bicycle / cargo bike</option>
+</select>
+</label>
+<label class="flex flex-col gap-1">
+<span class="font-label-md text-label-md text-on-surface">Vehicle registration / model</span>
+<input class="w-full h-11 px-3 rounded-lg bg-surface-container-low text-on-surface font-body-md text-body-md outline-none" id="editVehicleNumber" name="vehicleNumber" type="text" placeholder="e.g. KMDE 482K - TVS Apache"/>
+</label>
+<label class="flex flex-col gap-1">
+<span class="font-label-md text-label-md text-on-surface">Driving licence number</span>
+<input class="w-full h-11 px-3 rounded-lg bg-surface-container-low text-on-surface font-body-md text-body-md outline-none" id="editLicense" name="licenseNumber" type="text"/>
+</label>
+<p class="font-label-sm text-label-sm text-error min-h-[14px]" id="editProfileError" role="alert"></p>
+<div class="flex gap-2 pt-space-xs">
+<button class="flex-1 h-11 rounded-lg bg-surface-container text-on-surface font-body-md-bold text-body-md-bold" id="cancelEditProfile" type="button">Cancel</button>
+<button class="flex-1 h-11 rounded-lg bg-primary text-on-primary font-body-md-bold text-body-md-bold" id="saveProfileBtn" type="submit">Save changes</button>
+</div>
+</form>
+</div>
+</div>
+<script src="../assets/api.js"></script>
+<script src="../assets/auth.js"></script>
+<script src="../assets/ui.js"></script>
 <script>
-  (function() {
-    const toggleBtn = document.getElementById('shift-toggle-btn');
-    const toggleThumb = document.getElementById('shift-toggle-thumb');
-    const statusDot = document.getElementById('shift-status-dot');
-    const statusLabel = document.getElementById('shift-status-label');
+(function () {
+  var rider = null;
+  var statusBusy = false;
+  var profileBusy = false;
 
-    let isOnDuty = false;
+  var stateBox = document.getElementById('profileState');
+  var content = document.getElementById('profileContent');
+  var toggleBtn = document.getElementById('shift-toggle-btn');
+  var toggleThumb = document.getElementById('shift-toggle-thumb');
+  var statusDot = document.getElementById('shift-status-dot');
+  var statusLabel = document.getElementById('shift-status-label');
+  var statusText = document.getElementById('shift-status-text');
+  var statusHint = document.getElementById('shift-status-hint');
+  var modal = document.getElementById('editProfileModal');
+  var form = document.getElementById('editProfileForm');
 
-    if (toggleBtn) {
-      toggleBtn.addEventListener('click', function() {
-        isOnDuty = !isOnDuty;
-        toggleBtn.setAttribute('aria-checked', isOnDuty ? 'true' : 'false');
-        
-        if (isOnDuty) {
-          toggleBtn.classList.remove('bg-surface-container-highest');
-          toggleBtn.classList.add('bg-primary');
-          toggleThumb.classList.remove('translate-x-0');
-          toggleThumb.classList.add('translate-x-6');
-          statusDot.classList.remove('bg-outline');
-          statusDot.classList.add('bg-primary-container');
-          statusLabel.textContent = 'Active / On-Duty (Receiving Dispatches)';
-        } else {
-          toggleBtn.classList.remove('bg-primary');
-          toggleBtn.classList.add('bg-surface-container-highest');
-          toggleThumb.classList.remove('translate-x-6');
-          toggleThumb.classList.add('translate-x-0');
-          statusDot.classList.remove('bg-primary-container');
-          statusDot.classList.add('bg-outline');
-          statusLabel.textContent = 'Off-Duty / Standby';
-        }
+  var VEHICLE_LABEL = { motorcycle: 'Motorcycle', van: 'Cargo van', ebike: 'E-bicycle' };
+  var VEHICLE_ICON = { motorcycle: 'two_wheeler', van: 'local_shipping', ebike: 'pedal_bike' };
+
+  function showState(kind, title, message, retry) {
+    content.classList.add('hidden');
+    stateBox.classList.remove('hidden');
+    NFUI.state(stateBox, kind, title, message, retry);
+  }
+
+  function headerAvatar() {
+    var image = document.querySelector('header img[alt="Profile"]');
+    if (!image) return;
+    var holder = document.createElement('div');
+    holder.className = 'w-8 h-8 rounded-full bg-primary text-on-primary flex items-center justify-center text-label-sm font-body-md-bold';
+    holder.textContent = NFUI.initials(rider && rider.name);
+    image.parentNode.replaceChild(holder, image);
+  }
+
+  function paintStatus() {
+    var status = String((rider && rider.status) || 'offline').toLowerCase();
+    var meta = NFUI.riderStatus(status);
+    var on = status === 'online' || status === 'busy';
+    toggleBtn.setAttribute('aria-checked', on ? 'true' : 'false');
+    toggleBtn.classList.toggle('bg-primary', on);
+    toggleBtn.classList.toggle('bg-surface-container-highest', !on);
+    toggleThumb.classList.toggle('translate-x-6', on);
+    toggleThumb.classList.toggle('translate-x-0', !on);
+    statusDot.classList.remove('bg-outline', 'bg-primary-container', 'bg-secondary');
+    statusDot.classList.add(status === 'busy' ? 'bg-secondary' : on ? 'bg-primary-container' : 'bg-outline');
+    statusLabel.textContent = status === 'busy' ? 'On delivery (busy)' : status === 'online' ? 'Online — receiving dispatches' : 'Offline / standby';
+    statusText.textContent = meta.label;
+    statusHint.textContent = on ? 'Tap to go offline' : 'Tap to go online';
+    document.getElementById('profileStatusBadge').textContent = meta.label;
+    document.getElementById('profileStatusBadge').className =
+      'px-2 py-0.5 rounded-full font-label-sm text-label-sm whitespace-nowrap ' +
+      (status === 'offline' ? 'bg-surface-container-high text-on-surface-variant' : 'bg-secondary-container text-on-secondary-container');
+  }
+
+  function paintProfile() {
+    var vehicleType = String(rider.vehicleType || '').toLowerCase();
+    document.getElementById('profileInitials').textContent = NFUI.initials(rider.name);
+    document.getElementById('profileName').textContent = rider.name || 'Rider';
+    document.getElementById('profileEmail').textContent = rider.email || 'Email not provided';
+    var rating = Number(rider.rating) || 0;
+    document.getElementById('profileRating').textContent = rating > 0 ? rating.toFixed(2) : 'No rating';
+    var deliveries = Number(rider.totalDeliveries) || 0;
+    document.getElementById('profileDeliveries').textContent = deliveries === 1 ? '1 delivery' : deliveries + ' deliveries';
+    document.getElementById('vehicleNumber').textContent = rider.vehicleNumber || 'Not provided';
+    document.getElementById('vehicleTypeBadge').textContent = VEHICLE_LABEL[vehicleType] || rider.vehicleType || 'Not provided';
+    document.getElementById('vehicleIcon').textContent = VEHICLE_ICON[vehicleType] || 'two_wheeler';
+    document.getElementById('vehicleLicense').textContent = rider.licenseNumber || 'Not provided';
+    document.getElementById('accountEmail').textContent = rider.email || 'Not provided';
+    document.getElementById('accountPhone').textContent = rider.phone || 'Not provided';
+    document.getElementById('accountVehicleType').textContent = VEHICLE_LABEL[vehicleType] || rider.vehicleType || 'Not provided';
+    document.getElementById('accountId').textContent = rider.$id || rider.id || 'Not provided';
+    document.getElementById('profileFooter').textContent = 'Nile Flow rider app • ' + (rider.email || '');
+    paintStatus();
+    headerAvatar();
+  }
+
+  function loadProfile() {
+    showState('loading', 'Loading your profile…');
+    NFApi.get('/api/rider/profile')
+      .then(function (result) {
+        rider = (result && result.rider) || null;
+        if (!rider) throw new Error('The backend did not return a rider profile.');
+        content.classList.remove('hidden');
+        stateBox.classList.add('hidden');
+        paintProfile();
+      })
+      .catch(function (err) {
+        showState('error', 'Could not load profile', err && err.message ? err.message : 'Check your connection and try again.', {
+          retryLabel: 'Retry',
+          onRetry: loadProfile,
+        });
       });
+  }
+
+  function setStatus(next) {
+    if (statusBusy) return;
+    statusBusy = true;
+    toggleBtn.disabled = true;
+    var previous = rider.status;
+    rider.status = next;
+    paintStatus();
+    NFApi.patch('/api/rider/status', { status: next })
+      .then(function (result) {
+        rider.status = (result && result.status) || next;
+        paintStatus();
+        NFUI.toast(next === 'online' ? 'You are online and can receive offers.' : 'You are offline and will not receive offers.', 'success');
+      })
+      .catch(function (err) {
+        rider.status = previous;
+        paintStatus();
+        NFUI.toast(err && err.message ? err.message : 'Could not update your status.', 'error');
+      })
+      .finally(function () {
+        statusBusy = false;
+        toggleBtn.disabled = false;
+      });
+  }
+
+  function openModal() {
+    document.getElementById('editName').value = rider.name || '';
+    document.getElementById('editPhone').value = rider.phone || '';
+    var type = String(rider.vehicleType || 'motorcycle').toLowerCase();
+    document.getElementById('editVehicleType').value = VEHICLE_LABEL[type] ? type : 'motorcycle';
+    document.getElementById('editVehicleNumber').value = rider.vehicleNumber || '';
+    document.getElementById('editLicense').value = rider.licenseNumber || '';
+    document.getElementById('editProfileError').textContent = '';
+    modal.classList.remove('hidden');
+    modal.classList.add('flex');
+    document.getElementById('editName').focus();
+  }
+
+  function closeModal() {
+    modal.classList.add('hidden');
+    modal.classList.remove('flex');
+  }
+
+  function saveProfile(event) {
+    event.preventDefault();
+    if (profileBusy) return;
+    var name = document.getElementById('editName').value.trim();
+    var phone = document.getElementById('editPhone').value.trim();
+    var error = document.getElementById('editProfileError');
+    error.textContent = '';
+    if (!name) {
+      error.textContent = 'Enter your name.';
+      return;
     }
-  })();
-</script></main><nav class="fixed bottom-0 w-full z-50 pb-safe bg-surface/90 backdrop-blur-xl shadow-[0_-2px_12px_rgba(0,0,0,0.04)]" data-active-classes="text-primary font-body-md-bold"><div class="flex items-center justify-around h-16 px-space-xs"><a class="flex flex-col items-center justify-center flex-1 h-full min-w-[64px] min-h-[48px] gap-1 text-on-surface-variant transition-colors" data-path="home" href="../06_rider_command_center_dashboard/code.html"><span class="material-symbols-outlined text-[24px]">dashboard</span><span class="font-label-sm text-label-sm">Home</span></a><a class="flex flex-col items-center justify-center flex-1 h-full min-w-[64px] min-h-[48px] gap-1 text-on-surface-variant transition-colors" data-path="deliveries" href="../08_deliveries_management_hub/code.html"><span class="material-symbols-outlined text-[24px]">local_shipping</span><span class="font-label-sm text-label-sm">Deliveries</span></a><a class="flex flex-col items-center justify-center flex-1 h-full min-w-[64px] min-h-[48px] gap-1 text-on-surface-variant transition-colors" data-path="earnings" href="../17_rider_earnings_m_pesa_wallet/code.html"><span class="material-symbols-outlined text-[24px]">account_balance_wallet</span><span class="font-label-sm text-label-sm">Earnings</span></a><a aria-current="page" class="flex flex-col items-center justify-center flex-1 h-full min-w-[64px] min-h-[48px] gap-1 transition-colors text-primary font-body-md-bold" data-path="profile" href="../20_rider_profile_vehicle_management/code.html"><span class="material-symbols-outlined text-[24px]">person</span><span class="font-label-sm text-label-sm">Profile</span></a></div></nav><script src="../screens-menu.js"></script></body></html>
+    if (!phone) {
+      error.textContent = 'Enter your phone number.';
+      return;
+    }
+    profileBusy = true;
+    var saveButton = document.getElementById('saveProfileBtn');
+    NFUI.setBusy(saveButton, true, 'Saving…');
+    NFApi.patch('/api/rider/profile', {
+      name: name,
+      phone: phone,
+      vehicleType: document.getElementById('editVehicleType').value,
+      vehicleNumber: document.getElementById('editVehicleNumber').value.trim(),
+      licenseNumber: document.getElementById('editLicense').value.trim(),
+    })
+      .then(function (result) {
+        rider = (result && result.rider) || rider;
+        paintProfile();
+        closeModal();
+        NFUI.toast('Profile updated.', 'success');
+      })
+      .catch(function (err) {
+        error.textContent = err && err.message ? err.message : 'Could not save your profile.';
+      })
+      .finally(function () {
+        profileBusy = false;
+        NFUI.setBusy(saveButton, false);
+      });
+  }
+
+  toggleBtn.addEventListener('click', function () {
+    var status = String((rider && rider.status) || 'offline').toLowerCase();
+    setStatus(status === 'offline' ? 'online' : 'offline');
+  });
+
+  document.getElementById('editProfileBtn').addEventListener('click', openModal);
+  document.getElementById('closeEditProfile').addEventListener('click', closeModal);
+  document.getElementById('cancelEditProfile').addEventListener('click', closeModal);
+  modal.addEventListener('click', function (event) {
+    if (event.target === modal) closeModal();
+  });
+  form.addEventListener('submit', saveProfile);
+
+  document.getElementById('signOutBtn').addEventListener('click', function () {
+    var button = document.getElementById('signOutBtn');
+    var label = document.getElementById('signOutLabel');
+    button.disabled = true;
+    label.textContent = 'Signing out…';
+    NFAuth.logout().catch(function (err) {
+      button.disabled = false;
+      label.textContent = 'Sign out';
+      NFUI.toast(err && err.message ? err.message : 'Could not sign out. Please try again.', 'error');
+    });
+  });
+
+  NFAuth.requireSession()
+    .then(function (current) {
+      if (!current) return;
+      rider = current;
+      loadProfile();
+    })
+    .catch(function (err) {
+      showState('error', 'Could not load your session', err && err.message ? err.message : 'Check your connection and try again.', {
+        retryLabel: 'Retry',
+        onRetry: function () { window.location.reload(); },
+      });
+    });
+})();
+</script>
+</main><nav class="fixed bottom-0 w-full z-50 pb-safe bg-surface/90 backdrop-blur-xl shadow-[0_-2px_12px_rgba(0,0,0,0.04)]" data-active-classes="text-primary font-body-md-bold"><div class="flex items-center justify-around h-16 px-space-xs"><a class="flex flex-col items-center justify-center flex-1 h-full min-w-[64px] min-h-[48px] gap-1 text-on-surface-variant transition-colors" data-path="home" href="../06_rider_command_center_dashboard/code.html"><span class="material-symbols-outlined text-[24px]">dashboard</span><span class="font-label-sm text-label-sm">Home</span></a><a class="flex flex-col items-center justify-center flex-1 h-full min-w-[64px] min-h-[48px] gap-1 text-on-surface-variant transition-colors" data-path="deliveries" href="../08_deliveries_management_hub/code.html"><span class="material-symbols-outlined text-[24px]">local_shipping</span><span class="font-label-sm text-label-sm">Deliveries</span></a><a class="flex flex-col items-center justify-center flex-1 h-full min-w-[64px] min-h-[48px] gap-1 text-on-surface-variant transition-colors" data-path="earnings" href="../17_rider_earnings_m_pesa_wallet/code.html"><span class="material-symbols-outlined text-[24px]">account_balance_wallet</span><span class="font-label-sm text-label-sm">Earnings</span></a><a aria-current="page" class="flex flex-col items-center justify-center flex-1 h-full min-w-[64px] min-h-[48px] gap-1 transition-colors text-primary font-body-md-bold" data-path="profile" href="../20_rider_profile_vehicle_management/code.html"><span class="material-symbols-outlined text-[24px]">person</span><span class="font-label-sm text-label-sm">Profile</span></a></div></nav><script src="../screens-menu.js"></script></body></html>

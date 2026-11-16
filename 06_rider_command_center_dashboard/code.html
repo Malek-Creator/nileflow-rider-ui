@@ -24,15 +24,16 @@
       </div>
     </div>
     <div class="flex items-center gap-space-xs">
-      <button id="onlinePill" class="min-h-[44px] px-space-sm py-1 rounded-full bg-primary-fixed flex items-center gap-1.5 text-on-primary-fixed transition-colors active:bg-primary-fixed-dim" type="button">
-        <span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
-        <span class="font-label-md text-label-md tracking-wide">ONLINE</span>
+      <button id="onlinePill" class="min-h-[44px] px-space-sm py-1 rounded-full bg-surface-container-highest flex items-center gap-1.5 text-on-surface-variant transition-colors active:bg-surface-container-high" type="button" aria-label="Toggle online status">
+        <span class="w-2 h-2 rounded-full bg-outline" id="onlinePillDot"></span>
+        <span class="font-label-md text-label-md tracking-wide" id="onlinePillLabel">CHECKING</span>
       </button>
-      <button aria-label="Notifications" class="w-11 h-11 flex items-center justify-center rounded-full text-on-surface-variant hover:text-on-surface hover:bg-surface-container active:bg-surface-container-high transition-colors" type="button" onclick="location.href='../21_courier_notifications_center/code.html'">
+      <button aria-label="Notifications (not available yet)" class="w-11 h-11 flex items-center justify-center rounded-full text-on-surface-variant hover:text-on-surface hover:bg-surface-container active:bg-surface-container-high transition-colors" type="button" onclick="location.href='../21_courier_notifications_center/code.html'">
         <span class="material-symbols-outlined text-[24px]">notifications</span>
       </button>
       <a href="../20_rider_profile_vehicle_management/code.html" aria-label="Profile" class="w-8 h-8 rounded-full bg-primary flex items-center justify-center">
         <span class="material-symbols-outlined text-on-primary text-[18px]">person</span>
+        <span class="hidden" id="headerAvatarInitials"></span>
       </a>
     </div>
   </div>
@@ -40,6 +41,7 @@
 
 <main class="flex-1 flex flex-col relative w-full pt-16 pb-20 bg-surface">
   <div class="flex flex-col w-full px-margin-mobile pb-space-xl gap-space-md">
+    <div id="dashboardNotice"></div>
     <!-- Rider Identity & Shift Control Panel -->
     <div class="w-full bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col gap-space-sm relative overflow-hidden">
       <!-- Decorative subtle teal wash accent -->
@@ -47,56 +49,57 @@
       <div class="flex items-start justify-between gap-space-xs z-10">
         <div class="flex flex-col min-w-0">
           <h1 class="font-headline-sm text-headline-sm text-on-surface flex items-center gap-1.5 truncate">
-            Habari, Kiprotich! <span class="text-[20px]">🏍️</span>
+            Habari, <span id="riderName">rider</span>! <span class="text-[20px]">🏍️</span>
           </h1>
           <p class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-1 mt-0.5">
             <span class="material-symbols-outlined text-[15px] text-primary">location_on</span>
-            Nairobi Westlands &amp; Kilimani Sector
+            <span id="riderMeta" class="truncate">Checking your rider profile…</span>
           </p>
         </div>
-        <!-- Quick Emergency SOS Button -->
-        <button aria-label="Emergency SOS Assistance" class="min-h-[44px] px-space-sm py-1.5 rounded-full bg-error-container text-on-error-container flex items-center gap-1 active:scale-95 transition-transform shrink-0 shadow-sm" type="button" onclick="location.href='../19_rider_safety_emergency_center/code.html'">
+        <!-- Emergency help entry point (SOS is not supported by the backend) -->
+        <button aria-label="Emergency help" class="min-h-[44px] px-space-sm py-1.5 rounded-full bg-error-container text-on-error-container flex items-center gap-1 active:scale-95 transition-transform shrink-0 shadow-sm" type="button" onclick="location.href='../19_rider_safety_emergency_center/code.html'">
           <span class="material-symbols-outlined text-[18px] text-error">sos</span>
-          <span class="font-label-md text-label-md font-bold uppercase tracking-wider text-error">SOS</span>
+          <span class="font-label-md text-label-md font-bold uppercase tracking-wider text-error">Help</span>
         </button>
       </div>
       <!-- Active Shift Status Bar with Interactive Toggle -->
       <div class="w-full bg-surface-container-low rounded-lg p-space-sm flex items-center justify-between gap-space-sm z-10">
         <div class="flex items-center gap-2.5 min-w-0">
           <div class="relative flex items-center justify-center">
-            <span class="w-3 h-3 rounded-full bg-primary animate-ping absolute opacity-75"></span>
-            <span class="w-2.5 h-2.5 rounded-full bg-primary relative"></span>
+            <span class="w-3 h-3 rounded-full bg-primary animate-ping absolute opacity-75" id="statusPing"></span>
+            <span class="w-2.5 h-2.5 rounded-full bg-primary relative" id="statusDot"></span>
           </div>
           <div class="flex flex-col min-w-0">
-            <span class="font-label-lg text-label-lg text-primary truncate" id="shiftStatusText">Active Shift: Online &amp; Ready</span>
-            <span class="font-label-sm text-label-sm text-on-surface-variant">Battery 88% • GPS High Accuracy</span>
+            <span class="font-label-lg text-label-lg text-primary truncate" id="shiftStatusText">Checking status…</span>
+            <span class="font-label-sm text-label-sm text-on-surface-variant" id="shiftSubText">Syncing with Nile Flow</span>
           </div>
         </div>
         <!-- Tactical Micro-Toggle -->
-        <button aria-checked="true" class="w-12 h-7 bg-primary rounded-full relative p-0.5 transition-colors duration-200 shrink-0 focus:outline-none focus:ring-2 focus:ring-primary/40" id="shiftToggleBtn" role="switch" type="button">
-          <span class="block w-6 h-6 bg-surface-container-lowest rounded-full shadow-md transform translate-x-5 transition-transform duration-200" id="toggleKnob"></span>
+        <button aria-checked="false" aria-label="Toggle online status" class="w-12 h-7 bg-surface-container-highest rounded-full relative p-0.5 transition-colors duration-200 shrink-0 focus:outline-none focus:ring-2 focus:ring-primary/40" id="shiftToggleBtn" role="switch" type="button">
+          <span class="block w-6 h-6 bg-surface-container-lowest rounded-full shadow-md transform translate-x-0 transition-transform duration-200" id="toggleKnob"></span>
         </button>
       </div>
     </div>
     <button id="searchRidesBtn" type="button" class="w-full min-h-[52px] bg-primary hover:bg-primary-container text-on-primary rounded-xl font-label-lg text-label-lg flex items-center justify-center gap-2 shadow-md active:scale-[0.99] transition-all">
-      <span class="material-symbols-outlined text-[22px]" id="searchIcon">search</span>
-      <span id="searchLabel">Search for rides</span>
+      <span class="material-symbols-outlined text-[22px]" id="searchIcon">bolt</span>
+      <span id="searchLabel">View live offers</span>
     </button>
 
     <!-- Daily Earnings & Shift Metrics Card -->
     <div class="w-full bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col gap-space-sm">
-      <div class="flex items-center justify-between">
+      <div class="flex items-center justify-between gap-space-xs">
         <span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Today's Earnings</span>
-        <span class="font-label-sm text-label-sm px-2 py-0.5 rounded-full bg-secondary-fixed text-on-secondary-fixed font-semibold">
-          Auto-Settling 18:00
+        <span class="flex items-center gap-space-xs">
+          <span class="font-label-sm text-label-sm px-2 py-0.5 rounded-full bg-secondary-fixed text-on-secondary-fixed font-semibold" id="earningsUpdated">Loading…</span>
+          <button id="earningsRetry" type="button" class="hidden font-label-sm text-label-sm text-primary underline underline-offset-2 min-h-[28px]">Retry</button>
         </span>
       </div>
       <div class="flex items-baseline justify-between gap-space-sm">
         <div class="flex items-baseline gap-1">
-          <span class="font-headline-xl-mobile text-headline-xl-mobile text-primary font-bold tracking-tight">KES 3,240.00</span>
+          <span class="font-headline-xl-mobile text-headline-xl-mobile text-primary font-bold tracking-tight" id="earningsValue">—</span>
         </div>
         <a class="font-label-lg text-label-lg text-primary hover:text-on-primary-fixed-variant inline-flex items-center gap-0.5 min-h-[44px] py-2 transition-colors" href="../17_rider_earnings_m_pesa_wallet/code.html">
-          M-Pesa Wallet
+          Earnings
           <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
         </a>
       </div>
@@ -105,44 +108,42 @@
         <div class="flex flex-col items-center justify-center p-2 rounded-lg bg-surface-container-low text-center">
           <div class="flex items-center gap-1 text-primary">
             <span class="material-symbols-outlined text-[16px]">task_alt</span>
-            <span class="font-headline-sm text-headline-sm text-on-surface">8</span>
+            <span class="font-headline-sm text-headline-sm text-on-surface" id="completedCount">—</span>
           </div>
           <span class="font-label-sm text-label-sm text-on-surface-variant mt-0.5">Completed</span>
         </div>
         <div class="flex flex-col items-center justify-center p-2 rounded-lg bg-surface-container-low text-center">
           <div class="flex items-center gap-1 text-secondary">
             <span class="material-symbols-outlined text-[16px]">route</span>
-            <span class="font-headline-sm text-headline-sm text-on-surface">42</span>
+            <span class="font-headline-sm text-headline-sm text-on-surface" id="distanceValue">—</span>
           </div>
           <span class="font-label-sm text-label-sm text-on-surface-variant mt-0.5">km covered</span>
         </div>
         <div class="flex flex-col items-center justify-center p-2 rounded-lg bg-surface-container-low text-center">
           <div class="flex items-center gap-1 text-secondary">
             <span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
-            <span class="font-headline-sm text-headline-sm text-on-surface">4.92</span>
+            <span class="font-headline-sm text-headline-sm text-on-surface" id="ratingValue">—</span>
           </div>
-          <span class="font-label-sm text-label-sm text-on-surface-variant mt-0.5">Fleet rating</span>
+          <span class="font-label-sm text-label-sm text-on-surface-variant mt-0.5">Customer rating</span>
         </div>
       </div>
     </div>
 
-    <!-- Surge & Tactical Area Demand Banner -->
-    <div class="w-full bg-secondary-fixed/40 rounded-xl p-space-md shadow-sm relative overflow-hidden flex flex-col gap-space-xs">
+    <!-- Live offers banner -->
+    <div id="offerBanner" class="w-full bg-secondary-fixed/40 rounded-xl p-space-md shadow-sm relative overflow-hidden flex flex-col gap-space-xs">
       <div class="flex items-center justify-between gap-space-xs">
         <div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-secondary-container text-on-secondary-container font-label-md text-label-md">
-          <span class="text-[14px]">🔥</span>
-          <span>1.4x Surge Active</span>
+          <span class="material-symbols-outlined text-[14px]">bolt</span>
+          <span id="offerCount">Checking offers…</span>
         </div>
-        <button class="font-label-md text-label-md text-secondary hover:underline min-h-[44px] px-2 flex items-center" type="button">
-          View Hub Heatmap →
-        </button>
+        <a href="../07_incoming_delivery_request/code.html" class="font-label-md text-label-md text-secondary hover:underline min-h-[44px] px-2 flex items-center">
+          View offers →
+        </a>
       </div>
-      <p class="font-body-md text-body-md text-on-surface mt-1 leading-snug">
-        High order volume in <strong class="font-body-md-bold">Kilimani &amp; Yaya Centre</strong>. +KES 150 immediate rider bonus per completed drop.
+      <p class="font-body-md text-body-md text-on-surface mt-1 leading-snug" id="offerText">
+        Live dispatch assignments will appear here while you are online.
       </p>
-      <div class="w-full bg-surface-container-lowest/80 rounded-full h-1.5 mt-1 overflow-hidden">
-        <div class="bg-secondary h-full rounded-full w-4/5 animate-pulse"></div>
-      </div>
+      <button id="offerRetry" type="button" class="hidden self-start font-label-md text-label-md text-secondary underline underline-offset-2 min-h-[32px]">Retry</button>
     </div>
 
     <!-- Active Mission / Dispatch Section -->
@@ -150,83 +151,11 @@
       <div class="flex items-center justify-between px-0.5">
         <h2 class="font-headline-sm text-headline-sm text-on-surface flex items-center gap-2">
           <span>Active Dispatch</span>
-          <span class="px-2 py-0.5 rounded-full bg-primary-fixed text-on-primary-fixed font-label-sm text-label-sm">1 in queue</span>
+          <span class="px-2 py-0.5 rounded-full bg-primary-fixed text-on-primary-fixed font-label-sm text-label-sm" id="activeCount">…</span>
         </h2>
-        <span class="font-label-sm text-label-sm text-on-surface-variant">Priority Dispatch</span>
+        <span class="font-label-sm text-label-sm text-on-surface-variant">Live from Nile Flow</span>
       </div>
-      <!-- Active Delivery Card with Tactical Accent Stripe -->
-      <div class="w-full bg-surface-container-lowest rounded-xl p-space-md shadow-md flex flex-col gap-space-md relative overflow-hidden">
-        <!-- High-Contrast Teal Left Border Marker -->
-        <div class="absolute left-0 inset-y-0 w-1.5 bg-primary"></div>
-        <!-- Top Dispatch Tagging -->
-        <div class="flex items-center justify-between gap-space-xs pl-1">
-          <div class="flex items-center gap-space-xs flex-wrap">
-            <span class="px-2.5 py-1 rounded-md bg-primary-fixed text-on-primary-fixed font-label-sm text-label-sm font-semibold tracking-wide">
-              Ready for Pickup
-            </span>
-            <span class="font-body-sm text-body-sm text-on-surface-variant">
-              #NF-20482 • Standard Express
-            </span>
-          </div>
-          <div class="text-right shrink-0">
-            <span class="font-headline-sm text-headline-sm text-primary font-bold">KES 480</span>
-          </div>
-        </div>
-        <!-- Dynamic Waypoint Route Visualization -->
-        <div class="flex flex-col gap-3 pl-1 relative">
-          <!-- Visual Dotted Trail Track -->
-          <div class="absolute left-[13px] top-4 bottom-4 w-0.5 bg-outline-variant/60 border-l border-dashed border-outline"></div>
-          <!-- Waypoint 1: Pickup -->
-          <div class="flex items-start gap-3 relative z-10">
-            <div class="w-7 h-7 rounded-full bg-primary-fixed flex items-center justify-center text-on-primary-fixed shrink-0 shadow-sm">
-              <span class="material-symbols-outlined text-[16px]">storefront</span>
-            </div>
-            <div class="flex flex-col min-w-0 flex-1">
-              <div class="flex items-center justify-between gap-1">
-                <span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Pickup Location</span>
-                <span class="font-label-sm text-label-sm text-primary font-semibold">2.1 km away</span>
-              </div>
-              <span class="font-body-md-bold text-body-md-bold text-on-surface truncate">Artcaffe Westgate Mall</span>
-              <span class="font-body-sm text-body-sm text-on-surface-variant truncate">Ground Floor, Dedicated Courier Bay B</span>
-            </div>
-          </div>
-          <!-- Waypoint 2: Drop-off -->
-          <div class="flex items-start gap-3 relative z-10">
-            <div class="w-7 h-7 rounded-full bg-secondary-fixed flex items-center justify-center text-on-secondary-fixed shrink-0 shadow-sm">
-              <span class="material-symbols-outlined text-[16px]">pin_drop</span>
-            </div>
-            <div class="flex flex-col min-w-0 flex-1">
-              <div class="flex items-center justify-between gap-1">
-                <span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Recipient Destination</span>
-                <span class="font-label-sm text-label-sm text-on-surface-variant">Est. 25 mins</span>
-              </div>
-              <span class="font-body-md-bold text-body-md-bold text-on-surface truncate">Delta Corner Towers</span>
-              <span class="font-body-sm text-body-sm text-on-surface-variant truncate">Tower B, Level 7, Waiyaki Way</span>
-            </div>
-          </div>
-        </div>
-        <!-- Quick Delivery Attributes Pill Bar -->
-        <div class="flex items-center gap-space-xs pl-1 flex-wrap">
-          <div class="px-2.5 py-1 rounded bg-surface-container-low flex items-center gap-1.5 text-on-surface-variant font-label-sm text-label-sm">
-            <span class="material-symbols-outlined text-[16px] text-primary">inventory_2</span>
-            <span>1.8 kg Parcel</span>
-          </div>
-          <div class="px-2.5 py-1 rounded bg-surface-container-low flex items-center gap-1.5 text-on-surface-variant font-label-sm text-label-sm">
-            <span class="material-symbols-outlined text-[16px] text-secondary">payments</span>
-            <span>Prepaid (No COD)</span>
-          </div>
-          <div class="px-2.5 py-1 rounded bg-surface-container-low flex items-center gap-1.5 text-on-surface-variant font-label-sm text-label-sm">
-            <span class="material-symbols-outlined text-[16px] text-primary">verified_user</span>
-            <span>PIN Confirmation</span>
-          </div>
-        </div>
-        <!-- Primary Action CTA (Thumb Zone Optimized) -->
-        <button class="w-full min-h-[48px] h-12 bg-primary hover:bg-primary-container text-on-primary rounded-lg font-label-lg text-label-lg flex items-center justify-center gap-2 active:scale-[0.99] transition-transform shadow-md" type="button" onclick="location.href='../10_active_delivery_navigation_hud/code.html'">
-          <span class="material-symbols-outlined text-[20px]">navigation</span>
-          <span>Navigate to Pickup Dock</span>
-          <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
-        </button>
-      </div>
+      <div id="activeDeliveryCard"></div>
     </div>
 
     <!-- Quick Tactical Tools Grid -->
@@ -236,45 +165,44 @@
         <span class="font-label-sm text-label-sm text-on-surface-variant">Fast Utility</span>
       </div>
       <div class="grid grid-cols-2 gap-space-sm">
-        <!-- Tool 1: Barcode Scanner -->
+        <!-- Tool 1: QR pickup (not supported) -->
         <button class="min-h-[56px] p-space-md rounded-xl bg-surface-container-lowest text-left shadow-sm flex flex-col gap-2 hover:bg-surface-container-low active:scale-95 transition-all" type="button" onclick="location.href='../09_package_pickup_qr_verification/code.html'">
           <div class="w-10 h-10 rounded-lg bg-primary-fixed flex items-center justify-center text-on-primary-fixed">
             <span class="material-symbols-outlined text-[24px]">qr_code_scanner</span>
           </div>
           <div class="flex flex-col">
-            <span class="font-body-md-bold text-body-md-bold text-on-surface">Scan Package QR</span>
-            <span class="font-body-sm text-body-sm text-on-surface-variant">Instant verify &amp; load</span>
+            <span class="font-body-md-bold text-body-md-bold text-on-surface">QR pickup scan</span>
+            <span class="font-body-sm text-body-sm text-on-surface-variant">Not available yet</span>
           </div>
         </button>
-        <!-- Tool 2: Offline Sync Mode -->
+        <!-- Tool 2: Offline mode (not supported) -->
         <button class="min-h-[56px] p-space-md rounded-xl bg-surface-container-lowest text-left shadow-sm flex flex-col gap-2 hover:bg-surface-container-low active:scale-95 transition-all" type="button" onclick="location.href='../23_offline_resilience_edge_sync_mode/code.html'">
           <div class="w-10 h-10 rounded-lg bg-surface-container-high flex items-center justify-center text-primary">
             <span class="material-symbols-outlined text-[24px]">cloud_sync</span>
           </div>
           <div class="flex flex-col">
-            <span class="font-body-md-bold text-body-md-bold text-on-surface">Offline Sync Mode</span>
-            <span class="font-body-sm text-body-sm text-on-surface-variant">Cached manifests ready</span>
+            <span class="font-body-md-bold text-body-md-bold text-on-surface">Offline mode</span>
+            <span class="font-body-sm text-body-sm text-on-surface-variant">Not available yet</span>
           </div>
         </button>
-        <!-- Tool 3: Live Dispatch Chat -->
+        <!-- Tool 3: Support chat (not supported) -->
         <button class="min-h-[56px] p-space-md rounded-xl bg-surface-container-lowest text-left shadow-sm flex flex-col gap-2 hover:bg-surface-container-low active:scale-95 transition-all relative" type="button" onclick="location.href='../14_support_center_live_dispatch_chat/code.html'">
-          <span class="absolute top-3 right-3 w-2.5 h-2.5 rounded-full bg-secondary"></span>
           <div class="w-10 h-10 rounded-lg bg-secondary-fixed flex items-center justify-center text-on-secondary-fixed">
             <span class="material-symbols-outlined text-[24px]">forum</span>
           </div>
           <div class="flex flex-col">
-            <span class="font-body-md-bold text-body-md-bold text-on-surface">Live Dispatch Chat</span>
-            <span class="font-body-sm text-body-sm text-on-surface-variant">1 unread command</span>
+            <span class="font-body-md-bold text-body-md-bold text-on-surface">Support chat</span>
+            <span class="font-body-sm text-body-sm text-on-surface-variant">Not available yet</span>
           </div>
         </button>
-        <!-- Tool 4: Vehicle Inspection -->
+        <!-- Tool 4: Profile & vehicle -->
         <button class="min-h-[56px] p-space-md rounded-xl bg-surface-container-lowest text-left shadow-sm flex flex-col gap-2 hover:bg-surface-container-low active:scale-95 transition-all" type="button" onclick="location.href='../20_rider_profile_vehicle_management/code.html'">
           <div class="w-10 h-10 rounded-lg bg-surface-container-high flex items-center justify-center text-on-surface">
             <span class="material-symbols-outlined text-[24px]">two_wheeler</span>
           </div>
           <div class="flex flex-col">
-            <span class="font-body-md-bold text-body-md-bold text-on-surface">Vehicle Health</span>
-            <span class="font-body-sm text-body-sm text-on-surface-variant">Check daily inspection</span>
+            <span class="font-body-md-bold text-body-md-bold text-on-surface">Profile &amp; vehicle</span>
+            <span class="font-body-sm text-body-sm text-on-surface-variant">Manage rider details</span>
           </div>
         </button>
       </div>
@@ -282,72 +210,356 @@
   </div>
 </main>
 
-<!-- Interactive Shift Toggle Script -->
+<script src="../assets/api.js"></script>
+<script src="../assets/auth.js"></script>
+<script src="../assets/ui.js"></script>
+<!-- Dashboard data wiring -->
 <script>
-  (function () {
-    const toggleBtn = document.getElementById('shiftToggleBtn');
-    const toggleKnob = document.getElementById('toggleKnob');
-    const statusText = document.getElementById('shiftStatusText');
-    const pill = document.getElementById('onlinePill');
-    const searchBtn = document.getElementById('searchRidesBtn');
-    const searchIcon = document.getElementById('searchIcon');
-    const searchLabel = document.getElementById('searchLabel');
-    if (!toggleBtn || !toggleKnob || !statusText || !pill || !searchBtn) return;
+(function () {
+  var rider = null;
+  var statusBusy = false;
+  var pollTimer = null;
+  var offersFailed = false;
 
-    const pillDot = pill.querySelector('span:first-child');
-    const pillLabel = pill.querySelector('span:last-child');
-    let isOnline = true;
-    let searching = false;
-    let timer = null;
+  var el = {
+    notice: document.getElementById('dashboardNotice'),
+    riderName: document.getElementById('riderName'),
+    riderMeta: document.getElementById('riderMeta'),
+    statusPing: document.getElementById('statusPing'),
+    statusDot: document.getElementById('statusDot'),
+    shiftStatusText: document.getElementById('shiftStatusText'),
+    shiftSubText: document.getElementById('shiftSubText'),
+    toggleBtn: document.getElementById('shiftToggleBtn'),
+    toggleKnob: document.getElementById('toggleKnob'),
+    onlinePill: document.getElementById('onlinePill'),
+    onlinePillDot: document.getElementById('onlinePillDot'),
+    onlinePillLabel: document.getElementById('onlinePillLabel'),
+    searchBtn: document.getElementById('searchRidesBtn'),
+    earningsValue: document.getElementById('earningsValue'),
+    earningsUpdated: document.getElementById('earningsUpdated'),
+    earningsRetry: document.getElementById('earningsRetry'),
+    completedCount: document.getElementById('completedCount'),
+    distanceValue: document.getElementById('distanceValue'),
+    ratingValue: document.getElementById('ratingValue'),
+    offerCount: document.getElementById('offerCount'),
+    offerText: document.getElementById('offerText'),
+    offerRetry: document.getElementById('offerRetry'),
+    activeCount: document.getElementById('activeCount'),
+    activeCard: document.getElementById('activeDeliveryCard'),
+  };
 
-    function render() {
-      toggleBtn.setAttribute('aria-checked', isOnline);
-      if (isOnline) {
-        toggleBtn.className = 'w-12 h-7 bg-primary rounded-full relative p-0.5 transition-colors duration-200 shrink-0 focus:outline-none focus:ring-2 focus:ring-primary/40';
-        toggleKnob.className = 'block w-6 h-6 bg-surface-container-lowest rounded-full shadow-md transform translate-x-5 transition-transform duration-200';
-        statusText.className = 'font-label-lg text-label-lg text-primary truncate';
-        pill.className = 'min-h-[44px] px-space-sm py-1 rounded-full bg-primary-fixed flex items-center gap-1.5 text-on-primary-fixed transition-colors active:bg-primary-fixed-dim';
-        pillDot.className = 'w-2 h-2 rounded-full bg-primary animate-pulse';
-        pillLabel.textContent = 'ONLINE';
-        searchLabel.textContent = 'Search for rides';
+  function capitalize(value) {
+    var s = String(value || '');
+    return s ? s.charAt(0).toUpperCase() + s.slice(1) : '';
+  }
+
+  function statusOf() {
+    return (rider && rider.status ? String(rider.status) : 'offline').toLowerCase();
+  }
+
+  function renderStatus(status) {
+    var key = String(status || 'offline').toLowerCase();
+    var online = key === 'online';
+    var busy = key === 'busy';
+    var active = online || busy;
+    var meta = NFUI.riderStatus(key);
+
+    el.toggleBtn.setAttribute('aria-checked', active ? 'true' : 'false');
+    el.toggleBtn.className =
+      'w-12 h-7 ' +
+      (active ? (busy ? 'bg-secondary' : 'bg-primary') : 'bg-surface-container-highest') +
+      ' rounded-full relative p-0.5 transition-colors duration-200 shrink-0 focus:outline-none focus:ring-2 focus:ring-primary/40';
+    el.toggleKnob.className =
+      'block w-6 h-6 bg-surface-container-lowest rounded-full shadow-md transform ' +
+      (active ? 'translate-x-5' : 'translate-x-0') +
+      ' transition-transform duration-200';
+
+    el.statusPing.style.display = active ? '' : 'none';
+    el.statusPing.className = 'w-3 h-3 rounded-full ' + (busy ? 'bg-secondary' : 'bg-primary') + ' animate-ping absolute opacity-75';
+    el.statusDot.className = 'w-2.5 h-2.5 rounded-full relative ' + (active ? (busy ? 'bg-secondary' : 'bg-primary') : 'bg-outline');
+
+    if (online) {
+      el.shiftStatusText.textContent = 'On shift: Online & ready';
+      el.shiftStatusText.className = 'font-label-lg text-label-lg text-primary truncate';
+      el.shiftSubText.textContent = 'Receiving live delivery offers';
+      el.onlinePill.className = 'min-h-[44px] px-space-sm py-1 rounded-full bg-primary-fixed flex items-center gap-1.5 text-on-primary-fixed transition-colors active:bg-primary-fixed-dim';
+      el.onlinePillDot.className = 'w-2 h-2 rounded-full bg-primary animate-pulse';
+      el.onlinePillLabel.textContent = 'ONLINE';
+    } else if (busy) {
+      el.shiftStatusText.textContent = 'On shift: Busy with a delivery';
+      el.shiftStatusText.className = 'font-label-lg text-label-lg text-secondary truncate';
+      el.shiftSubText.textContent = 'Finish or update your active delivery';
+      el.onlinePill.className = 'min-h-[44px] px-space-sm py-1 rounded-full bg-secondary-fixed flex items-center gap-1.5 text-on-secondary-fixed transition-colors';
+      el.onlinePillDot.className = 'w-2 h-2 rounded-full bg-secondary';
+      el.onlinePillLabel.textContent = 'BUSY';
+    } else {
+      el.shiftStatusText.textContent = 'Off shift: Offline';
+      el.shiftStatusText.className = 'font-label-lg text-label-lg text-on-surface-variant truncate';
+      el.shiftSubText.textContent = 'Go online to receive delivery offers';
+      el.onlinePill.className = 'min-h-[44px] px-space-sm py-1 rounded-full bg-surface-container-highest flex items-center gap-1.5 text-on-surface-variant transition-colors';
+      el.onlinePillDot.className = 'w-2 h-2 rounded-full bg-outline';
+      el.onlinePillLabel.textContent = 'OFFLINE';
+    }
+  }
+
+  function setStatus(next) {
+    if (statusBusy) return;
+    statusBusy = true;
+    el.toggleBtn.disabled = true;
+    el.toggleBtn.classList.add('opacity-60');
+    var previous = statusOf();
+
+    NFApi.patch('/api/rider/status', { status: next })
+      .then(function (result) {
+        var updated = result && result.rider && result.rider.status ? result.rider.status : next;
+        if (rider) rider.status = updated;
+        renderStatus(updated);
+        NFUI.toast('You are now ' + String(updated).toLowerCase() + '.', 'success');
+        loadOffers();
+      })
+      .catch(function (err) {
+        renderStatus(previous);
+        NFUI.toast(err && err.message ? err.message : 'Could not update your status.', 'error');
+      })
+      .finally(function () {
+        statusBusy = false;
+        el.toggleBtn.disabled = false;
+        el.toggleBtn.classList.remove('opacity-60');
+      });
+  }
+
+  function renderEarningsLoading() {
+    el.earningsUpdated.textContent = 'Loading…';
+    el.earningsUpdated.className = 'font-label-sm text-label-sm px-2 py-0.5 rounded-full bg-surface-container-high text-on-surface-variant font-semibold';
+    el.earningsRetry.classList.add('hidden');
+  }
+
+  function loadEarnings() {
+    renderEarningsLoading();
+    NFApi.get('/api/rider/analytics/dashboard?period=today')
+      .then(function (result) {
+        var analytics = (result && result.analytics) || {};
+        var earnings = analytics.earnings || {};
+        var performance = analytics.performance || {};
+        var activity = analytics.activity || {};
+        var distance = activity.distance || {};
+        var ratings = performance.customerRatings || {};
+
+        el.earningsValue.textContent = NFUI.money(earnings.total || 0);
+        el.completedCount.textContent = NFUI.number(earnings.deliveryCount || 0);
+        el.distanceValue.textContent =
+          distance.totalKm === undefined || distance.totalKm === null
+            ? '—'
+            : Number(distance.totalKm).toFixed(1);
+        var average = ratings.average;
+        el.ratingValue.textContent =
+          average === undefined || average === null || Number(average) === 0
+            ? '—'
+            : Number(average).toFixed(2);
+
+        el.earningsUpdated.textContent = 'Updated ' + NFUI.time(new Date());
+        el.earningsUpdated.className = 'font-label-sm text-label-sm px-2 py-0.5 rounded-full bg-secondary-fixed text-on-secondary-fixed font-semibold';
+        el.earningsRetry.classList.add('hidden');
+      })
+      .catch(function () {
+        el.earningsValue.textContent = '—';
+        el.completedCount.textContent = '—';
+        el.distanceValue.textContent = '—';
+        el.ratingValue.textContent = '—';
+        el.earningsUpdated.textContent = 'Unavailable';
+        el.earningsUpdated.className = 'font-label-sm text-label-sm px-2 py-0.5 rounded-full bg-error-container text-on-error-container font-semibold';
+        el.earningsRetry.classList.remove('hidden');
+      });
+  }
+
+  function renderOffers(offers) {
+    offers = offers || [];
+    offersFailed = false;
+    el.offerRetry.classList.add('hidden');
+
+    if (!offers.length) {
+      if (statusOf() === 'offline') {
+        el.offerCount.textContent = "You're offline";
+        el.offerText.textContent = 'Use the shift toggle above to go online and start receiving live delivery assignments.';
       } else {
-        toggleBtn.className = 'w-12 h-7 bg-surface-container-highest rounded-full relative p-0.5 transition-colors duration-200 shrink-0 focus:outline-none focus:ring-2 focus:ring-outline/40';
-        toggleKnob.className = 'block w-6 h-6 bg-surface-container-lowest rounded-full shadow-md transform translate-x-0 transition-transform duration-200';
-        statusText.className = 'font-label-lg text-label-lg text-on-surface-variant truncate';
-        pill.className = 'min-h-[44px] px-space-sm py-1 rounded-full bg-surface-container-highest flex items-center gap-1.5 text-on-surface-variant transition-colors';
-        pillDot.className = 'w-2 h-2 rounded-full bg-outline';
-        pillLabel.textContent = 'OFFLINE';
-        searchLabel.textContent = 'Go online & search for rides';
+        el.offerCount.textContent = 'No live offers';
+        el.offerText.textContent = "You're online. New assignments from dispatch will appear here and on the Offers screen.";
       }
+      return;
     }
 
-    function setOnline(value) {
-      isOnline = value;
-      clearTimeout(timer);
-      searching = false;
-      searchIcon.textContent = 'search';
-      searchIcon.classList.remove('animate-spin');
-      statusText.textContent = isOnline ? 'Active Shift: Online & Ready' : 'Standby: Shift Paused';
-      render();
+    var latest = offers[0];
+    var details = latest.orderDetails || {};
+    var payout = details.riderEarning !== undefined ? details.riderEarning : details.totalAmount;
+    var expiresAt = latest.expiresAt ? new Date(latest.expiresAt) : null;
+    var minutes = expiresAt && !isNaN(expiresAt.getTime()) ? Math.max(0, Math.round((expiresAt.getTime() - Date.now()) / 60000)) : null;
+
+    el.offerCount.textContent = offers.length + (offers.length === 1 ? ' live offer' : ' live offers');
+    el.offerText.textContent =
+      (details.orderId || latest.orderId || 'Order') +
+      ' • ' +
+      (details.pickupAddress || 'Pickup') +
+      ' → ' +
+      (details.deliveryAddress || 'Drop-off') +
+      (payout !== undefined && payout !== null ? ' • ' + NFUI.money(payout, 0) : '') +
+      (minutes === null ? '' : minutes <= 0 ? ' • expiring now' : ' • expires in ' + minutes + ' min');
+  }
+
+  function loadOffers() {
+    NFApi.get('/api/rider/assignment/offers')
+      .then(function (result) {
+        var data = result && result.data ? result.data : result;
+        renderOffers((data && data.offers) || []);
+      })
+      .catch(function (err) {
+        if (err && (err.status === 401 || err.code === 'SESSION_EXPIRED')) return;
+        offersFailed = true;
+        el.offerCount.textContent = 'Offers unavailable';
+        el.offerText.textContent = 'Could not load live offers. Check your connection and try again.';
+        if (offersFailed) el.offerRetry.classList.remove('hidden');
+      });
+  }
+
+  function activeDeliveryFrom(list) {
+    var active = (list || []).filter(function (delivery) {
+      var status = String((delivery && delivery.status) || '').toLowerCase();
+      return status === 'assigned' || status === 'picked_up' || status === 'in_transit';
+    });
+    var priority = { in_transit: 0, picked_up: 1, assigned: 2 };
+    active.sort(function (a, b) {
+      var sa = priority[String(a.status).toLowerCase()];
+      var sb = priority[String(b.status).toLowerCase()];
+      return (sa === undefined ? 9 : sa) - (sb === undefined ? 9 : sb);
+    });
+    return active;
+  }
+
+  function renderActiveDelivery(delivery) {
+    if (!delivery) {
+      el.activeCount.textContent = '0 active';
+      NFUI.state(el.activeCard, 'empty', 'No active delivery', 'When you accept an offer or are assigned a delivery, it will appear here.');
+      return;
     }
 
-    function startSearch() {
-      if (searching) return;
-      if (!isOnline) setOnline(true);
-      searching = true;
-      searchIcon.textContent = 'sync';
-      searchIcon.classList.add('animate-spin');
-      searchLabel.textContent = 'Searching for requests...';
-      statusText.textContent = 'Searching for requests...';
-      timer = setTimeout(function () {
-        location.href = '../07_incoming_delivery_request/code.html';
-      }, 2000);
-    }
+    var status = String(delivery.status || '').toLowerCase();
+    var meta = NFUI.deliveryStatus(status);
+    var id = NFUI.deliveryId(delivery);
+    var earning = delivery.riderEarning !== undefined ? delivery.riderEarning : delivery.deliveryFee;
+    var distance = delivery.distance;
+    var items = NFUI.deliveryItems(delivery);
+    var itemCount = items.reduce(function (total, item) { return total + NFUI.itemQty(item); }, 0);
 
-    searchBtn.addEventListener('click', startSearch);
-    toggleBtn.addEventListener('click', function () { setOnline(!isOnline); });
-    pill.addEventListener('click', function () { setOnline(!isOnline); });
-  })();
+    el.activeCount.textContent = '1 active';
+    el.activeCard.innerHTML =
+      '<div class="w-full bg-surface-container-lowest rounded-xl p-space-md shadow-md flex flex-col gap-space-md relative overflow-hidden">' +
+        '<div class="absolute left-0 inset-y-0 w-1.5 ' + (status === 'in_transit' ? 'bg-primary' : 'bg-secondary') + '"></div>' +
+        '<div class="flex items-center justify-between gap-space-xs pl-1">' +
+          '<div class="flex items-center gap-space-xs flex-wrap">' +
+            '<span class="px-2.5 py-1 rounded-md ' + meta.badge + ' font-label-sm text-label-sm font-semibold tracking-wide">' + NFUI.esc(meta.label) + '</span>' +
+            '<span class="font-body-sm text-body-sm text-on-surface-variant">#' + NFUI.esc(NFUI.orderRef(delivery)) + '</span>' +
+          '</div>' +
+          '<div class="text-right shrink-0"><span class="font-headline-sm text-headline-sm text-primary font-bold">' + (earning === undefined || earning === null ? '—' : NFUI.money(earning, 0)) + '</span></div>' +
+        '</div>' +
+        '<div class="flex flex-col gap-3 pl-1 relative">' +
+          '<div class="absolute left-[13px] top-4 bottom-4 w-0.5 bg-outline-variant/60 border-l border-dashed border-outline"></div>' +
+          '<div class="flex items-start gap-3 relative z-10">' +
+            '<div class="w-7 h-7 rounded-full bg-primary-fixed flex items-center justify-center text-on-primary-fixed shrink-0 shadow-sm"><span class="material-symbols-outlined text-[16px]">storefront</span></div>' +
+            '<div class="flex flex-col min-w-0 flex-1">' +
+              '<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Pickup</span>' +
+              '<span class="font-body-md-bold text-body-md-bold text-on-surface truncate">' + NFUI.esc(delivery.pickupAddress || 'Pickup address not provided') + '</span>' +
+            '</div>' +
+          '</div>' +
+          '<div class="flex items-start gap-3 relative z-10">' +
+            '<div class="w-7 h-7 rounded-full bg-secondary-fixed flex items-center justify-center text-on-secondary-fixed shrink-0 shadow-sm"><span class="material-symbols-outlined text-[16px]">pin_drop</span></div>' +
+            '<div class="flex flex-col min-w-0 flex-1">' +
+              '<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Drop-off</span>' +
+              '<span class="font-body-md-bold text-body-md-bold text-on-surface truncate">' + NFUI.esc(delivery.deliveryAddress || 'Delivery address not provided') + '</span>' +
+              (delivery.customerName ? '<span class="font-body-sm text-body-sm text-on-surface-variant truncate">Customer: ' + NFUI.esc(delivery.customerName) + '</span>' : '') +
+            '</div>' +
+          '</div>' +
+        '</div>' +
+        '<div class="flex items-center gap-space-xs pl-1 flex-wrap">' +
+          '<div class="px-2.5 py-1 rounded bg-surface-container-low flex items-center gap-1.5 text-on-surface-variant font-label-sm text-label-sm"><span class="material-symbols-outlined text-[16px] text-primary">inventory_2</span><span>' + (itemCount || '—') + ' item' + (itemCount === 1 ? '' : 's') + '</span></div>' +
+          (distance !== undefined && distance !== null ? '<div class="px-2.5 py-1 rounded bg-surface-container-low flex items-center gap-1.5 text-on-surface-variant font-label-sm text-label-sm"><span class="material-symbols-outlined text-[16px] text-secondary">route</span><span>' + NFUI.esc(distance) + ' km</span></div>' : '') +
+          '<div class="px-2.5 py-1 rounded bg-surface-container-low flex items-center gap-1.5 text-on-surface-variant font-label-sm text-label-sm"><span class="material-symbols-outlined text-[16px] text-primary">payments</span><span>' + (earning === undefined || earning === null ? 'Payout pending' : 'Your payout') + '</span></div>' +
+        '</div>' +
+        '<a href="../10_active_delivery_navigation_hud/code.html?deliveryId=' + encodeURIComponent(id) + '" class="w-full min-h-[48px] h-12 bg-primary hover:bg-primary-container text-on-primary rounded-lg font-label-lg text-label-lg flex items-center justify-center gap-2 active:scale-[0.99] transition-transform shadow-md no-underline">' +
+          '<span class="material-symbols-outlined text-[20px]">navigation</span>' +
+          '<span>Open active delivery</span>' +
+          '<span class="material-symbols-outlined text-[18px]">arrow_forward</span>' +
+        '</a>' +
+      '</div>';
+  }
+
+  function loadActiveDelivery() {
+    NFUI.state(el.activeCard, 'loading', 'Loading active delivery…');
+    el.activeCount.textContent = '…';
+    NFApi.get('/api/rider/deliveries?limit=20')
+      .then(function (result) {
+        var list = (result && result.deliveries) || (result && result.data && result.data.deliveries) || [];
+        renderActiveDelivery(activeDeliveryFrom(list)[0]);
+      })
+      .catch(function (err) {
+        if (err && (err.status === 401 || err.code === 'SESSION_EXPIRED')) return;
+        el.activeCount.textContent = '—';
+        NFUI.state(el.activeCard, 'error', 'Could not load deliveries', err && err.message ? err.message : 'Please try again.', {
+          retryLabel: 'Retry',
+          onRetry: loadActiveDelivery,
+        });
+      });
+  }
+
+  el.earningsRetry.addEventListener('click', loadEarnings);
+  el.offerRetry.addEventListener('click', loadOffers);
+
+  el.searchBtn.addEventListener('click', function () {
+    window.location.href = '../07_incoming_delivery_request/code.html';
+  });
+
+  function toggleStatus() {
+    setStatus(statusOf() === 'offline' ? 'online' : 'offline');
+  }
+  el.toggleBtn.addEventListener('click', toggleStatus);
+  el.onlinePill.addEventListener('click', toggleStatus);
+
+  document.addEventListener('visibilitychange', function () {
+    if (!document.hidden && rider) {
+      loadEarnings();
+      loadActiveDelivery();
+      loadOffers();
+    }
+  });
+
+  NFAuth.requireSession()
+    .then(function (profile) {
+      if (!profile) return;
+      rider = profile;
+      el.riderName.textContent = NFUI.firstName(profile.name);
+      var vehicle = profile.vehicleType ? capitalize(profile.vehicleType) + ' rider' : 'Nile Flow rider';
+      var phone = profile.phone ? ' • ' + NFUI.maskPhone(profile.phone) : '';
+      el.riderMeta.textContent = vehicle + phone;
+      renderStatus(profile.status || 'offline');
+      loadEarnings();
+      loadActiveDelivery();
+      loadOffers();
+      pollTimer = setInterval(loadOffers, 20000);
+    })
+    .catch(function (err) {
+      NFUI.banner(el.notice, err && err.message ? err.message : 'Could not load your dashboard. Please retry.', 'error');
+      el.riderName.textContent = 'rider';
+      el.riderMeta.textContent = 'Dashboard unavailable';
+      el.shiftStatusText.textContent = 'Could not connect';
+      el.shiftSubText.textContent = 'Check your connection and reload';
+      NFUI.state(el.activeCard, 'error', 'Could not load your dashboard', 'Check your connection and try again.', {
+        retryLabel: 'Retry',
+        onRetry: function () { window.location.reload(); },
+      });
+    });
+
+  window.addEventListener('pagehide', function () {
+    if (pollTimer) clearInterval(pollTimer);
+  });
+})();
 </script>
 
 <nav class="fixed bottom-0 inset-x-0 z-50 pb-safe bg-surface/90 backdrop-blur-xl shadow-[0_-2px_12px_rgba(0,0,0,0.05)]" data-active-classes="text-primary font-bold">

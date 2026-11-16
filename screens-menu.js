@@ -4,8 +4,8 @@
 
   var GROUPS = [
         { title: 'Sign in', items: [
-      ['24', 'Phone number', '24_rider_sign_in_phone'],
-      ['25', 'Enter code', '25_rider_sign_in_code']
+      ['24', 'Email sign in', '24_rider_sign_in_phone'],
+      ['25', 'Sign-in help', '25_rider_sign_in_code']
     ]},
     { title: 'Onboarding', items: [
       ['01', 'Splash & sign in', '01_rider_splash_authentication', 'index.html'],

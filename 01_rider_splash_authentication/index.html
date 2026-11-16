@@ -39,31 +39,31 @@
 </div>
 <!-- Operational Ambient Card / Rider Ready State -->
 <div class="relative overflow-hidden rounded-xl bg-surface-container-lowest shadow-md p-space-md mb-space-md">
-<!-- Active Hub Surge Status Chip -->
+<!-- Live Session Status Chip -->
 <div class="flex items-center justify-between bg-surface-container-low rounded-lg p-space-xs mb-space-md">
 <div class="flex items-center gap-2 min-w-0">
-<div class="w-2.5 h-2.5 rounded-full bg-primary-container animate-pulse"></div>
+<div class="w-2.5 h-2.5 rounded-full bg-primary-container" id="session-dot"></div>
 <div class="flex flex-col min-w-0">
-<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wide">Active Fleet Hub</span>
-<span class="font-body-md-bold text-body-md-bold text-on-surface truncate">Nairobi Westlands &amp; Kilimani</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wide">Rider session</span>
+<span class="font-body-md-bold text-body-md-bold text-on-surface truncate" id="session-label">Checking your session…</span>
 </div>
 </div>
-<div class="flex-shrink-0 bg-secondary-container text-on-secondary-container px-2 py-0.5 rounded font-label-md text-label-md">
-        1.4x Surge
+<div class="flex-shrink-0 bg-surface-container-high text-on-surface-variant px-2 py-0.5 rounded font-label-md text-label-md" id="session-chip">
+        Secure
       </div>
 </div>
-<!-- Biometric Quick Resume Zone -->
+<!-- Session Quick Resume Zone -->
 <div class="flex flex-col items-center justify-center py-space-sm text-center">
 <!-- Tactile Ripple Touch Target -->
-<button aria-label="Authenticate with biometrics" class="group relative flex items-center justify-center w-24 h-24 rounded-full bg-primary-fixed transition-all duration-200 active:scale-95 shadow-sm" id="biometric-trigger" type="button">
+<button aria-label="Check rider session and continue" class="group relative flex items-center justify-center w-24 h-24 rounded-full bg-primary-fixed transition-all duration-200 active:scale-95 shadow-sm" id="biometric-trigger" type="button">
 <div class="absolute inset-0 rounded-full bg-primary-fixed-dim opacity-40 transition-transform duration-700 group-hover:scale-110" id="bio-aura"></div>
 <div class="w-16 h-16 rounded-full bg-primary flex items-center justify-center text-on-primary shadow-inner">
-<span class="material-symbols-outlined text-[36px] transition-transform group-active:scale-90" id="bio-icon">fingerprint</span>
+<span class="material-symbols-outlined text-[36px] transition-transform group-active:scale-90" id="bio-icon">badge</span>
 </div>
 </button>
-<span class="font-headline-sm text-headline-sm text-on-surface mt-space-sm">Quick Resume Shift</span>
+<span class="font-headline-sm text-headline-sm text-on-surface mt-space-sm">Continue your shift</span>
 <p class="font-body-sm text-body-sm text-on-surface-variant max-w-[240px] mt-1" id="bio-status">
-        Touch sensor or Face ID to instantly launch active manifest &amp; dispatch
+        We will check your secure Nile Flow session and open your dashboard.
       </p>
 </div>
 <!-- Visual Rider Prompt Banner -->
@@ -71,8 +71,8 @@
 <img class="w-full h-full object-cover" data-alt="A confident East African motorcycle delivery courier wearing an emerald teal helmet and jacket standing beside a modern bike with cargo box in bright sunlit morning Nairobi streets, rich warm daylight with teal accents." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBhgHElMffrzHR5M66jpCxEy6AuXkdQPya0-bBRXkK779DJIQhhmhH5bKVIJmtyt0pN-awrzuESCFsfl8CziTGSCqOwDjAvXsnMAYBK2rcJ6aZrgz4N6tpg1CuArRKggmgUyuNvltZ-4n72srnBrA4eJQporGXDtA0sT-JDT7GpRJsXJgzTwRnMXubYmE2ve92yXfhYoKHKVhhJ1WlDI2UVUx1KlXLG-T1UkHVoFW0WGhQ6NevjAQ-nUg"/>
 <div class="absolute inset-0 bg-gradient-to-r from-inverse-surface via-inverse-surface/60 to-transparent flex items-center p-space-sm">
 <div class="text-inverse-on-surface max-w-[200px]">
-<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary-container">Morning Rush Hours</span>
-<p class="font-body-md-bold text-body-md-bold leading-tight mt-0.5">High order volume in Kilimani corridor</p>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary-container">Your shift, your pace</span>
+<p class="font-body-md-bold text-body-md-bold leading-tight mt-0.5">Go online from the dashboard to receive real delivery offers</p>
 </div>
 </div>
 </div>
@@ -80,10 +80,10 @@
 
 <!-- Primary Interactive Flow Actions (Wired up to subsequent screen paths) -->
 <div class="flex flex-col gap-space-sm mb-space-lg">
-<!-- Phone / OTP Primary Action -->
+<!-- Email sign-in Primary Action -->
 <a href="../24_rider_sign_in_phone/code.html" class="w-full h-14 rounded-lg bg-primary-container text-on-primary flex items-center justify-center gap-2 font-label-lg text-label-lg tracking-wide shadow-md active:bg-primary transition-colors no-underline">
-  <span class="material-symbols-outlined text-[20px]">smartphone</span>
-  <span>Sign in with Phone &amp; OTP</span>
+  <span class="material-symbols-outlined text-[20px]">mail</span>
+  <span>Sign in with Email</span>
 </a>
 <!-- Become a Partner Secondary Action -->
 <a href="../02_rider_onboarding_profile_setup/code.html" class="w-full h-14 rounded-lg bg-surface-container-high text-on-surface flex items-center justify-center gap-2 font-label-lg text-label-lg shadow-sm active:bg-surface-container-highest transition-colors no-underline">
@@ -91,74 +91,105 @@
   <span>Become a Nile Flow Rider Partner</span>
 </a>
 
-<!-- Real-time Fleet Telemetry (3 Pillars) -->
+<!-- What the rider app connects to (3 Pillars) -->
 <div class="grid grid-cols-3 gap-gutter-mobile mb-space-lg">
 <!-- Card 1 -->
 <div class="bg-surface-container-low rounded-lg p-space-xs text-center flex flex-col justify-between">
-<span class="material-symbols-outlined text-primary text-[22px] mx-auto">electric_moped</span>
-<span class="font-headline-sm text-headline-sm text-on-surface mt-1">2,480+</span>
-<span class="font-body-sm text-body-sm text-on-surface-variant leading-tight mt-0.5">Active Fleet</span>
+<span class="material-symbols-outlined text-primary text-[22px] mx-auto">local_shipping</span>
+<span class="font-body-md-bold text-body-md-bold text-on-surface mt-1">Live jobs</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant leading-tight mt-0.5">Assignments</span>
 </div>
 <!-- Card 2 -->
 <div class="bg-surface-container-low rounded-lg p-space-xs text-center flex flex-col justify-between">
 <span class="material-symbols-outlined text-secondary text-[22px] mx-auto">payments</span>
-<span class="font-headline-sm text-headline-sm text-on-surface mt-1">Instant</span>
-<span class="font-body-sm text-body-sm text-on-surface-variant leading-tight mt-0.5">M-Pesa Payout</span>
+<span class="font-body-md-bold text-body-md-bold text-on-surface mt-1">Earnings</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant leading-tight mt-0.5">Completed jobs</span>
 </div>
 <!-- Card 3 -->
 <div class="bg-surface-container-low rounded-lg p-space-xs text-center flex flex-col justify-between">
-<span class="material-symbols-outlined text-tertiary text-[22px] mx-auto">timer</span>
-<span class="font-headline-sm text-headline-sm text-on-surface mt-1">18m</span>
-<span class="font-body-sm text-body-sm text-on-surface-variant leading-tight mt-0.5">Avg Westlands</span>
+<span class="material-symbols-outlined text-tertiary text-[22px] mx-auto">bolt</span>
+<span class="font-body-md-bold text-body-md-bold text-on-surface mt-1">Offers</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant leading-tight mt-0.5">Accept or reject</span>
 </div>
 </div>
-<!-- Regulatory & Certified Compliance Badge -->
+<!-- Account Security Badge -->
 <div class="mt-auto flex flex-col items-center text-center pt-space-xs">
 <div class="inline-flex items-center gap-1.5 text-on-surface-variant">
 <span class="material-symbols-outlined text-[16px] text-primary">verified_user</span>
-<span class="font-label-sm text-label-sm uppercase tracking-widest text-on-surface">Official Dispatch Protocol</span>
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-on-surface">Secure Rider Access</span>
 </div>
 <p class="font-body-sm text-body-sm text-outline mt-1">
-      Licensed by NTSA • KLA Certified Commercial Transit
+      Cookie-based sign in • No codes shared in the app
     </p>
 </div>
 </div>
+<script src="../assets/api.js"></script>
+<script src="../assets/auth.js"></script>
+<script src="../assets/ui.js"></script>
 <script>
-  // Biometric authentication trigger with automatic transition to Command Center Dashboard
-  const bioBtn = document.getElementById('biometric-trigger');
-  const bioIcon = document.getElementById('bio-icon');
-  const bioStatus = document.getElementById('bio-status');
-  const bioAura = document.getElementById('bio-aura');
+(function () {
+  var bioBtn = document.getElementById('biometric-trigger');
+  var bioIcon = document.getElementById('bio-icon');
+  var bioStatus = document.getElementById('bio-status');
+  var bioAura = document.getElementById('bio-aura');
+  var sessionLabel = document.getElementById('session-label');
+  var sessionChip = document.getElementById('session-chip');
+  var sessionDot = document.getElementById('session-dot');
+  var checking = false;
+  var signedIn = false;
 
-  let authenticating = false;
+  function setSignedIn(rider) {
+    signedIn = !!rider;
+    if (rider) {
+      sessionLabel.textContent = 'Signed in as ' + (rider.name || 'rider');
+      sessionChip.textContent = 'Active';
+      sessionChip.className = 'flex-shrink-0 bg-primary-fixed text-on-primary-fixed px-2 py-0.5 rounded font-label-md text-label-md';
+      sessionDot.className = 'w-2.5 h-2.5 rounded-full bg-primary-container';
+    } else {
+      sessionLabel.textContent = 'No active session';
+      sessionChip.textContent = 'Sign in';
+      sessionChip.className = 'flex-shrink-0 bg-surface-container-high text-on-surface-variant px-2 py-0.5 rounded font-label-md text-label-md';
+      sessionDot.className = 'w-2.5 h-2.5 rounded-full bg-outline';
+    }
+  }
 
-  if (bioBtn) {
-    bioBtn.addEventListener('click', () => {
-      if (authenticating) return;
-      authenticating = true;
+  // Check the real cookie session on startup.
+  NFAuth.peek()
+    .then(setSignedIn)
+    .catch(function () {
+      sessionLabel.textContent = 'Could not check session';
+      sessionChip.textContent = 'Offline';
+      sessionDot.className = 'w-2.5 h-2.5 rounded-full bg-secondary';
+      NFUI.toast('Could not reach Nile Flow to check your session. You can still sign in.', 'info');
+    });
 
-      // Scanning feedback state
-      bioIcon.textContent = 'sensors';
-      bioIcon.classList.add('animate-spin');
-      bioStatus.textContent = 'Verifying courier credential signature...';
-      bioAura.classList.remove('opacity-40');
-      bioAura.classList.add('opacity-90', 'scale-125');
+  bioBtn.addEventListener('click', function () {
+    if (checking) return;
+    checking = true;
+    bioIcon.textContent = 'sync';
+    bioIcon.classList.add('animate-spin');
+    bioStatus.textContent = 'Checking your secure Nile Flow session…';
+    bioAura.classList.remove('opacity-40');
+    bioAura.classList.add('opacity-90', 'scale-125');
 
-      setTimeout(() => {
+    NFAuth.me()
+      .then(function (rider) {
         bioIcon.classList.remove('animate-spin');
         bioIcon.textContent = 'check_circle';
-        bioStatus.textContent = 'Identity Confirmed: Loading command center...';
+        bioStatus.textContent = 'Welcome back, ' + (rider && rider.name ? rider.name.split(/\s+/)[0] : 'rider') + '. Opening your dashboard…';
         bioStatus.classList.add('text-primary');
-
-        setTimeout(() => {
-          // Seamless transition directly into Screen 06: Command Center Dashboard
-          var signedIn = false;
-try { signedIn = localStorage.getItem('nf_signed_in') === '1'; } catch (e) {}
-window.location.href = signedIn
-  ? '../06_rider_command_center_dashboard/code.html'
-  : '../24_rider_sign_in_phone/code.html';
-        }, 800);
-      }, 1200);
-    });
-  }
+        setTimeout(function () {
+          window.location.href = '../06_rider_command_center_dashboard/code.html';
+        }, 500);
+      })
+      .catch(function () {
+        bioIcon.classList.remove('animate-spin');
+        bioIcon.textContent = 'login';
+        bioStatus.textContent = 'No active session. Taking you to sign in…';
+        setTimeout(function () {
+          window.location.href = '../24_rider_sign_in_phone/code.html';
+        }, 500);
+      });
+  });
+})();
 </script></main><script src="../screens-menu.js"></script></body></html>

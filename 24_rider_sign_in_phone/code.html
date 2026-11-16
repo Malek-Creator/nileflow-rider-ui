@@ -62,19 +62,40 @@ tailwind.config = {
 
   <div class="mt-space-lg flex flex-col gap-space-xs">
     <h1 class="font-headline-lg-mobile text-headline-lg-mobile">Sign in to your shift</h1>
-    <p class="font-body-md text-body-md text-on-surface-variant">Enter the phone number you registered with. We will text you a 4-digit code.</p>
+    <p class="font-body-md text-body-md text-on-surface-variant">Use the email and password for your Nile Flow rider account.</p>
   </div>
 
-  <form id="phoneForm" class="mt-space-xl flex flex-col gap-space-md" novalidate>
+  <div id="loginNotice" class="mt-space-md"></div>
+
+  <form id="loginForm" class="mt-space-lg flex flex-col gap-space-md" novalidate>
     <div class="flex flex-col gap-space-xs">
-      <label for="phone" class="font-label-lg text-label-lg">Phone number</label>
+      <label for="email" class="font-label-lg text-label-lg">Email address</label>
       <div class="flex items-stretch rounded-lg bg-surface-container-lowest shadow-sm ring-1 ring-outline-variant focus-within:ring-2 focus-within:ring-primary">
-        <span class="flex items-center pl-space-md pr-space-xs font-body-md-bold text-body-md-bold text-on-surface-variant select-none">+254</span>
-        <input id="phone" name="phone" type="tel" inputmode="numeric" autocomplete="tel-national" placeholder="712 345 678" maxlength="11" aria-describedby="phoneError" class="w-full h-12 pr-space-md bg-transparent outline-none font-body-lg-bold text-body-lg-bold tracking-wide placeholder:text-outline placeholder:font-normal"/>
+        <span class="flex items-center pl-space-md pr-space-xs text-on-surface-variant">
+          <span class="material-symbols-outlined text-[20px]">mail</span>
+        </span>
+        <input id="email" name="email" type="email" inputmode="email" autocomplete="username" autocapitalize="none" spellcheck="false" placeholder="you@example.com" aria-describedby="emailError" class="w-full h-12 pr-space-md bg-transparent outline-none font-body-md text-body-md placeholder:text-outline"/>
       </div>
-      <p id="phoneError" role="alert" class="min-h-[16px] font-body-sm text-body-sm text-error"></p>
+      <p id="emailError" role="alert" class="min-h-[16px] font-body-sm text-body-sm text-error"></p>
     </div>
-    <button id="sendBtn" type="submit" class="w-full h-14 rounded-lg bg-primary text-on-primary font-label-lg text-label-lg flex items-center justify-center shadow-md active:scale-[0.99] transition-all disabled:opacity-60">Send code</button>
+
+    <div class="flex flex-col gap-space-xs">
+      <label for="password" class="font-label-lg text-label-lg">Password</label>
+      <div class="flex items-stretch rounded-lg bg-surface-container-lowest shadow-sm ring-1 ring-outline-variant focus-within:ring-2 focus-within:ring-primary">
+        <span class="flex items-center pl-space-md pr-space-xs text-on-surface-variant">
+          <span class="material-symbols-outlined text-[20px]">lock</span>
+        </span>
+        <input id="password" name="password" type="password" autocomplete="current-password" placeholder="Your password" aria-describedby="passwordError" class="w-full h-12 bg-transparent outline-none font-body-md text-body-md placeholder:text-outline"/>
+        <button id="togglePassword" type="button" aria-label="Show password" class="w-12 flex items-center justify-center text-on-surface-variant">
+          <span class="material-symbols-outlined text-[20px]">visibility</span>
+        </button>
+      </div>
+      <p id="passwordError" role="alert" class="min-h-[16px] font-body-sm text-body-sm text-error"></p>
+    </div>
+
+    <p id="formError" role="alert" class="min-h-[16px] font-body-sm text-body-sm text-error"></p>
+
+    <button id="signInBtn" type="submit" class="w-full h-14 rounded-lg bg-primary text-on-primary font-label-lg text-label-lg flex items-center justify-center shadow-md active:scale-[0.99] transition-all disabled:opacity-60">Sign in</button>
   </form>
 
   <p class="mt-space-lg font-body-md text-body-md text-on-surface-variant">
@@ -83,53 +104,92 @@ tailwind.config = {
 
   <a href="tel:+254700000000" class="mt-auto mb-space-lg pt-space-xl flex items-center justify-center gap-2 min-h-[44px] font-label-lg text-label-lg text-primary">
     <span class="material-symbols-outlined text-[20px]">support_agent</span>
-    Can't sign in? Call dispatch
+    Trouble signing in? Call dispatch
   </a>
 
 </main>
+<script src="../assets/api.js"></script>
+<script src="../assets/auth.js"></script>
+<script src="../assets/ui.js"></script>
 <script>
 (function () {
-  var form = document.getElementById('phoneForm');
-  var input = document.getElementById('phone');
-  var err = document.getElementById('phoneError');
-  var btn = document.getElementById('sendBtn');
+  var form = document.getElementById('loginForm');
+  var email = document.getElementById('email');
+  var password = document.getElementById('password');
+  var emailError = document.getElementById('emailError');
+  var passwordError = document.getElementById('passwordError');
+  var formError = document.getElementById('formError');
+  var btn = document.getElementById('signInBtn');
+  var toggle = document.getElementById('togglePassword');
+  var notice = document.getElementById('loginNotice');
+  var busy = false;
 
-  function digitsOnly(v) { return v.replace(/\D/g, ''); }
-  function format(d) {
-    var out = d.slice(0, 3);
-    if (d.length > 3) out += ' ' + d.slice(3, 6);
-    if (d.length > 6) out += ' ' + d.slice(6, 9);
-    return out;
+  if (NFUI.param('expired') === '1') {
+    NFUI.banner(notice, 'Your session expired. Sign in again to continue where you left off.', 'warn');
   }
 
-  // Coming back from the code screen: show the number again
-  try {
-    var saved = sessionStorage.getItem('nf_phone');
-    if (saved) input.value = format(saved);
-  } catch (x) {}
+  // If the rider already has a valid session, skip this screen.
+  if (!NFUI.param('expired')) {
+    NFAuth.redirectIfSignedIn();
+  }
 
-  input.addEventListener('input', function () {
-    var d = digitsOnly(input.value);
-    if (d.indexOf('254') === 0 && d.length > 9) d = d.slice(3);
-    if (d.charAt(0) === '0') d = d.slice(1);
-    input.value = format(d.slice(0, 9));
-    err.textContent = '';
+  toggle.addEventListener('click', function () {
+    var showing = password.type === 'text';
+    password.type = showing ? 'password' : 'text';
+    toggle.setAttribute('aria-label', showing ? 'Show password' : 'Hide password');
+    toggle.querySelector('.material-symbols-outlined').textContent = showing ? 'visibility' : 'visibility_off';
   });
 
-  form.addEventListener('submit', function (e) {
-    e.preventDefault();
-    var d = digitsOnly(input.value);
-    if (!/^[17]\d{8}$/.test(d)) {
-      err.textContent = 'Enter a 9-digit Kenyan number that starts with 7 or 1, for example 712 345 678.';
-      input.focus();
+  email.addEventListener('input', function () { emailError.textContent = ''; formError.textContent = ''; });
+  password.addEventListener('input', function () { passwordError.textContent = ''; formError.textContent = ''; });
+
+  function validate() {
+    var ok = true;
+    emailError.textContent = '';
+    passwordError.textContent = '';
+    formError.textContent = '';
+    var value = email.value.trim();
+    if (!value) {
+      emailError.textContent = 'Enter the email address for your rider account.';
+      ok = false;
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) {
+      emailError.textContent = 'Enter a valid email address, for example rider@example.com.';
+      ok = false;
+    }
+    if (!password.value) {
+      passwordError.textContent = 'Enter your password.';
+      ok = false;
+    }
+    return ok;
+  }
+
+  form.addEventListener('submit', function (event) {
+    event.preventDefault();
+    if (busy) return;
+    if (!validate()) {
+      (emailError.textContent ? email : password).focus();
       return;
     }
-    try { sessionStorage.setItem('nf_phone', d); } catch (x) {}
-    btn.disabled = true;
-    btn.textContent = 'Sending code...';
-    setTimeout(function () {
-      location.href = '../25_rider_sign_in_code/code.html';
-    }, 700);
+
+    busy = true;
+    NFUI.setBusy(btn, true, 'Signing in…');
+    NFAuth.login(email.value.trim().toLowerCase(), password.value)
+      .then(function (rider) {
+        if (!rider) throw new Error('Sign in did not return a rider profile. Please try again.');
+        window.location.replace(NFAuth.safeNext() || NFAuth.ROUTES.dashboard);
+      })
+      .catch(function (err) {
+        busy = false;
+        NFUI.setBusy(btn, false);
+        var message = err && err.message ? err.message : 'Sign in failed. Please try again.';
+        if (err && (err.status === 401 || err.status === 400)) {
+          formError.textContent = message || 'Email or password is incorrect.';
+          password.value = '';
+          password.focus();
+        } else {
+          formError.textContent = message;
+        }
+      });
   });
 })();
 </script>
