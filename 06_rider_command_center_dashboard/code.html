@@ -127,6 +127,16 @@
           <span class="font-label-sm text-label-sm text-on-surface-variant mt-0.5">Customer rating</span>
         </div>
       </div>
+      <!-- GPS telemetry -->
+      <div class="w-full rounded-lg bg-surface-container-low p-space-sm flex flex-col gap-0.5" role="status" aria-live="polite">
+        <div class="flex items-center gap-1.5">
+          <span class="material-symbols-outlined text-[16px] text-primary">my_location</span>
+          <span class="font-label-sm text-label-sm uppercase text-on-surface-variant">GPS telemetry</span>
+        </div>
+        <span class="font-body-md-bold text-body-md-bold text-on-surface" id="gpsStatus">GPS not checked</span>
+        <span class="font-body-sm text-body-sm text-on-surface-variant" id="gpsCoordinates">—</span>
+        <span class="font-label-sm text-label-sm text-outline" id="gpsAccuracy">Accuracy —</span>
+      </div>
     </div>
 
     <!-- Live offers banner -->
@@ -220,6 +230,7 @@
   var statusBusy = false;
   var pollTimer = null;
   var offersFailed = false;
+  var gpsRequested = false;
 
   var el = {
     notice: document.getElementById('dashboardNotice'),
@@ -241,6 +252,9 @@
     completedCount: document.getElementById('completedCount'),
     distanceValue: document.getElementById('distanceValue'),
     ratingValue: document.getElementById('ratingValue'),
+    gpsStatus: document.getElementById('gpsStatus'),
+    gpsCoordinates: document.getElementById('gpsCoordinates'),
+    gpsAccuracy: document.getElementById('gpsAccuracy'),
     offerCount: document.getElementById('offerCount'),
     offerText: document.getElementById('offerText'),
     offerRetry: document.getElementById('offerRetry'),
@@ -251,6 +265,58 @@
   function capitalize(value) {
     var s = String(value || '');
     return s ? s.charAt(0).toUpperCase() + s.slice(1) : '';
+  }
+
+  function detectGps() {
+    if (gpsRequested) return;
+    gpsRequested = true;
+    el.gpsStatus.textContent = 'Detecting GPS…';
+    el.gpsCoordinates.textContent = 'Waiting for a location fix';
+    el.gpsAccuracy.textContent = 'Accuracy —';
+
+    if (!window.NFUI || typeof NFUI.getLocation !== 'function') {
+      el.gpsStatus.textContent = 'GPS unavailable on this device';
+      el.gpsCoordinates.textContent = 'This build cannot provide a GPS position.';
+      return;
+    }
+
+    var startedAt = Date.now();
+    NFUI.getLocation()
+      .then(function (position) {
+        var lat = Number(position && position.latitude);
+        var lng = Number(position && position.longitude);
+        if (!isFinite(lat) || !isFinite(lng)) {
+          throw new Error('Could not get your location. Move to an open area and try again.');
+        }
+        var accuracy = Number(position && position.accuracy);
+        el.gpsStatus.textContent = 'GPS detected / Location active';
+        el.gpsStatus.className = 'font-body-md-bold text-body-md-bold text-primary';
+        el.gpsCoordinates.textContent = lat.toFixed(5) + ', ' + lng.toFixed(5);
+        el.gpsAccuracy.textContent = isFinite(accuracy)
+          ? 'Accuracy ±' + accuracy.toFixed(0) + ' m'
+          : 'Accuracy unavailable';
+      })
+      .catch(function (err) {
+        var message = err && err.message ? err.message : '';
+        var denied = /permission|denied|allow/i.test(message);
+        var unavailable = /not available on this device/i.test(message);
+        var timedOut = Date.now() - startedAt >= 11000;
+        el.gpsStatus.textContent = denied
+          ? 'Location access denied'
+          : unavailable
+            ? 'GPS unavailable on this device'
+            : timedOut
+              ? 'GPS request timed out'
+              : 'No GPS fix available';
+        el.gpsCoordinates.textContent = denied
+          ? 'Allow location access in your browser to detect your GPS position.'
+          : unavailable
+            ? 'This device or browser cannot provide a GPS position.'
+            : timedOut
+              ? 'Location took too long. Move to an open area and reload the dashboard.'
+              : 'A GPS position could not be determined. Move to an open area and reload.';
+        el.gpsAccuracy.textContent = 'Accuracy —';
+      });
   }
 
   function statusOf() {
@@ -538,6 +604,7 @@
       var vehicle = profile.vehicleType ? capitalize(profile.vehicleType) + ' rider' : 'Nile Flow rider';
       var phone = profile.phone ? ' • ' + NFUI.maskPhone(profile.phone) : '';
       el.riderMeta.textContent = vehicle + phone;
+      detectGps();
       renderStatus(profile.status || 'offline');
       loadEarnings();
       loadActiveDelivery();
